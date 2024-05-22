@@ -23,6 +23,7 @@ with subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subpro
                 if i=='{' or i=='[' :
                     text = log_str.split(",")
                     for log_txt in text :
+                        if len(stack)>0 and len(log_txt)>1 : log_file.write('\u2520')
                         if log_txt :
                             for j in range(len(stack)) :
                                 log_file.write("--")
@@ -32,11 +33,13 @@ with subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subpro
                 elif i=='}' or i==']' :
                     text = log_str.split(",")
                     for log_txt in text :
+                        if len(stack)>0 and len(log_txt)>1 : log_file.write('\u2520')
                         if log_txt :
                             for j in range(len(stack)) :
                                 log_file.write("--")
                             if len(log_txt)>1 : log_file.write(f"{log_txt}\n")
                     stack.pop()
                     log_str = ""
-                else : log_str += i
+                else : 
+                    if i!=' ' : log_str += i
             print(f"{log_line}")
