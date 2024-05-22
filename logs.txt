@@ -1,0 +1,37 @@
+2024-05-23 01:44:03
+Incoming event:
+FunctionEvent
+┠--body:
+┠----id: 'hyejin'
+┠----user: 'hyejinuser'
+┠----creditCard: '0000-0000-0000-0000'
+┠--headers:
+┠----host: '10.1.0.86:8080'
+┠----'user-agent': 'PostmanRuntime/7.39.0'
+┠----'transfer-encoding': 'chunked'
+┠----accept: '*/*'
+┠----'accept-encoding': 'gzip, deflate, br'
+┠----'cache-control': 'no-cache'
+┠----'content-type': 'application/json'
+┠----'postman-token': '775e5a33-01a0-4997-8a41-3b3fb8b5e97e'
+┠----'x-call-id': 'e8a410ba-6419-432c-a23f-15a114cca092'
+┠----'x-forwarded-for': '192.168.65.3:39806'
+┠----'x-forwarded-host': 'localhost:31112'
+┠----'x-start-time': '1716396248403169111'
+┠--method: 'POST'
+┠--query:
+┠--path: '/'
+get-price and authorize-cc responses:
+┠----gotPrice: 'true'
+┠----price: '45.03'
+┠----approved: 'true'
+┠----authorization: 6398094087163513
+publish response:
+┠--productId: 'hyejin'
+┠--productPrice: '45.03'
+┠--userId: 'hyejinuser'
+┠--authorization: 6398094087163513
+Outgoing response:
+┠--success: 'true'
+┠--chargedAmount: '45.03'
+┠--authorization: 6398094087163513
