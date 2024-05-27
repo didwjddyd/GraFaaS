@@ -90,3 +90,4 @@ with subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subpro
             log_line = line.split("stdout: ", 1)[1].strip()  # 'stdout: ' 이후의 로그 라인 추출
             process_log_line(log_line, stack, log_file)  # 로그 라인 처리
             print(f"{log_line}")  # 콘솔에 로그 라인 출력
+            

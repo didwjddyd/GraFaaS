@@ -1,0 +1,56 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+  #gateway: 10.244.31.106:8080
+functions:
+  product-purchase-authorize-cc:
+    lang: dockerfile
+    handler: ./product-purchase-authorize-cc
+    image: dattapubali/attack-product-purchase-authorize-cc:latest
+    skip_build: true
+    labels:
+      com.openfaas.scale.min: 1
+      com.openfaas.scale.max: 5
+      com.openfaas.scale.factor: 10
+    environment:
+      DBNAME: 'helloRetail'
+      HOST: 'cc-db'
+      USER: 'root'
+      PASS: 'pass'
+      TABLE_CREDIT_CARDS_NAME: 'creditCards'
+      #ATTACKSERVER: 'http://10.99.88.86:8888'
+  
+  product-purchase:
+    lang: dockerfile
+    handler: ./product-purchase
+    image: dattapubali/attack-product-purchase:latest
+    skip_build: true
+    labels:
+      com.openfaas.scale.min: 1
+      com.openfaas.scale.max: 5
+      com.openfaas.scale.factor: 10
+    environment:
+      URL_GETPRICE: 'http://gateway.openfaas.svc.cluster.local:8080/function/product-purchase-get-price'
+      URL_AUTHORIZECC: 'http://gateway.openfaas.svc.cluster.local:8080/function/product-purchase-authorize-cc'
+      URL_PUBLISH: 'http://gateway.openfaas.svc.cluster.local:8080/function/product-purchase-publish'
+
+  product-purchase-get-price:
+    lang: dockerfile
+    handler: ./product-purchase-get-price
+    image: dattapubali/attack-product-purchase-get-price:latest
+    skip_build: true
+    labels:
+      com.openfaas.scale.min: 1
+      com.openfaas.scale.max: 5
+      com.openfaas.scale.factor: 10
+  
+  product-purchase-publish:
+    lang: dockerfile
+    handler: ./product-purchase-publish
+    image: dattapubali/attack-product-purchase-publish:latest
+    skip_build: true
+    labels:
+      com.openfaas.scale.min: 1
+      com.openfaas.scale.max: 5
+      com.openfaas.scale.factor: 10

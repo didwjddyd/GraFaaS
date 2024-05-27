@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-proxy
+  namespace: openfaas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-proxy
+  template:
+    metadata:
+      labels:
+        app: nginx-proxy
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/nginx
+      - name: tcpdump
+        image: dockersec/tcpdump:latest # 예시 이미지, 실제 사용 가능한 tcpdump 이미지를 사용하세요.
+        command: ["tcpdump", "-i", "eth0", "-w", "/tmp/tcpdump.pcapt"]
+        #entrypoint: ["/bin/sh", "-c"]
+        volumeMounts:
+        - name: data-volume
+          mountPath: /data
+      volumes:
+      - name: config-volume
+        configMap:
+          name: nginx-configmap
+      - name: data-volume
+        emptyDir: {}
+
