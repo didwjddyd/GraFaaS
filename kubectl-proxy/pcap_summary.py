@@ -19,8 +19,16 @@ with open(log_file_path, 'a') as log_file:
     log_file.write(f"{now_time}\n")
     
     # pcap 파일에서 패킷 읽기
-    packets = rdpcap(pcap_file_path)
-    
-    # 각 패킷에 대해 처리
-    for packet in packets:
-        process_packet(packet, log_file)
+    log_file.write("start\n")
+    try:
+        packets = rdpcap(pcap_file_path)
+        # packet_info = packets.show2(dump=True)
+        # log_file.write(f"{packets.show(dump=True)}\n")
+        # 각 패킷에 대해 처리
+        for packet in packets:
+            log_file.write(f"{packet.show2(dump=True)}\n")
+        for packet in packets:
+            process_packet(packet, log_file)
+    except Exception as e:
+        log_file.write(f"Error reading pcap file: {e}\n")
+    log_file.write("end\n")
