@@ -1,0 +1,18 @@
+2024/05/28 05:04:40 Logging to a file in Go!
+2024/05/28 05:04:40 Running node
+2024/05/28 05:04:40 Started logging stderr from function.
+2024/05/28 05:04:40 Started logging stdout from function.
+2024/05/28 05:04:40 OperationalMode: http
+2024/05/28 05:04:40 Metrics listening on port: 8081
+2024/05/28 05:19:32 Request ID: 5d9b1f1c-12f1-46fc-b137-651ea868c1ae
+2024/05/28 05:19:32 X-Duration-Seconds: 0.647323
+2024/05/28 05:20:46 Request ID: a679bd3e-1fcb-4584-adff-77fa9032090e
+2024/05/28 05:20:46 X-Duration-Seconds: 0.066481
+2024/05/28 05:26:37 Request ID: 26dd1c35-c5cf-49f3-b6f5-aba94cfec15d
+2024/05/28 05:26:37 X-Duration-Seconds: 0.089144
+2024/05/28 05:30:16 Request ID: 6a652948-0333-42e6-abfe-0cea911807d2
+2024/05/28 05:30:16 X-Duration-Seconds: 0.062680
+2024/05/28 06:09:58 Request ID: 3a195a43-4271-4464-a5c8-0d577d48e92b
+2024/05/28 06:09:58 X-Duration-Seconds: 0.044709
+2024/05/28 06:13:32 Request ID: 205fbe46-0c2f-4bc4-9d4e-a09849353312
+2024/05/28 06:13:33 X-Duration-Seconds: 0.070461
