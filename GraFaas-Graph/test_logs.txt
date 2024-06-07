@@ -1,883 +1,939 @@
-2024-05-29 07:09:47
+2024-06-07 05:04:49
 start
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = aa:82:a3:44:7f:9f
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 60
-     id        = 63521
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x3453
-     src       = 192.168.65.3
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = 64776
-        dport     = http
-        seq       = 2991822611
-        ack       = 0
-        dataofs   = 10
-        reserved  = 0
-        flags     = S
-        window    = 33280
-        chksum    = 0xe76
-        urgptr    = 0
-        options   = [('MSS', 65495), ('SAckOK', b''), ('Timestamp', (3369045232, 0)), ('NOP', None), ('WScale', 7)]
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = aa:82:a3:44:7f:9f
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 12981
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0xf9c4
+src       = 192.168.65.3
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = 55050
+dport     = http
+seq       = 3777421296
+ack       = 227267840
+dataofs   = 8
+reserved  = 0
+flags     = A
+window    = 260
+chksum    = 0xe71
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (3867816001, 3882985887))]
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = aa:82:a3:44:7f:9f
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 60
-     id        = 29186
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0xba72
-     src       = 192.168.65.3
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = 64786
-        dport     = http
-        seq       = 2979446573
-        ack       = 0
-        dataofs   = 10
-        reserved  = 0
-        flags     = S
-        window    = 33280
-        chksum    = 0xe76
-        urgptr    = 0
-        options   = [('MSS', 65495), ('SAckOK', b''), ('Timestamp', (3369045232, 0)), ('NOP', None), ('WScale', 7)]
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 41165
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x8bac
+src       = 10.1.2.158
+dst       = 192.168.65.3
+\options   \
+###[ TCP ]###
+sport     = http
+dport     = 55050
+seq       = 227267840
+ack       = 3777421297
+dataofs   = 8
+reserved  = 0
+flags     = A
+window    = 249
+chksum    = 0xe71
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (3883001247, 3867754877))]
 
-###[ Ethernet ]### 
-  dst       = aa:82:a3:44:7f:9f
-  src       = c2:8b:5c:51:fb:93
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 60
-     id        = 0
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x2c75
-     src       = 10.1.2.155
-     dst       = 192.168.65.3
-     \options   \
-###[ TCP ]### 
-        sport     = http
-        dport     = 64776
-        seq       = 2444276083
-        ack       = 2991822612
-        dataofs   = 10
-        reserved  = 0
-        flags     = SA
-        window    = 31856
-        chksum    = 0xe76
-        urgptr    = 0
-        options   = [('MSS', 1460), ('SAckOK', b''), ('Timestamp', (3426587889, 3369045232)), ('NOP', None), ('WScale', 7)]
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = ARP
+###[ ARP ]###
+hwtype    = Ethernet (10Mb)
+ptype     = IPv4
+hwlen     = 6
+plen      = 4
+op        = who-has
+hwsrc     = e6:c9:af:6a:ff:7b
+psrc      = 10.1.2.158
+hwdst     = 00:00:00:00:00:00
+pdst      = 10.1.0.1
 
-###[ Ethernet ]### 
-  dst       = aa:82:a3:44:7f:9f
-  src       = c2:8b:5c:51:fb:93
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 60
-     id        = 0
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x2c75
-     src       = 10.1.2.155
-     dst       = 192.168.65.3
-     \options   \
-###[ TCP ]### 
-        sport     = http
-        dport     = 64786
-        seq       = 2745422496
-        ack       = 2979446574
-        dataofs   = 10
-        reserved  = 0
-        flags     = SA
-        window    = 31856
-        chksum    = 0xe76
-        urgptr    = 0
-        options   = [('MSS', 1460), ('SAckOK', b''), ('Timestamp', (3426587889, 3369045232)), ('NOP', None), ('WScale', 7)]
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = aa:82:a3:44:7f:9f
+type      = ARP
+###[ ARP ]###
+hwtype    = Ethernet (10Mb)
+ptype     = IPv4
+hwlen     = 6
+plen      = 4
+op        = who-has
+hwsrc     = aa:82:a3:44:7f:9f
+psrc      = 10.1.0.1
+hwdst     = 00:00:00:00:00:00
+pdst      = 10.1.2.158
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = aa:82:a3:44:7f:9f
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 63522
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x345a
-     src       = 192.168.65.3
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = 64776
-        dport     = http
-        seq       = 2991822612
-        ack       = 2444276084
-        dataofs   = 8
-        reserved  = 0
-        flags     = A
-        window    = 260
-        chksum    = 0xe6e
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (3369045232, 3426587889))]
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = ARP
+###[ ARP ]###
+hwtype    = Ethernet (10Mb)
+ptype     = IPv4
+hwlen     = 6
+plen      = 4
+op        = is-at
+hwsrc     = e6:c9:af:6a:ff:7b
+psrc      = 10.1.2.158
+hwdst     = aa:82:a3:44:7f:9f
+pdst      = 10.1.0.1
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = aa:82:a3:44:7f:9f
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 29187
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0xba79
-     src       = 192.168.65.3
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = 64786
-        dport     = http
-        seq       = 2979446574
-        ack       = 2745422497
-        dataofs   = 8
-        reserved  = 0
-        flags     = A
-        window    = 260
-        chksum    = 0xe6e
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (3369045232, 3426587889))]
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = aa:82:a3:44:7f:9f
+type      = ARP
+###[ ARP ]###
+hwtype    = Ethernet (10Mb)
+ptype     = IPv4
+hwlen     = 6
+plen      = 4
+op        = is-at
+hwsrc     = aa:82:a3:44:7f:9f
+psrc      = 10.1.0.1
+hwdst     = e6:c9:af:6a:ff:7b
+pdst      = 10.1.2.158
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = aa:82:a3:44:7f:9f
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 439
-     id        = 63523
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x32d6
-     src       = 192.168.65.3
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = 64776
-        dport     = http
-        seq       = 2991822612
-        ack       = 2444276084
-        dataofs   = 8
-        reserved  = 0
-        flags     = PA
-        window    = 260
-        chksum    = 0xff1
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (3369045233, 3426587889))]
-###[ Raw ]### 
-           load      = 'POST /function/product-purchase HTTP/1.1\r\nContent-Type: application/json\r\nUser-Agent: PostmanRuntime/7.39.0\r\nAccept: */*\r\nCache-Control: no-cache\r\nPostman-Token: 8c31be73-8997-4daf-91e9-c2dba2a7a652\r\nHost: localhost:80\r\nAccept-Encoding: gzip, deflate, br\r\nConnection: keep-alive\r\nContent-Length: 85\r\n\r\n{\n    "id": "test",\n    "user": "testuser",\n    "creditCard": "0000-0000-0000-0000"\n}'
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 41166
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x8bab
+src       = 10.1.2.158
+dst       = 192.168.65.3
+\options   \
+###[ TCP ]###
+sport     = http
+dport     = 55050
+seq       = 227267840
+ack       = 3777421297
+dataofs   = 8
+reserved  = 0
+flags     = FA
+window    = 249
+chksum    = 0xe71
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (3883015134, 3867754877))]
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = aa:82:a3:44:7f:9f
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 29188
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0xba78
-     src       = 192.168.65.3
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = 64786
-        dport     = http
-        seq       = 2979446574
-        ack       = 2745422497
-        dataofs   = 8
-        reserved  = 0
-        flags     = FA
-        window    = 260
-        chksum    = 0xe6e
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (3369045233, 3426587889))]
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = aa:82:a3:44:7f:9f
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 12982
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0xf9c3
+src       = 192.168.65.3
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = 55050
+dport     = http
+seq       = 3777421297
+ack       = 227267841
+dataofs   = 8
+reserved  = 0
+flags     = FA
+window    = 260
+chksum    = 0xe71
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (3867829890, 3883015134))]
 
-###[ Ethernet ]### 
-  dst       = aa:82:a3:44:7f:9f
-  src       = c2:8b:5c:51:fb:93
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 42754
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x857a
-     src       = 10.1.2.155
-     dst       = 192.168.65.3
-     \options   \
-###[ TCP ]### 
-        sport     = http
-        dport     = 64776
-        seq       = 2444276084
-        ack       = 2991822999
-        dataofs   = 8
-        reserved  = 0
-        flags     = A
-        window    = 249
-        chksum    = 0xe6e
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (3426587890, 3369045233))]
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 41167
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x8baa
+src       = 10.1.2.158
+dst       = 192.168.65.3
+\options   \
+###[ TCP ]###
+sport     = http
+dport     = 55050
+seq       = 227267841
+ack       = 3777421298
+dataofs   = 8
+reserved  = 0
+flags     = A
+window    = 249
+chksum    = 0xe71
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (3883015136, 3867829890))]
 
-###[ Ethernet ]### 
-  dst       = aa:82:a3:44:7f:9f
-  src       = c2:8b:5c:51:fb:93
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 64549
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x3057
-     src       = 10.1.2.155
-     dst       = 192.168.65.3
-     \options   \
-###[ TCP ]### 
-        sport     = http
-        dport     = 64786
-        seq       = 2745422497
-        ack       = 2979446575
-        dataofs   = 8
-        reserved  = 0
-        flags     = FA
-        window    = 249
-        chksum    = 0xe6e
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (3426587890, 3369045233))]
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = aa:82:a3:44:7f:9f
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 60
+id        = 47825
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x71a0
+src       = 192.168.65.3
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = 58820
+dport     = http
+seq       = 2198086301
+ack       = 0
+dataofs   = 10
+reserved  = 0
+flags     = S
+window    = 33280
+chksum    = 0xe79
+urgptr    = 0
+options   = [('MSS', 65495), ('SAckOK', b''), ('Timestamp', (3869067523, 0)), ('NOP', None), ('WScale', 7)]
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = aa:82:a3:44:7f:9f
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 29189
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0xba77
-     src       = 192.168.65.3
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = 64786
-        dport     = http
-        seq       = 2979446575
-        ack       = 2745422498
-        dataofs   = 8
-        reserved  = 0
-        flags     = A
-        window    = 260
-        chksum    = 0xe6e
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (3369045233, 3426587890))]
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = aa:82:a3:44:7f:9f
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 60
+id        = 64306
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x313f
+src       = 192.168.65.3
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = 58818
+dport     = http
+seq       = 2882994898
+ack       = 0
+dataofs   = 10
+reserved  = 0
+flags     = S
+window    = 33280
+chksum    = 0xe79
+urgptr    = 0
+options   = [('MSS', 65495), ('SAckOK', b''), ('Timestamp', (3869067523, 0)), ('NOP', None), ('WScale', 7)]
 
-###[ Ethernet ]### 
-  dst       = aa:82:a3:44:7f:9f
-  src       = c2:8b:5c:51:fb:93
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 60
-     id        = 16316
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x77b5
-     src       = 10.1.2.155
-     dst       = 10.103.108.72
-     \options   \
-###[ TCP ]### 
-        sport     = 56304
-        dport     = http_alt
-        seq       = 3447730631
-        ack       = 0
-        dataofs   = 10
-        reserved  = 0
-        flags     = S
-        window    = 32120
-        chksum    = 0x8379
-        urgptr    = 0
-        options   = [('MSS', 1460), ('SAckOK', b''), ('Timestamp', (693714595, 0)), ('NOP', None), ('WScale', 7)]
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 60
+id        = 0
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x2c72
+src       = 10.1.2.158
+dst       = 192.168.65.3
+\options   \
+###[ TCP ]###
+sport     = http
+dport     = 58818
+seq       = 998917519
+ack       = 2882994899
+dataofs   = 10
+reserved  = 0
+flags     = SA
+window    = 31856
+chksum    = 0xe79
+urgptr    = 0
+options   = [('MSS', 1460), ('SAckOK', b''), ('Timestamp', (3884252769, 3869067523)), ('NOP', None), ('WScale', 7)]
 
-###[ Ethernet ]### 
-  dst       = ff:ff:ff:ff:ff:ff
-  src       = 92:62:50:09:28:7d
-  type      = ARP
-###[ ARP ]### 
-     hwtype    = Ethernet (10Mb)
-     ptype     = IPv4
-     hwlen     = 6
-     plen      = 4
-     op        = who-has
-     hwsrc     = 92:62:50:09:28:7d
-     psrc      = 10.1.1.114
-     hwdst     = 00:00:00:00:00:00
-     pdst      = 10.1.2.155
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 60
+id        = 0
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x2c72
+src       = 10.1.2.158
+dst       = 192.168.65.3
+\options   \
+###[ TCP ]###
+sport     = http
+dport     = 58820
+seq       = 2495899961
+ack       = 2198086302
+dataofs   = 10
+reserved  = 0
+flags     = SA
+window    = 31856
+chksum    = 0xe79
+urgptr    = 0
+options   = [('MSS', 1460), ('SAckOK', b''), ('Timestamp', (3884252769, 3869067523)), ('NOP', None), ('WScale', 7)]
 
-###[ Ethernet ]### 
-  dst       = 92:62:50:09:28:7d
-  src       = c2:8b:5c:51:fb:93
-  type      = ARP
-###[ ARP ]### 
-     hwtype    = Ethernet (10Mb)
-     ptype     = IPv4
-     hwlen     = 6
-     plen      = 4
-     op        = is-at
-     hwsrc     = c2:8b:5c:51:fb:93
-     psrc      = 10.1.2.155
-     hwdst     = 92:62:50:09:28:7d
-     pdst      = 10.1.1.114
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = aa:82:a3:44:7f:9f
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 47826
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x71a7
+src       = 192.168.65.3
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = 58820
+dport     = http
+seq       = 2198086302
+ack       = 2495899962
+dataofs   = 8
+reserved  = 0
+flags     = A
+window    = 260
+chksum    = 0xe71
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (3869067523, 3884252769))]
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = 92:62:50:09:28:7d
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 60
-     id        = 0
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0xb771
-     src       = 10.103.108.72
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = http_alt
-        dport     = 56304
-        seq       = 3839396302
-        ack       = 3447730632
-        dataofs   = 10
-        reserved  = 0
-        flags     = SA
-        window    = 31856
-        chksum    = 0x8379
-        urgptr    = 0
-        options   = [('MSS', 1460), ('SAckOK', b''), ('Timestamp', (532223216, 693714595)), ('NOP', None), ('WScale', 7)]
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = aa:82:a3:44:7f:9f
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 64307
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x3146
+src       = 192.168.65.3
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = 58818
+dport     = http
+seq       = 2882994899
+ack       = 998917520
+dataofs   = 8
+reserved  = 0
+flags     = A
+window    = 260
+chksum    = 0xe71
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (3869067523, 3884252769))]
 
-###[ Ethernet ]### 
-  dst       = aa:82:a3:44:7f:9f
-  src       = c2:8b:5c:51:fb:93
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 16317
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x77bc
-     src       = 10.1.2.155
-     dst       = 10.103.108.72
-     \options   \
-###[ TCP ]### 
-        sport     = 56304
-        dport     = http_alt
-        seq       = 3447730632
-        ack       = 3839396303
-        dataofs   = 8
-        reserved  = 0
-        flags     = A
-        window    = 251
-        chksum    = 0x8371
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (693714595, 532223216))]
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = aa:82:a3:44:7f:9f
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 64308
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x3145
+src       = 192.168.65.3
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = 58818
+dport     = http
+seq       = 2882994899
+ack       = 998917520
+dataofs   = 8
+reserved  = 0
+flags     = FA
+window    = 260
+chksum    = 0xe71
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (3869067524, 3884252769))]
 
-###[ Ethernet ]### 
-  dst       = aa:82:a3:44:7f:9f
-  src       = c2:8b:5c:51:fb:93
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 512
-     id        = 16318
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x75ef
-     src       = 10.1.2.155
-     dst       = 10.103.108.72
-     \options   \
-###[ TCP ]### 
-        sport     = 56304
-        dport     = http_alt
-        seq       = 3447730632
-        ack       = 3839396303
-        dataofs   = 8
-        reserved  = 0
-        flags     = PA
-        window    = 251
-        chksum    = 0x853d
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (693714595, 532223216))]
-###[ Raw ]### 
-           load      = 'POST /function/product-purchase HTTP/1.0\r\nHost: localhost\r\nX-Real-IP: 192.168.65.3\r\nX-Forwarded-For: 192.168.65.3\r\nX-Forwarded-Proto: http\r\nConnection: close\r\nContent-Length: 85\r\nContent-Type: application/json\r\nUser-Agent: PostmanRuntime/7.39.0\r\nAccept: */*\r\nCache-Control: no-cache\r\nPostman-Token: 8c31be73-8997-4daf-91e9-c2dba2a7a652\r\nAccept-Encoding: gzip, deflate, br\r\n\r\n{\n    "id": "test",\n    "user": "testuser",\n    "creditCard": "0000-0000-0000-0000"\n}'
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = aa:82:a3:44:7f:9f
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 439
+id        = 47827
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x7023
+src       = 192.168.65.3
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = 58820
+dport     = http
+seq       = 2198086302
+ack       = 2495899962
+dataofs   = 8
+reserved  = 0
+flags     = PA
+window    = 260
+chksum    = 0xff4
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (3869067524, 3884252769))]
+###[ Raw ]###
+load      = 'POST /function/product-purchase HTTP/1.1\r\nContent-Type: application/json\r\nUser-Agent: PostmanRuntime/7.39.0\r\nAccept: */*\r\nCache-Control: no-cache\r\nPostman-Token: ad811cb4-f8a6-4072-9dbe-77e32461abcd\r\nHost: localhost:80\r\nAccept-Encoding: gzip, deflate, br\r\nConnection: keep-alive\r\nContent-Length: 85\r\n\r\n{\n    "id": "test",\n    "user": "testuser",\n    "creditCard": "0000-0000-0000-0000"\n}'
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = 92:62:50:09:28:7d
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 2633
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0xad30
-     src       = 10.103.108.72
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = http_alt
-        dport     = 56304
-        seq       = 3839396303
-        ack       = 3447731092
-        dataofs   = 8
-        reserved  = 0
-        flags     = A
-        window    = 249
-        chksum    = 0x8371
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (532223216, 693714595))]
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 6401
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x1379
+src       = 10.1.2.158
+dst       = 192.168.65.3
+\options   \
+###[ TCP ]###
+sport     = http
+dport     = 58820
+seq       = 2495899962
+ack       = 2198086689
+dataofs   = 8
+reserved  = 0
+flags     = A
+window    = 249
+chksum    = 0xe71
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (3884252770, 3869067524))]
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = 92:62:50:09:28:7d
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 439
-     id        = 2634
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0xabac
-     src       = 10.103.108.72
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = http_alt
-        dport     = 56304
-        seq       = 3839396303
-        ack       = 3447731092
-        dataofs   = 8
-        reserved  = 0
-        flags     = PA
-        window    = 249
-        chksum    = 0x84f4
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (532223311, 693714595))]
-###[ Raw ]### 
-           load      = 'HTTP/1.0 200 OK\r\nContent-Length: 75\r\nContent-Type: text/html; charset=utf-8\r\nDate: Wed, 29 May 2024 07:09:31 GMT\r\nEtag: W/"4b-ov8MBM+TM4h2rs9gIP5vCAO8Xjo"\r\nX-Call-Id: 7a053126-9b69-430b-8adf-523f8a4586e4\r\nX-Duration-Seconds: 0.089522\r\nX-Served-By: openfaas-community/0.27.6\r\nX-Start-Time: 1716966571510524380\r\n\r\n{"success":"true","chargedAmount":"84.35","authorization":4495328061414899}'
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 41108
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x8be5
+src       = 10.1.2.158
+dst       = 192.168.65.3
+\options   \
+###[ TCP ]###
+sport     = http
+dport     = 58818
+seq       = 998917520
+ack       = 2882994900
+dataofs   = 8
+reserved  = 0
+flags     = FA
+window    = 249
+chksum    = 0xe71
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (3884252770, 3869067524))]
 
-###[ Ethernet ]### 
-  dst       = aa:82:a3:44:7f:9f
-  src       = c2:8b:5c:51:fb:93
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 16319
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x77ba
-     src       = 10.1.2.155
-     dst       = 10.103.108.72
-     \options   \
-###[ TCP ]### 
-        sport     = 56304
-        dport     = http_alt
-        seq       = 3447731092
-        ack       = 3839396690
-        dataofs   = 8
-        reserved  = 0
-        flags     = A
-        window    = 249
-        chksum    = 0x8371
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (693714690, 532223311))]
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = aa:82:a3:44:7f:9f
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 64309
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x3144
+src       = 192.168.65.3
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = 58818
+dport     = http
+seq       = 2882994900
+ack       = 998917521
+dataofs   = 8
+reserved  = 0
+flags     = A
+window    = 260
+chksum    = 0xe71
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (3869067524, 3884252770))]
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = 92:62:50:09:28:7d
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 2635
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0xad2e
-     src       = 10.103.108.72
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = http_alt
-        dport     = 56304
-        seq       = 3839396690
-        ack       = 3447731092
-        dataofs   = 8
-        reserved  = 0
-        flags     = FA
-        window    = 249
-        chksum    = 0x8371
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (532223311, 693714690))]
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 60
+id        = 42241
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x126d
+src       = 10.1.2.158
+dst       = 10.103.108.72
+\options   \
+###[ TCP ]###
+sport     = 36308
+dport     = http_alt
+seq       = 1059281405
+ack       = 0
+dataofs   = 10
+reserved  = 0
+flags     = S
+window    = 32120
+chksum    = 0x837c
+urgptr    = 0
+options   = [('MSS', 1460), ('SAckOK', b''), ('Timestamp', (1321108145, 0)), ('NOP', None), ('WScale', 7)]
 
-###[ Ethernet ]### 
-  dst       = aa:82:a3:44:7f:9f
-  src       = c2:8b:5c:51:fb:93
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 16320
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x77b9
-     src       = 10.1.2.155
-     dst       = 10.103.108.72
-     \options   \
-###[ TCP ]### 
-        sport     = 56304
-        dport     = http_alt
-        seq       = 3447731092
-        ack       = 3839396691
-        dataofs   = 8
-        reserved  = 0
-        flags     = FA
-        window    = 249
-        chksum    = 0x8371
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (693714690, 532223311))]
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = 92:62:50:09:28:7d
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 60
+id        = 0
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0xb76e
+src       = 10.103.108.72
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = http_alt
+dport     = 36308
+seq       = 3940236779
+ack       = 1059281406
+dataofs   = 10
+reserved  = 0
+flags     = SA
+window    = 31856
+chksum    = 0x837c
+urgptr    = 0
+options   = [('MSS', 1460), ('SAckOK', b''), ('Timestamp', (364634270, 1321108145)), ('NOP', None), ('WScale', 7)]
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = 92:62:50:09:28:7d
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 2636
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0xad2d
-     src       = 10.103.108.72
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = http_alt
-        dport     = 56304
-        seq       = 3839396691
-        ack       = 3447731093
-        dataofs   = 8
-        reserved  = 0
-        flags     = A
-        window    = 249
-        chksum    = 0x8371
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (532223311, 693714690))]
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 42242
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x1274
+src       = 10.1.2.158
+dst       = 10.103.108.72
+\options   \
+###[ TCP ]###
+sport     = 36308
+dport     = http_alt
+seq       = 1059281406
+ack       = 3940236780
+dataofs   = 8
+reserved  = 0
+flags     = A
+window    = 251
+chksum    = 0x8374
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (1321108145, 364634270))]
 
-###[ Ethernet ]### 
-  dst       = aa:82:a3:44:7f:9f
-  src       = c2:8b:5c:51:fb:93
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 485
-     id        = 42755
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x83c8
-     src       = 10.1.2.155
-     dst       = 192.168.65.3
-     \options   \
-###[ TCP ]### 
-        sport     = http
-        dport     = 64776
-        seq       = 2444276084
-        ack       = 2991822999
-        dataofs   = 8
-        reserved  = 0
-        flags     = PA
-        window    = 249
-        chksum    = 0x101f
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (3426587986, 3369045233))]
-###[ Raw ]### 
-           load      = 'HTTP/1.1 200 OK\r\nServer: nginx/1.25.5\r\nDate: Wed, 29 May 2024 07:09:31 GMT\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 75\r\nConnection: keep-alive\r\nEtag: W/"4b-ov8MBM+TM4h2rs9gIP5vCAO8Xjo"\r\nX-Call-Id: 7a053126-9b69-430b-8adf-523f8a4586e4\r\nX-Duration-Seconds: 0.089522\r\nX-Served-By: openfaas-community/0.27.6\r\nX-Start-Time: 1716966571510524380\r\n\r\n{"success":"true","chargedAmount":"84.35","authorization":4495328061414899}'
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 512
+id        = 42243
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x10a7
+src       = 10.1.2.158
+dst       = 10.103.108.72
+\options   \
+###[ TCP ]###
+sport     = 36308
+dport     = http_alt
+seq       = 1059281406
+ack       = 3940236780
+dataofs   = 8
+reserved  = 0
+flags     = PA
+window    = 251
+chksum    = 0x8540
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (1321108145, 364634270))]
+###[ Raw ]###
+load      = 'POST /function/product-purchase HTTP/1.0\r\nHost: localhost\r\nX-Real-IP: 192.168.65.3\r\nX-Forwarded-For: 192.168.65.3\r\nX-Forwarded-Proto: http\r\nConnection: close\r\nContent-Length: 85\r\nContent-Type: application/json\r\nUser-Agent: PostmanRuntime/7.39.0\r\nAccept: */*\r\nCache-Control: no-cache\r\nPostman-Token: ad811cb4-f8a6-4072-9dbe-77e32461abcd\r\nAccept-Encoding: gzip, deflate, br\r\n\r\n{\n    "id": "test",\n    "user": "testuser",\n    "creditCard": "0000-0000-0000-0000"\n}'
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = aa:82:a3:44:7f:9f
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 63524
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x3458
-     src       = 192.168.65.3
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = 64776
-        dport     = http
-        seq       = 2991822999
-        ack       = 2444276517
-        dataofs   = 8
-        reserved  = 0
-        flags     = A
-        window    = 258
-        chksum    = 0xe6e
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (3369045329, 3426587986))]
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = 92:62:50:09:28:7d
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 58003
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0xd4e2
+src       = 10.103.108.72
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = http_alt
+dport     = 36308
+seq       = 3940236780
+ack       = 1059281866
+dataofs   = 8
+reserved  = 0
+flags     = A
+window    = 249
+chksum    = 0x8374
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (364634270, 1321108145))]
 
-###[ Ethernet ]### 
-  dst       = aa:82:a3:44:7f:9f
-  src       = c2:8b:5c:51:fb:93
-  type      = ARP
-###[ ARP ]### 
-     hwtype    = Ethernet (10Mb)
-     ptype     = IPv4
-     hwlen     = 6
-     plen      = 4
-     op        = who-has
-     hwsrc     = c2:8b:5c:51:fb:93
-     psrc      = 10.1.2.155
-     hwdst     = 00:00:00:00:00:00
-     pdst      = 10.1.0.1
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = 92:62:50:09:28:7d
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 408
+id        = 58004
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0xd37d
+src       = 10.103.108.72
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = http_alt
+dport     = 36308
+seq       = 3940236780
+ack       = 1059281866
+dataofs   = 8
+reserved  = 0
+flags     = PA
+window    = 249
+chksum    = 0x84d8
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (364634347, 1321108145))]
+###[ Raw ]###
+load      = 'HTTP/1.0 200 OK\r\nContent-Length: 44\r\nContent-Type: text/html; charset=utf-8\r\nDate: Fri, 07 Jun 2024 05:04:48 GMT\r\nEtag: W/"2c-4+ByoNjWxwPAfNKl0Nfo97RABZE"\r\nX-Call-Id: 8d8cdfbd-eef5-4d3d-9553-9989e7e6cfb5\r\nX-Duration-Seconds: 0.068702\r\nX-Served-By: openfaas-community/0.27.6\r\nX-Start-Time: 1717736688301148342\r\n\r\n{"failureReason":"No price in the catalog."}'
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = aa:82:a3:44:7f:9f
-  type      = ARP
-###[ ARP ]### 
-     hwtype    = Ethernet (10Mb)
-     ptype     = IPv4
-     hwlen     = 6
-     plen      = 4
-     op        = who-has
-     hwsrc     = aa:82:a3:44:7f:9f
-     psrc      = 10.1.0.1
-     hwdst     = 00:00:00:00:00:00
-     pdst      = 10.1.2.155
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 42244
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x1272
+src       = 10.1.2.158
+dst       = 10.103.108.72
+\options   \
+###[ TCP ]###
+sport     = 36308
+dport     = http_alt
+seq       = 1059281866
+ack       = 3940237136
+dataofs   = 8
+reserved  = 0
+flags     = A
+window    = 249
+chksum    = 0x8374
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (1321108222, 364634347))]
 
-###[ Ethernet ]### 
-  dst       = aa:82:a3:44:7f:9f
-  src       = c2:8b:5c:51:fb:93
-  type      = ARP
-###[ ARP ]### 
-     hwtype    = Ethernet (10Mb)
-     ptype     = IPv4
-     hwlen     = 6
-     plen      = 4
-     op        = is-at
-     hwsrc     = c2:8b:5c:51:fb:93
-     psrc      = 10.1.2.155
-     hwdst     = aa:82:a3:44:7f:9f
-     pdst      = 10.1.0.1
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = 92:62:50:09:28:7d
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 58005
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0xd4e0
+src       = 10.103.108.72
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = http_alt
+dport     = 36308
+seq       = 3940237136
+ack       = 1059281866
+dataofs   = 8
+reserved  = 0
+flags     = FA
+window    = 249
+chksum    = 0x8374
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (364634347, 1321108222))]
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = aa:82:a3:44:7f:9f
-  type      = ARP
-###[ ARP ]### 
-     hwtype    = Ethernet (10Mb)
-     ptype     = IPv4
-     hwlen     = 6
-     plen      = 4
-     op        = is-at
-     hwsrc     = aa:82:a3:44:7f:9f
-     psrc      = 10.1.0.1
-     hwdst     = c2:8b:5c:51:fb:93
-     pdst      = 10.1.2.155
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 42245
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x1271
+src       = 10.1.2.158
+dst       = 10.103.108.72
+\options   \
+###[ TCP ]###
+sport     = 36308
+dport     = http_alt
+seq       = 1059281866
+ack       = 3940237137
+dataofs   = 8
+reserved  = 0
+flags     = FA
+window    = 249
+chksum    = 0x8374
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (1321108222, 364634347))]
 
-###[ Ethernet ]### 
-  dst       = c2:8b:5c:51:fb:93
-  src       = aa:82:a3:44:7f:9f
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 52
-     id        = 63525
-     flags     = DF
-     frag      = 0
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x3457
-     src       = 192.168.65.3
-     dst       = 10.1.2.155
-     \options   \
-###[ TCP ]### 
-        sport     = 64776
-        dport     = http
-        seq       = 2991822998
-        ack       = 2444276517
-        dataofs   = 8
-        reserved  = 0
-        flags     = A
-        window    = 260
-        chksum    = 0xe6e
-        urgptr    = 0
-        options   = [('NOP', None), ('NOP', None), ('Timestamp', (3369060352, 3426587986))]
+###[ Ethernet ]###
+dst       = e6:c9:af:6a:ff:7b
+src       = 92:62:50:09:28:7d
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 52
+id        = 58006
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0xd4df
+src       = 10.103.108.72
+dst       = 10.1.2.158
+\options   \
+###[ TCP ]###
+sport     = http_alt
+dport     = 36308
+seq       = 3940237137
+ack       = 1059281867
+dataofs   = 8
+reserved  = 0
+flags     = A
+window    = 249
+chksum    = 0x8374
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (364634347, 1321108222))]
 
-###[ Ethernet ]### 
-  dst       = aa:82:a3:44:7f:9f
-  src       = c2:8b:5c:51:fb:93
-  type      = IPv4
-###[ Raw ]### 
-     load      = 'E\x00\x004\\xa7\x04@\x00@\x06\\x85'
+###[ Ethernet ]###
+dst       = aa:82:a3:44:7f:9f
+src       = e6:c9:af:6a:ff:7b
+type      = IPv4
+###[ IP ]###
+version   = 4
+ihl       = 5
+tos       = 0x0
+len       = 454
+id        = 6402
+flags     = DF
+frag      = 0
+ttl       = 64
+proto     = tcp
+chksum    = 0x11e6
+src       = 10.1.2.158
+dst       = 192.168.65.3
+\options   \
+###[ TCP ]###
+sport     = http
+dport     = 58820
+seq       = 2495899962
+ack       = 2198086689
+dataofs   = 8
+reserved  = 0
+flags     = PA
+window    = 249
+chksum    = 0x1003
+urgptr    = 0
+options   = [('NOP', None), ('NOP', None), ('Timestamp', (3884252849, 3869067524))]
+###[ Raw ]###
+load      = 'HTTP/1.1 200 OK\r\nServer: nginx/1.27.0\r\nDate: Fri, 07 Jun 2024 05:04:48 GMT\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 44\r\nConnection: keep-alive\r\nEtag: W/"2c-4+ByoNjWxwPAfNKl0Nfo97RABZE"\r\nX-Call-Id: 8d8cdfbd-eef5-4d3d-9553-9989e7e6cfb5\r\nX-Duration-Seconds: 0.068702\r\nX-Served-By: openfaas-community/0.27.6\r\nX-Start-Time: 1717736688301148342\r\n\r\n{"failureReason":'
 
-Ether / IP / TCP 192.168.65.3:64776 > 10.1.2.155:http S
-Ether / IP / TCP 192.168.65.3:64786 > 10.1.2.155:http S
-Ether / IP / TCP 10.1.2.155:http > 192.168.65.3:64776 SA
-Ether / IP / TCP 10.1.2.155:http > 192.168.65.3:64786 SA
-Ether / IP / TCP 192.168.65.3:64776 > 10.1.2.155:http A
-Ether / IP / TCP 192.168.65.3:64786 > 10.1.2.155:http A
-Ether / IP / TCP 192.168.65.3:64776 > 10.1.2.155:http PA / Raw
-Ether / IP / TCP 192.168.65.3:64786 > 10.1.2.155:http FA
-Ether / IP / TCP 10.1.2.155:http > 192.168.65.3:64776 A
-Ether / IP / TCP 10.1.2.155:http > 192.168.65.3:64786 FA
-Ether / IP / TCP 192.168.65.3:64786 > 10.1.2.155:http A
-Ether / IP / TCP 10.1.2.155:56304 > 10.103.108.72:http_alt S
-Ether / ARP who has 10.1.2.155 says 10.1.1.114
-Ether / ARP is at c2:8b:5c:51:fb:93 says 10.1.2.155
-Ether / IP / TCP 10.103.108.72:http_alt > 10.1.2.155:56304 SA
-Ether / IP / TCP 10.1.2.155:56304 > 10.103.108.72:http_alt A
-Ether / IP / TCP 10.1.2.155:56304 > 10.103.108.72:http_alt PA / Raw
-Ether / IP / TCP 10.103.108.72:http_alt > 10.1.2.155:56304 A
-Ether / IP / TCP 10.103.108.72:http_alt > 10.1.2.155:56304 PA / Raw
-Ether / IP / TCP 10.1.2.155:56304 > 10.103.108.72:http_alt A
-Ether / IP / TCP 10.103.108.72:http_alt > 10.1.2.155:56304 FA
-Ether / IP / TCP 10.1.2.155:56304 > 10.103.108.72:http_alt FA
-Ether / IP / TCP 10.103.108.72:http_alt > 10.1.2.155:56304 A
-Ether / IP / TCP 10.1.2.155:http > 192.168.65.3:64776 PA / Raw
-Ether / IP / TCP 192.168.65.3:64776 > 10.1.2.155:http A
-Ether / ARP who has 10.1.0.1 says 10.1.2.155
-Ether / ARP who has 10.1.2.155 says 10.1.0.1
-Ether / ARP is at c2:8b:5c:51:fb:93 says 10.1.2.155
+Ether / IP / TCP 192.168.65.3:55050 > 10.1.2.158:http A
+Ether / IP / TCP 10.1.2.158:http > 192.168.65.3:55050 A
+Ether / ARP who has 10.1.0.1 says 10.1.2.158
+Ether / ARP who has 10.1.2.158 says 10.1.0.1
+Ether / ARP is at e6:c9:af:6a:ff:7b says 10.1.2.158
 Ether / ARP is at aa:82:a3:44:7f:9f says 10.1.0.1
-Ether / IP / TCP 192.168.65.3:64776 > 10.1.2.155:http A
-c2:8b:5c:51:fb:93 > aa:82:a3:44:7f:9f (IPv4) / Raw
+Ether / IP / TCP 10.1.2.158:http > 192.168.65.3:55050 FA
+Ether / IP / TCP 192.168.65.3:55050 > 10.1.2.158:http FA
+Ether / IP / TCP 10.1.2.158:http > 192.168.65.3:55050 A
+Ether / IP / TCP 192.168.65.3:58820 > 10.1.2.158:http S
+Ether / IP / TCP 192.168.65.3:58818 > 10.1.2.158:http S
+Ether / IP / TCP 10.1.2.158:http > 192.168.65.3:58818 SA
+Ether / IP / TCP 10.1.2.158:http > 192.168.65.3:58820 SA
+Ether / IP / TCP 192.168.65.3:58820 > 10.1.2.158:http A
+Ether / IP / TCP 192.168.65.3:58818 > 10.1.2.158:http A
+Ether / IP / TCP 192.168.65.3:58818 > 10.1.2.158:http FA
+Ether / IP / TCP 192.168.65.3:58820 > 10.1.2.158:http PA / Raw
+Ether / IP / TCP 10.1.2.158:http > 192.168.65.3:58820 A
+Ether / IP / TCP 10.1.2.158:http > 192.168.65.3:58818 FA
+Ether / IP / TCP 192.168.65.3:58818 > 10.1.2.158:http A
+Ether / IP / TCP 10.1.2.158:36308 > 10.103.108.72:http_alt S
+Ether / IP / TCP 10.103.108.72:http_alt > 10.1.2.158:36308 SA
+Ether / IP / TCP 10.1.2.158:36308 > 10.103.108.72:http_alt A
+Ether / IP / TCP 10.1.2.158:36308 > 10.103.108.72:http_alt PA / Raw
+Ether / IP / TCP 10.103.108.72:http_alt > 10.1.2.158:36308 A
+Ether / IP / TCP 10.103.108.72:http_alt > 10.1.2.158:36308 PA / Raw
+Ether / IP / TCP 10.1.2.158:36308 > 10.103.108.72:http_alt A
+Ether / IP / TCP 10.103.108.72:http_alt > 10.1.2.158:36308 FA
+Ether / IP / TCP 10.1.2.158:36308 > 10.103.108.72:http_alt FA
+Ether / IP / TCP 10.103.108.72:http_alt > 10.1.2.158:36308 A
+Ether / IP / TCP 10.1.2.158:http > 192.168.65.3:58820 PA / Raw
 end

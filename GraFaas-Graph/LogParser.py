@@ -25,10 +25,12 @@ def __ParseTcpdumpLog(tcpdumpLog:list) -> list:
     packetList = []
     try:
         parsedTcpDumpLog = tcpdumpLog.split('\n')
+        rawNumber = 0
         for line in parsedTcpDumpLog:
             if line == 'end':
                 break
             parsedLine = line.split(' ')
+            hasRaw = True if parsedLine[-1] == 'Raw' else False
             if parsedLine[2] == 'IP':
                 #print('IP')
                 block = {
@@ -39,7 +41,8 @@ def __ParseTcpdumpLog(tcpdumpLog:list) -> list:
                     'dst':parsedLine[7].split(':')[0],
                     'dport':parsedLine[7].split(':')[1],
                     'flag':parsedLine[8],
-                    'hasRaw':True if parsedLine[-1] == 'Raw' else False
+                    'hasRaw':hasRaw,
+                    'rawNumber':rawNumber if hasRaw else -1
                 }
                 #print(block)
                 packetList.append(SessionBlock.TCPPacket(block))
@@ -55,12 +58,17 @@ def __ParseTcpdumpLog(tcpdumpLog:list) -> list:
                 #print('None')
                 block = {
                     'type': parsedLine[-3],
+                    'proto': None,
                     'src': parsedLine[0],
+                    'sport':None,
                     'dst': parsedLine[2],
-                    'hasRaw':True if parsedLine[-1] == 'Raw' else False
+                    'dport':None,
+                    'flag':None,
+                    'hasRaw':hasRaw,
+                    'rawNumber':rawNumber if hasRaw else -1
                 }
                 #print(block)
-                #packetList.append(block)
+                packetList.append(SessionBlock.TCPPacket(block))
         return packetList
     except Exception as e:
         print(e)
@@ -73,16 +81,18 @@ def __CreateSessionList(packetList:list) -> list:
         for packet in packetList:
             # create session
             sessionNumber = 0
+            address1 = f'{packet.src()}:{packet.sport()}' if packet.sport() != None else packet.src()
+            address2 = f'{packet.dst()}:{packet.dport()}' if packet.dport() != None else packet.dst()
             if len(sessionList) == 0:
-                sessionList.append([(packet.GetSrcIp(),packet.GetDstIp())])
+                sessionList.append([(address1, address2)])
             else:
                 for i in range(0, len(sessionList)):
                     session = sessionList[i][0]
-                    if packet.GetSrcIp() in session and packet.GetDstIp() in session:
+                    if address1 in session and address2 in session:
                         sessionNumber = i
                         break
                 else:
-                    sessionList.append([(packet.GetSrcIp(),packet.GetDstIp())])
+                    sessionList.append([(address1, address2)])
                     sessionNumber = len(sessionList) - 1
             sessionList[sessionNumber].append(packet)
         return sessionList

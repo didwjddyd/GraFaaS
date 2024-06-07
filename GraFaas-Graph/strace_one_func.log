@@ -1,0 +1,356 @@
+29    execve("/usr/bin/tcpdump", ["tcpdump", "-i", "eth0", "-s", "0", "-w", "/tmp/tcpdump.pcap"], 0xffffd9d7edd8 /* 59 vars /) = 0
+29    brk(NULL)                         = 0xaaaad9330000
+29    mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff88a76000
+29    faccessat(AT_FDCWD, "/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+29    newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=10107, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 10107, PROT_READ, MAP_PRIVATE, 3, 0) = 0xffff88a73000
+29    close(3)                          = 0
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libcrypto.so.3", O_RDONLY|O_CLOEXEC) = 3
+29    read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+29    newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=4040864, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 4182560, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff88643000
+29    mmap(0xffff88650000, 4117024, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff88650000
+29    munmap(0xffff88643000, 53248)     = 0
+29    munmap(0xffff88a3e000, 8736)      = 0
+29    mprotect(0xffff889d4000, 65536, PROT_NONE) = 0
+29    mmap(0xffff889e4000, 356352, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x384000) = 0xffff889e4000
+29    mmap(0xffff88a3b000, 8736, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xffff88a3b000
+29    close(3)                          = 0
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libpcap.so.0.8", O_RDONLY|O_CLOEXEC) = 3
+29    read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+29    newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=285752, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 415376, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff885ea000
+29    mmap(0xffff885f0000, 349840, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff885f0000
+29    munmap(0xffff885ea000, 24576)     = 0
+29    munmap(0xffff88646000, 38544)     = 0
+29    mprotect(0xffff88634000, 61440, PROT_NONE) = 0
+29    mmap(0xffff88643000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x43000) = 0xffff88643000
+29    close(3)                          = 0
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+29    read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\340u\2\0\0\0\0\0"..., 832) = 832
+29    newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=1637400, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 1805928, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff88437000
+29    mmap(0xffff88440000, 1740392, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff88440000
+29    munmap(0xffff88437000, 36864)     = 0
+29    munmap(0xffff885e9000, 28264)     = 0
+29    mprotect(0xffff885c8000, 61440, PROT_NONE) = 0
+29    mmap(0xffff885d7000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x187000) = 0xffff885d7000
+29    mmap(0xffff885dd000, 48744, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xffff885dd000
+29    close(3)                          = 0
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libdbus-1.so.3", O_RDONLY|O_CLOEXEC) = 3
+29    read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+29    newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=309320, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 438840, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff883d4000
+29    mmap(0xffff883e0000, 373304, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff883e0000
+29    munmap(0xffff883d4000, 49152)     = 0
+29    munmap(0xffff8843c000, 12856)     = 0
+29    mprotect(0xffff8842a000, 65536, PROT_NONE) = 0
+29    mmap(0xffff8843a000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4a000) = 0xffff8843a000
+29    close(3)                          = 0
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libsystemd.so.0", O_RDONLY|O_CLOEXEC) = 3
+29    read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+29    newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=808816, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 940376, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff882fa000
+29    mmap(0xffff88300000, 874840, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff88300000
+29    munmap(0xffff882fa000, 24576)     = 0
+29    munmap(0xffff883d6000, 39256)     = 0
+29    mprotect(0xffff883be000, 61440, PROT_NONE) = 0
+29    mmap(0xffff883cd000, 32768, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xbd000) = 0xffff883cd000
+29    mmap(0xffff883d5000, 2392, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xffff883d5000
+29    close(3)                          = 0
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/liblzma.so.5", O_RDONLY|O_CLOEXEC) = 3
+29    read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+29    newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=157936, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff88a71000
+29    mmap(NULL, 286976, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff882b9000
+29    mmap(0xffff882c0000, 221440, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff882c0000
+29    munmap(0xffff882b9000, 28672)     = 0
+29    munmap(0xffff882f7000, 33024)     = 0
+29    mprotect(0xffff882e5000, 65536, PROT_NONE) = 0
+29    mmap(0xffff882f5000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x25000) = 0xffff882f5000
+29    close(3)                          = 0
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libzstd.so.1", O_RDONLY|O_CLOEXEC) = 3
+29    read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+29    newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=730992, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 860224, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff881ed000
+29    mmap(0xffff881f0000, 794688, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff881f0000
+29    munmap(0xffff881ed000, 12288)     = 0
+29    munmap(0xffff882b3000, 49216)     = 0
+29    mprotect(0xffff882a2000, 61440, PROT_NONE) = 0
+29    mmap(0xffff882b1000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xb1000) = 0xffff882b1000
+29    close(3)                          = 0
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/liblz4.so.1", O_RDONLY|O_CLOEXEC) = 3
+29    read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+29    newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=112632, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 241752, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff881b4000
+29    mmap(0xffff881c0000, 176216, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff881c0000
+29    munmap(0xffff881b4000, 49152)     = 0
+29    munmap(0xffff881ec000, 12376)     = 0
+29    mprotect(0xffff881db000, 61440, PROT_NONE) = 0
+29    mmap(0xffff881ea000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1a000) = 0xffff881ea000
+29    close(3)                          = 0
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libcap.so.2", O_RDONLY|O_CLOEXEC) = 3
+29    read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+29    newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=34712, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 163904, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff88197000
+29    mmap(0xffff881a0000, 98368, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff881a0000
+29    munmap(0xffff88197000, 36864)     = 0
+29    munmap(0xffff881b9000, 24640)     = 0
+29    mprotect(0xffff881a7000, 65536, PROT_NONE) = 0
+29    mmap(0xffff881b7000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x7000) = 0xffff881b7000
+29    close(3)                          = 0
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libgcrypt.so.20", O_RDONLY|O_CLOEXEC) = 3
+29    read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+29    newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=893312, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 1023704, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff880a6000
+29    mmap(0xffff880b0000, 958168, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff880b0000
+29    munmap(0xffff880a6000, 40960)     = 0
+29    munmap(0xffff8819a000, 24280)     = 0
+29    mprotect(0xffff88182000, 61440, PROT_NONE) = 0
+29    mmap(0xffff88191000, 36864, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xd1000) = 0xffff88191000
+29    close(3)                          = 0
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libgpg-error.so.0", O_RDONLY|O_CLOEXEC) = 3
+29    read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+29    newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=141304, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff88a6f000
+29    mmap(NULL, 270672, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff8806d000
+29    mmap(0xffff88070000, 205136, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xffff88070000
+29    munmap(0xffff8806d000, 12288)     = 0
+29    munmap(0xffff880a3000, 49488)     = 0
+29    mprotect(0xffff88092000, 61440, PROT_NONE) = 0
+29    mmap(0xffff880a1000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x21000) = 0xffff880a1000
+29    close(3)                          = 0
+29    mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff88a6d000
+29    set_tid_address(0xffff88a6d0f0)   = 29
+29    set_robust_list(0xffff88a6d100, 24) = 0
+29    rseq(0xffff88a6d7c0, 0x20, 0, 0xd428bc00) = 0
+29    mprotect(0xffff885d7000, 16384, PROT_READ) = 0
+29    mprotect(0xffff880a1000, 4096, PROT_READ) = 0
+29    mprotect(0xffff88191000, 12288, PROT_READ) = 0
+29    mprotect(0xffff881b7000, 4096, PROT_READ) = 0
+29    mprotect(0xffff881ea000, 4096, PROT_READ) = 0
+29    mprotect(0xffff882b1000, 4096, PROT_READ) = 0
+29    mprotect(0xffff882f5000, 4096, PROT_READ) = 0
+29    mprotect(0xffff883cd000, 28672, PROT_READ) = 0
+29    mprotect(0xffff8843a000, 4096, PROT_READ) = 0
+29    mprotect(0xffff88643000, 8192, PROT_READ) = 0
+29    mprotect(0xffff889e4000, 344064, PROT_READ) = 0
+29    mprotect(0xaaaab8a43000, 118784, PROT_READ) = 0
+29    mprotect(0xffff88a7b000, 8192, PROT_READ) = 0
+29    prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=81921024, rlim_max=RLIM64_INFINITY}) = 0
+29    munmap(0xffff88a73000, 10107)     = 0
+29    getrandom("\x74\x78\x0e\xdf\xb1\xc3\xff\xf3", 8, GRND_NONBLOCK) = 8
+29    brk(NULL)                         = 0xaaaad9330000
+29    brk(0xaaaad9351000)               = 0xaaaad9351000
+29    prctl(PR_CAPBSET_READ, CAP_MAC_OVERRIDE) = 0
+29    prctl(PR_CAPBSET_READ, 0x30 /* CAP_??? /) = -1 EINVAL (Invalid argument)
+29    prctl(PR_CAPBSET_READ, CAP_CHECKPOINT_RESTORE) = 0
+29    prctl(PR_CAPBSET_READ, 0x2c / CAP_??? /) = -1 EINVAL (Invalid argument)
+29    prctl(PR_CAPBSET_READ, 0x2a / CAP_??? /) = -1 EINVAL (Invalid argument)
+29    prctl(PR_CAPBSET_READ, 0x29 / CAP_??? /) = -1 EINVAL (Invalid argument)
+29    rt_sigprocmask(SIG_SETMASK, ~[ILL TRAP BUS FPE SEGV RTMIN RT_1], [], 8) = 0
+29    rt_sigaction(SIGILL, {sa_handler=0xffff887dd460, sa_mask=~[ILL TRAP BUS FPE SEGV RTMIN RT_1], sa_flags=0}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+29    rt_sigprocmask(SIG_BLOCK, NULL, ~[ILL TRAP BUS FPE KILL SEGV STOP RTMIN RT_1], 8) = 0
+29    rt_sigaction(SIGILL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, NULL, 8) = 0
+29    rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+29    getuid()                          = 0
+29    socket(AF_NETLINK, SOCK_RAW, NETLINK_GENERIC) = 3
+29    ioctl(3, SIOCGIFNAME, {ifr_ifindex=0}) = -1 ENODEV (No such device)
+29    ioctl(3, SIOCETHTOOL, 0xffffdaaf3890) = 0
+29    close(3)                          = 0
+29    eventfd2(0, EFD_NONBLOCK)         = 3
+29    openat(AT_FDCWD, "/sys/class/net/eth0/statistics/rx_missed_errors", O_RDONLY) = 4
+29    read(4, "0\n", 4095)              = 2
+29    close(4)                          = 0
+29    openat(AT_FDCWD, "/sys/class/net/eth0/statistics/rx_fifo_errors", O_RDONLY) = 4
+29    read(4, "0\n", 4095)              = 2
+29    close(4)                          = 0
+29    socket(AF_PACKET, SOCK_RAW, htons(0 / ETH_P_??? /)) = 4
+29    ioctl(4, SIOCGIFINDEX, {ifr_name="lo", ifr_ifindex=1}) = 0
+29    ioctl(4, SIOCGIFHWADDR, {ifr_name="eth0", ifr_hwaddr={sa_family=ARPHRD_ETHER, sa_data=e6:c9:af:6a:ff:7b}}) = 0
+29    newfstatat(AT_FDCWD, "/sys/class/net/eth0/wireless", 0xffffdaaf36f8, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/sys/class/net/eth0/dsa/tagging", O_RDONLY) = -1 ENOENT (No such file or directory)
+29    ioctl(4, SIOCGIFINDEX, {ifr_name="eth0", ifr_ifindex=11}) = 0
+29    bind(4, {sa_family=AF_PACKET, sll_protocol=htons(0 / ETH_P_??? */), sll_ifindex=if_nametoindex("eth0"), sll_hatype=ARPHRD_NETROM, sll_pkttype=PACKET_HOST, sll_halen=0}, 20) = 0
+29    getsockopt(4, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
+29    setsockopt(4, SOL_PACKET, PACKET_ADD_MEMBERSHIP, {mr_ifindex=if_nametoindex("eth0"), mr_type=PACKET_MR_PROMISC, mr_alen=0, mr_address=e6:c9:af:6a:ff:7b}, 16) = 0
+29    getsockopt(4, SOL_SOCKET, SO_BPF_EXTENSIONS, [64], [4]) = 0
+29    mmap(NULL, 266240, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff8802f000
+29    getsockopt(4, SOL_PACKET, PACKET_HDRLEN, [48], [4]) = 0
+29    setsockopt(4, SOL_PACKET, PACKET_VERSION, [2], 4) = 0
+29    setsockopt(4, SOL_PACKET, PACKET_RESERVE, [4], 4) = 0
+29    setsockopt(4, SOL_PACKET, PACKET_RX_RING, 0xffffdaaf3828, 28) = 0
+29    mmap(NULL, 2097152, PROT_READ|PROT_WRITE, MAP_SHARED, 4, 0) = 0xffff87e2f000
+29    uname({sysname="Linux", nodename="nginx-proxy-6c7745d8b9-kz6vm", ...}) = 0
+29    bind(4, {sa_family=AF_PACKET, sll_protocol=htons(ETH_P_ALL), sll_ifindex=if_nametoindex("eth0"), sll_hatype=ARPHRD_NETROM, sll_pkttype=PACKET_HOST, sll_halen=0}, 20) = 0
+29    getsockopt(4, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
+29    getgid()                          = 0
+29    setgid(0)                         = 0
+29    getuid()                          = 0
+29    setuid(0)                         = 0
+29    newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=494, ...}, 0) = 0
+29    newfstatat(AT_FDCWD, "/", {st_mode=S_IFDIR|0755, st_size=4096, ...}, 0) = 0
+29    openat(AT_FDCWD, "/etc/nsswitch.conf", O_RDONLY|O_CLOEXEC) = 5
+29    newfstatat(5, "", {st_mode=S_IFREG|0644, st_size=494, ...}, AT_EMPTY_PATH) = 0
+29    read(5, "# /etc/nsswitch.conf\n#\n# Example"..., 4096) = 494
+29    read(5, "", 4096)                 = 0
+29    newfstatat(5, "", {st_mode=S_IFREG|0644, st_size=494, ...}, AT_EMPTY_PATH) = 0
+29    close(5)                          = 0
+29    openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 5
+29    newfstatat(5, "", {st_mode=S_IFREG|0644, st_size=10107, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 10107, PROT_READ, MAP_PRIVATE, 5, 0) = 0xffff88a73000
+29    close(5)                          = 0
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/tls/aarch64/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/aarch64-linux-gnu/tls/aarch64/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/tls/aarch64/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/aarch64-linux-gnu/tls/aarch64", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/tls/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/aarch64-linux-gnu/tls/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/tls/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/aarch64-linux-gnu/tls", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/aarch64/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/aarch64-linux-gnu/aarch64/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/aarch64/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/aarch64-linux-gnu/aarch64", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/aarch64-linux-gnu/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/aarch64-linux-gnu", {st_mode=S_IFDIR|0755, st_size=12288, ...}, 0) = 0
+29    openat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/tls/aarch64/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/tls/aarch64/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/tls/aarch64/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/tls/aarch64", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/tls/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/tls/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/tls/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/tls", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/aarch64/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/aarch64/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/aarch64/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/aarch64", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu", {st_mode=S_IFDIR|0755, st_size=12288, ...}, 0) = 0
+29    openat(AT_FDCWD, "/lib/tls/aarch64/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/tls/aarch64/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/tls/aarch64/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/tls/aarch64", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/tls/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/tls/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/tls/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/tls", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/aarch64/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/aarch64/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/aarch64/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/aarch64", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/lib", {st_mode=S_IFDIR|0755, st_size=4096, ...}, 0) = 0
+29    openat(AT_FDCWD, "/usr/lib/tls/aarch64/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/tls/aarch64/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/tls/aarch64/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/tls/aarch64", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/tls/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/tls/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/tls/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/tls", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/aarch64/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/aarch64/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/aarch64/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/aarch64", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/atomics/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib/atomics", 0xffffdaaf2430, 0) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/libnss_db.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/usr/lib", {st_mode=S_IFDIR|0755, st_size=4096, ...}, 0) = 0
+29    munmap(0xffff88a73000, 10107)     = 0
+29    openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 5
+29    newfstatat(5, "", {st_mode=S_IFREG|0644, st_size=10107, ...}, AT_EMPTY_PATH) = 0
+29    mmap(NULL, 10107, PROT_READ, MAP_PRIVATE, 5, 0) = 0xffff88a73000
+29    close(5)                          = 0
+29    openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libnss_db-2.35.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/aarch64-linux-gnu/libnss_db-2.35.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/lib/libnss_db-2.35.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    openat(AT_FDCWD, "/usr/lib/libnss_db-2.35.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    munmap(0xffff88a73000, 10107)     = 0
+29    openat(AT_FDCWD, "/etc/ethers", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+29    newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=494, ...}, 0) = 0
+29    openat(AT_FDCWD, "/etc/services", O_RDONLY|O_CLOEXEC) = 5
+29    newfstatat(5, "", {st_mode=S_IFREG|0644, st_size=12813, ...}, AT_EMPTY_PATH) = 0
+29    lseek(5, 0, SEEK_SET)             = 0
+29    read(5, "# Network services, Internet sty"..., 4096) = 4096
+29    read(5, "\ntinc\t\t655/tcp\t\t\t\t# tinc control"..., 4096) = 4096
+29    read(5, "cd\t6445/tcp\tsge_execd\t# Grid Eng"..., 4096) = 4096
+29    read(5, "es\namidxtape\t10083/tcp\t\t\t# amand"..., 4096) = 525
+29    read(5, "", 4096)                 = 0
+29    newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=494, ...}, 0) = 0
+29    close(5)                          = 0
+29    rt_sigaction(SIGPIPE, {sa_handler=0xaaaab89428e0, sa_mask=[], sa_flags=0}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+29    rt_sigaction(SIGTERM, {sa_handler=0xaaaab89428e0, sa_mask=[], sa_flags=0}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+29    rt_sigaction(SIGINT, {sa_handler=0xaaaab89428e0, sa_mask=[], sa_flags=0}, {sa_handler=SIG_IGN, sa_mask=[], sa_flags=0}, 8) = 0
+29    rt_sigaction(SIGCHLD, {sa_handler=0xaaaab8942950, sa_mask=[], sa_flags=SA_RESTART}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+29    rt_sigaction(SIGHUP, {sa_handler=0xaaaab89428e0, sa_mask=[], sa_flags=0}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+29    getuid()                          = 0
+29    setsockopt(4, SOL_SOCKET, SO_ATTACH_FILTER, {len=1, filter=0xffff88645350}, 16) = 0
+29    fcntl(4, F_GETFL)                 = 0x2 (flags O_RDWR)
+29    fcntl(4, F_SETFL, O_RDWR|O_NONBLOCK) = 0
+29    recvfrom(4, 0xffffdaaf3940, 1, MSG_TRUNC, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+29    fcntl(4, F_SETFL, O_RDWR)         = 0
+29    setsockopt(4, SOL_SOCKET, SO_ATTACH_FILTER, {len=1, filter=0xaaaad93338c0}, 16) = 0
+29    openat(AT_FDCWD, "/tmp/tcpdump.pcap", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 5
+29    newfstatat(5, "", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_EMPTY_PATH) = 0
+29    socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 6
+29    connect(6, {sa_family=AF_UNIX, sun_path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+29    close(6)                          = 0
+29    socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 6
+29    connect(6, {sa_family=AF_UNIX, sun_path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+29    close(6)                          = 0
+29    newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=494, ...}, 0) = 0
+29    openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 6
+29    newfstatat(6, "", {st_mode=S_IFREG|0644, st_size=1025, ...}, AT_EMPTY_PATH) = 0
+29    lseek(6, 0, SEEK_SET)             = 0
+29    read(6, "root:x:0:0:root:/root:/bin/bash\n"..., 4096) = 1025
+29    close(6)                          = 0
+29    fchownat(AT_FDCWD, "/tmp/tcpdump.pcap", 102, 102, 0) = 0
+29    newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=494, ...}, 0) = 0
+29    openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 6
+29    newfstatat(6, "", {st_mode=S_IFREG|0644, st_size=1025, ...}, AT_EMPTY_PATH) = 0
+29    lseek(6, 0, SEEK_SET)             = 0
+29    read(6, "root:x:0:0:root:/root:/bin/bash\n"..., 4096) = 1025
+29    close(6)                          = 0
+29    openat(AT_FDCWD, "/proc/sys/kernel/ngroups_max", O_RDONLY|O_CLOEXEC) = 6
+29    read(6, "65536\n", 31)            = 6
+29    close(6)                          = 0
+29    socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 6
+29    connect(6, {sa_family=AF_UNIX, sun_path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+29    close(6)                          = 0
+29    socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 6
+29    connect(6, {sa_family=AF_UNIX, sun_path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+29    close(6)                          = 0
+29    newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=494, ...}, 0) = 0
+29    newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=494, ...}, 0) = 0
+29    openat(AT_FDCWD, "/etc/group", O_RDONLY|O_CLOEXEC) = 6
+29    newfstatat(6, "", {st_mode=S_IFREG|0644, st_size=479, ...}, AT_EMPTY_PATH) = 0
+29    lseek(6, 0, SEEK_SET)             = 0
+29    read(6, "root:x:0:\ndaemon:x:1:\nbin:x:2:\ns"..., 4096) = 479
+29    read(6, "", 4096)                 = 0
+29    close(6)                          = 0
+29    setgroups(1, [102])               = 0
+29    setgid(102)                       = 0
+29    setuid(102)                       = 0
+29    rt_sigaction(SIGUSR1, 0xffffdaaf36c8, 0xffffdaaf3760, 8) = 0
+29    rt_sigaction(SIGUSR2, 0xffffdaaf36c8, 0xffffdaaf3760, 8) = 0
+29    write(2, 0xffffdaaf1258, 9)       = 9
+29    write(2, 0xffffdaaf1258, 17)      = 17
+29    write(2, 0xffffdaaf1258, 29)      = 29
+29    write(2, 0xffffdaaf1258, 31)      = 31
+29    ppoll(0xffffdaaf3838, 2, NULL, NULL, 0) = 1 ([0xffffdaaf3838])
+29    ppoll(0xffffdaaf3838, 2, NULL, NULL, 0) = 1 ([0xffffdaaf3838])
+29    ppoll(0xffffdaaf3838, 2, NULL, NULL, 0) = 1 ([0xffffdaaf3838])
+29    ppoll(0xffffdaaf3838, 2, NULL, NULL, 0) = 1 ([0xffffdd029378])
+11    ppoll(0xffffdd029378, 2, NULL, NULL, 0) = 1 ([0xffffdd029378])
+11    ppoll(0xffffdd029378, 2, NULL, NULL, 0) = 1 ([0xffffdd029378])
+11    ppoll(0xffffdd029378, 2, NULL, NULL, 0) = 1 ([0xffffdd029378])
+11    ppoll(0xffffdd029378, 2, NULL, NULL, 0
