@@ -38,11 +38,38 @@ class TCPPacket:
     def dport(self):
         return self.__dport
 
+# ARP 정보 기록 Class
 class ARPBlock:
+    # 기본 생성자
     def __init__(self):
-        self.__type = 'ARP'
-        self.__op = None
-        self.__hwsrc = None
+        # self.__type = None
+        # self.__hwsrc = None
+        # self.__psrc = None
         self.__hwdst = None
-        self.__psrc = None
         self.__pdst = None
+    
+    # dictionay 정보를 기반으로 하는 생성자
+    def __init__(self, packetDict:dict):
+        # self.__type = packetDict['type']
+        # self.__hwsrc = packetDict['hwsrc']
+        # self.__psrc = packetDict['psrc']
+        self.__hwdst = packetDict['hwdst']
+        self.__pdst = packetDict['pdst']
+
+    #getter
+    # @property
+    # def psrc(self):
+    #     return self.__psrc
+    
+    @property
+    def pdst(self):
+        return self.__pdst
+
+    @property
+    def hwdst(self):
+        return self.__hwdst
+
+    #setter
+    @hwdst.setter
+    def hwdst(self, dst:str):
+        self.__hwdst = dst
