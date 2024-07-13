@@ -1,0 +1,90 @@
+version: "3"
+services:
+    attackserver:
+        container_name: attackserver
+        restart: always
+        build:
+            context: ./attackserver
+        image: outstrea/attackserver:latest
+        networks:
+            - network
+        ports:
+            - 8888:80
+
+    cc-db:
+        container_name: cc-db
+        restart: always
+        image: outstrea/cc-db:latest
+        command: --init-file /data/application/init.sql
+        environment:
+            MYSQL_ROOT_USER: root
+            MYSQL_ROOT_PASSWORD: pass
+        build:
+            context: ./cc-db
+        networks:
+            - network
+        ports:
+            - 3306:3306
+
+    product-purchase-authorize-cc:
+        container_name: product-purchase-authorize-cc
+        restart: always
+        image: outstrea/product-purchase-authorize-cc:latest
+        build:
+            context: ./product-purchase-authorize-cc
+        environment:
+            DBNAME: 'helloRetail'
+            HOST: 'cc-db'
+            USER: 'root'
+            PASS: 'pass'
+            TABLE_CREDIT_CARDS_NAME: 'creditCards'
+        depends_on:
+            - cc-db
+            - attackserver
+        networks:
+            - network
+        ports:
+            - 8081:8080
+
+    product-purchase:
+        container_name: product-purchase
+        restart: always
+        image: outstrea/product-purchase:latest
+        build:
+            context: ./product-purchase
+        environment:
+            URL_GETPRICE: 'http://product-purchase-get-price:8080'
+            URL_AUTHORIZECC: 'http://product-purchase-authorize-cc:8080'
+            URL_PUBLISH: 'http://product-purchase-publish:8080'
+        depends_on:
+            - cc-db
+        networks:
+            - network
+        ports:
+            - 8080:8080
+
+    product-purchase-get-price:
+        container_name: product-purchase-get-price
+        restart: always
+        image: outstrea/product-purchase-get-price:latest
+        build:
+            context: ./product-purchase-get-price
+        networks:
+            - network
+        ports:
+            - 8082:8080
+
+    product-purchase-publish:
+        container_name: product-purchase-publish
+        restart: always
+        image: outstrea/product-purchase-publish:latest
+        build:
+            context: ./product-purchase-publish
+        networks:
+            - network
+        ports:
+            - 8083:8080
+
+networks:
+    network:
+
