@@ -1,7 +1,7 @@
 import re
 import networkx as nx
 import matplotlib.pyplot as plt
-from scapy.all import rdpcap, TCP
+from scapy.all import rdpcap, TCP, IP, IPv6
 
 def extract_http_payload(packet):
     try:
@@ -27,20 +27,34 @@ for packet in packets:
     if packet.haslayer(TCP) and packet[TCP].dport == 80:
         payload = extract_http_payload(packet)
         if payload:
-            http_requests.append(payload)
+            http_requests.append((packet, payload))
 
-# logs.txt 파일에 HTTP 요청 전체 페이로드를 추가하기 (추가 모드로)
+# logs.txt 파일에 HTTP 요청 전체 페이로드와 패킷 정보를 추가하기 (추가 모드로)
 with open('logs.txt', 'a') as file:
-    for request in http_requests:
-        file.write(f"{request}\n\n")
+    for packet, request in http_requests:
+        if packet.haslayer(IP):
+            src_ip = packet[IP].src
+            src_port = packet[TCP].sport
+            dst_ip = packet[IP].dst
+            dst_port = packet[TCP].dport
+        elif packet.haslayer(IPv6):
+            src_ip = packet[IPv6].src
+            src_port = packet[TCP].sport
+            dst_ip = packet[IPv6].dst
+            dst_port = packet[TCP].dport
+        else:
+            continue
+
+        file.write(f"Source IP: {src_ip}, Source Port: {src_port}, Destination IP: {dst_ip}, Destination Port: {dst_port}\n")
+        file.write(f"Payload:\n{request}\n\n")
 
 # 그래프 생성
 G = nx.DiGraph()
 
 for i in range(0, len(http_requests), 2):
-    request1 = http_requests[i]
+    request1 = http_requests[i][1]
     if i + 1 < len(http_requests):
-        request2 = http_requests[i + 1]
+        request2 = http_requests[i + 1][1]
     else:
         break
 
@@ -63,5 +77,5 @@ ax.set_ylim(-1.5, 1.5)
 plt.title("Function Call Graph from pcap HTTP Requests")
 
 # 이미지 파일로 저장
-plt.savefig('graph.png')
+plt.savefig('http_requests_graph.png')
 
