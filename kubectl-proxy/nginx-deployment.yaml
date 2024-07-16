@@ -13,6 +13,7 @@ spec:
       labels:
         app: nginx-proxy
     spec:
+      hostPID: true
       containers:
       - name: nginx
         image: nginx:latest
@@ -23,8 +24,8 @@ spec:
           mountPath: /etc/nginx
       - name: tcpdump
         image: jjhwan7099/tcpdump_grafaas:latest
-        #command: ["tcpdump", "-i", "eth0", "-w", "/tmp/tcpdump.pcap"]
-        #entrypoint: ["/bin/sh", "-c"]
+        securityContext:
+          privileged: true
         volumeMounts:
         - name: data-volume
           mountPath: /data
