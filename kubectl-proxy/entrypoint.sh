@@ -16,38 +16,57 @@ start_tcpdump() {
     # 포트 80의 패킷을 캡처합니다.
     tcpdump -i eth0 'tcp port 80' -w /tmp/tcpdump.pcap &
     TCPDUMP_PID=$!
+    echo "Started tcpdump with PID: $TCPDUMP_PID"
 }
 
 # bpftrace를 백그라운드에서 실행하는 함수
 start_bpftrace() {
     TARGET_PID=$1
+    CONTAINER_NAME=$2
+
+    # 컨테이너 이름에서 마지막 두 단어를 제거
+    LOG_NAME=$(echo "$CONTAINER_NAME" | awk -F- '{OFS="-"; NF-=2; print}')
 
     bpftrace -e "
     tracepoint:syscalls:sys_enter_* /pid == $TARGET_PID/ {
         printf(\"Syscall: %s, PID: %d\\n\", probe, pid);
     }
     tracepoint:net:netif_receive_skb /pid == $TARGET_PID/ {
-        // skb의 필드를 확인하여 출력합니다.
-        // 필드 이름을 확인한 후 주석을 제거하고 사용하세요.
-        // 예: printf(\"Network packet received, PID: %d, Length: %d\\n\", pid, args->skb->len);
         printf(\"Network packet received, PID: %d\\n\", pid);
     }
-    " > /tmp/syscalls.log &
+    " > /tmp/${LOG_NAME}_syscalls.log &
     BPTRACE_PID=$!
+    echo "Started bpftrace for $CONTAINER_NAME with PID: $BPTRACE_PID at PID: $TARGET_PID"
 }
-
-# PID 설정
-TARGET_PID=98459  # 테스트할 PID
 
 # DebugFS 마운트
 mount_debugfs
 
-# TCPDump와 bpftrace 시작
+# TCPDump 시작
 start_tcpdump
-start_bpftrace $TARGET_PID
 
-# 무한 루프를 돌며 tcpdump의 출력 감시
+# 컨테이너 정보 파일 읽기
+while IFS=, read -r container_id container_name pid; do
+    # 각 PID에 대해 bpftrace 시작
+    start_bpftrace $pid $container_name
+done < /tmp/container_info.txt
+
+# 무한 루프를 돌며 프로세스 상태를 감시
 while true; do
-    # 컨테이너가 종료되지 않도록 무한 대기
-    wait $TCPDUMP_PID
+    if ! kill -0 $TCPDUMP_PID 2>/dev/null; then
+        echo "tcpdump process has exited. Restarting..."
+        start_tcpdump
+    fi
+
+    while IFS=, read -r container_id container_name pid; do
+        BPTRACE_PID=$(pgrep -f "bpftrace.*pid == $pid")
+        if [ -z "$BPTRACE_PID" ]; then
+            echo "bpftrace for $container_name has exited. Restarting..."
+            start_bpftrace $pid $container_name
+        fi
+    done < /tmp/container_info.txt
+
+    sleep 10
 done
+
+

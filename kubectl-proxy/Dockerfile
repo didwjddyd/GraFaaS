@@ -20,9 +20,12 @@ RUN pip3 install scapy \
 
 COPY create_graph.py /tmp/create_graph.py
 COPY entrypoint.sh /tmp/entrypoint.sh
+COPY container_info.txt /tmp/container_info.txt
+
 RUN chmod +x /tmp/create_graph.py 
 RUN chmod +x /tmp/entrypoint.sh
 
 ENTRYPOINT ["/tmp/entrypoint.sh"]
+
 
 
