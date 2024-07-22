@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Layouts</title>
+  <style>
+    body, div, p, h1, h2, button, span {
+      margin: unset;
+      padding: unset;
+    }
+
+    h2 {
+      font-size: 32px;
+      font-weight: 550;
+    }
+
+    #header {
+      background-color: black;
+      /* color: white;
+      border: 1px white;  */
+      /* width: 100%; */
+      height: 100px;
+      text-align: center;
+    }
+    .content {
+      display: flex;
+    }
+    .btn {
+      outline: none;
+      border: none;
+      background-color: transparent;
+      font-size: 80px;
+      font-weight: 500;
+      color: white;
+      cursor: pointer;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      z-index: 1000;
+    }
+    .login-btn {
+      outline: none;
+      border: none;
+      background-color: transparent;
+      font-size: 30px;
+      font-weight: 200;
+      color: white;
+      cursor: pointer;
+      float: right;
+    }
+    .login-btn:hover {
+      transform: scale(1.05);
+      z-index: 1000;
+    }
+    #menu {
+      background-color: gray;
+      color: black;
+      border: 1px solid;
+      width: 120px;
+      height: 100vh;
+      text-align: center;
+    }
+    .menu-btn {
+      outline: none;
+      border: none;
+      background-color: transparent;
+      font-size: 25px;
+      font-weight: 400;
+      cursor: pointer;
+    }
+    .menu-btn:hover {
+      transform: scale(1.05);
+      z-index: 1000;
+    }
+    #section {
+      display: flex;
+      flex-direction: column;
+      background-color: gray;
+      color: black;
+      border: 1px solid;
+      height: 100vh;
+      width: 100%;
+      position: relative;
+    }
+    .sub-section {
+      flex: 1;
+      background-color: lightgray;
+      border: 1px solid;
+      margin: 5px;
+      padding: 8px;
+      height: 20%;
+    }
+    .image-box {
+      display: inline;
+    }
+    #footer {
+      background-color: black;
+      color: white;
+      border: 1px black;
+      /* width: 100%; */
+      height: 100px;
+      clear: both;
+    }
+    #section img {
+      transition: transform 0.3s ease;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    #section img:hover {
+      transform: scale(1.05);
+      z-index: 1000;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .modal-content {
+      padding: 20px;
+      width: 80%;
+      max-width: 700px;
+      background-color: white;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function refreshPage() {
+      window.location.href = 'home.html';
+    }
+    function loginPage() {
+      window.location.href = 'login.html';
+    }
+
+    function showModal(img) {
+      const modal = document.getElementById('myModal');
+      const modalImg = document.getElementById('modalImg');
+      modal.style.display = 'grid';
+      modal.style.placeItems = 'center';
+      modalImg.src = img.src;
+    }
+
+    function closeModal() {
+      document.getElementById('myModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('myModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    function openNewPage() {
+      window.open('a.html', '_blank');
+    }
+  </script>
+</head>
+<body>
+  <div id="header">
+    <h2>
+      <button class="btn" onclick="refreshPage()">openfaas</button>
+      <button class="login-btn" onclick="loginPage()">login</button>
+    </h2>
+  </div>
+
+  <div class="content">
+    <div id="menu">
+      <h2>menu</h2>
+      <h2>
+        <button class="menu-btn" onclick="openNewPage()">hyejin</button>
+        <button class="menu-btn" onclick="openNewPage()">jihwan</button>
+        <button class="menu-btn" onclick="openNewPage()">jeongyong</button>
+      </h2>
+    </div>
+  
+    <div id="section">
+      <div class="sub-section">
+        <h2>Sub-section 1</h2>
+        <div class="image-box">
+          <img src="b.png" alt="설명 텍스트" width="100" onclick="showModal(this)">
+          <img src="a.png" alt="설명 텍스트" width="100" onclick="showModal(this)">
+          <img src="c.png" alt="설명 텍스트" width="100" onclick="showModal(this)">
+        </div>
+      </div>
+      <div class="sub-section">
+        <h2>Sub-section 2</h2>
+        <div class="image-box">
+          <img src="b.png" alt="설명 텍스트" width="100" onclick="showModal(this)">
+          <img src="a.png" alt="설명 텍스트" width="100" onclick="showModal(this)">
+          <img src="c.png" alt="설명 텍스트" width="100" onclick="showModal(this)">
+        </div>
+      </div>
+      <div class="sub-section">
+        <h2>Sub-section 3</h2>
+        <div class="image-box">
+          <img src="b.png" alt="설명 텍스트" width="100" onclick="showModal(this)">
+          <img src="a.png" alt="설명 텍스트" width="100" onclick="showModal(this)">
+          <img src="c.png" alt="설명 텍스트" width="100" onclick="showModal(this)">
+        </div>
+      </div>
+      <div class="sub-section">
+        <h2>Sub-section 4</h2>
+        <div class="image-box">
+          <img src="b.png" alt="설명 텍스트" width="100" onclick="showModal(this)">
+          <img src="a.png" alt="설명 텍스트" width="100" onclick="showModal(this)">
+          <img src="c.png" alt="설명 텍스트" width="100" onclick="showModal(this)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer"><h2>Footer</h2></div>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" style="width: 100%;">
+    </div>
+  </div>
+</body>
+</html>
