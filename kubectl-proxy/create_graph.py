@@ -17,6 +17,13 @@ def parse_http_payload(payload):
     method, path, _ = first_line.split(" ", 2)
     return method, path
 
+def get_host(request):
+    lines = request.strip().split("\n")
+    line = [s for s in lines if "Host:" in s or "host:" in s]
+    host = line[0].split(' ')[1]
+
+    return host
+
 # .pcap 파일 읽기
 packets = rdpcap('tcpdump.pcap')
 
@@ -30,7 +37,7 @@ for packet in packets:
             http_requests.append((packet, payload))
 
 # logs.txt 파일에 HTTP 요청 전체 페이로드와 패킷 정보를 추가하기 (추가 모드로)
-with open('logs.txt', 'a') as file:
+with open('logs.txt', 'w') as file:
     for packet, request in http_requests:
         if packet.haslayer(IP):
             src_ip = packet[IP].src
@@ -51,18 +58,67 @@ with open('logs.txt', 'a') as file:
 # 그래프 생성
 G = nx.DiGraph()
 
-for i in range(0, len(http_requests), 2):
-    request1 = http_requests[i][1]
-    if i + 1 < len(http_requests):
-        request2 = http_requests[i + 1][1]
+# 초기 구현.
+# for i in range(0, len(http_requests), 2):
+#     request1 = http_requests[i][1]
+#     if i + 1 < len(http_requests):
+#         request2 = http_requests[i + 1][1]
+#     else:
+#         break
+
+#     method1, path1 = parse_http_payload(request1)
+#     method2, path2 = parse_http_payload(request2)
+
+#     print(f"method1: {method1}")
+#     print(f"path1: {path1}")
+#     print(f"method2: {method2}")
+#     print(f"path2: {path2}\n")
+
+#     G.add_edge((method1, path1), (method2, path2))
+
+# 그래프 노드 매핑
+nodes = []
+startPoint = []
+mapping = {}
+for request in http_requests:
+    method, path = parse_http_payload(request[1])
+    host = get_host(request[1])
+
+    nodes.append((method, path))
+
+    if mapping.get((method, path)) == None:
+        mapping[(method, path)] = 1
     else:
-        break
+        mapping[(method, path)] += 1
 
-    method1, path1 = parse_http_payload(request1)
-    method2, path2 = parse_http_payload(request2)
+    if "nginx-proxy-service" not in host:
+        startPoint.append((method, path))
 
-    G.add_edge((method1, path1), (method2, path2))
+# print(nodes)
+# print(startPoint)
+# print(mapping)
 
+# 그래프 노드 추가
+for i in range(0, len(nodes) - 1):
+    node1 = nodes[i]
+    node2 = nodes[i + 1]
+
+    print(node1)
+    print(node2)
+
+    if node2 in startPoint:
+        print("no edge")
+        continue
+    elif mapping.get(node1) < 0 or mapping.get(node2) < 0:
+        continue
+    else:
+        G.add_edge(node1, node2)
+
+        mapping[node1] -= 1
+        mapping[node2] -= 1
+
+        print()
+    
 # 그래프 그리기
 fig, ax = plt.subplots(figsize=(14, 10))
 
@@ -78,4 +134,3 @@ plt.title("Function Call Graph from pcap HTTP Requests")
 
 # 이미지 파일로 저장
 plt.savefig('http_requests_graph.png')
-
