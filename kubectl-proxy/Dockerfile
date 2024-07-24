@@ -3,6 +3,9 @@ FROM dockersec/tcpdump:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+
+
+# 필요한 패키지 설치
 RUN apt-get update && apt-get install -y \
     inotify-tools \
     python3 \
@@ -11,7 +14,6 @@ RUN apt-get update && apt-get install -y \
     bpfcc-tools \
     bpftrace \
     linux-headers-generic \
-    vim \
     && apt-get clean
 
 RUN pip3 install scapy \

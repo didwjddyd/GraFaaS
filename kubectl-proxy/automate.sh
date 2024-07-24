@@ -40,7 +40,7 @@ chmod +x get_container_info.sh
 ./get_container_info.sh || { echo "Failed to collect container information"; exit 1; }
 
 # Build the Docker image
-docker build -t $IMAGE_NAME . || { echo "Docker build failed"; exit 1; }
+docker build --network=host -t  $IMAGE_NAME . || { echo "Docker build failed"; exit 1; }
 
 # Push the Docker image
 docker push $IMAGE_NAME || { echo "Docker push failed"; exit 1; }
@@ -63,12 +63,14 @@ delete_if_exists() {
 }
 
 # Delete Kubernetes resources
-delete_if_exists configmap nginx-configmap
-delete_if_exists deployment nginx-deployment
-delete_if_exists service nginx-service
-
+#delete_if_exists configmap nginx-configmap
+#delete_if_exists deployment nginx-deployment
+#delete_if_exists service nginx-service
+kubectl delete -f nginx-configmap.yaml -n openfaas
+kubectl delete -f nginx-deployment.yaml -n openfaas
+kubectl delete -f nginx-service.yaml -n openfaas
 # Wait for a few seconds to ensure resources are deleted
-sleep 10
+sleep 1
 
 # Kubernetes service start
 kubectl apply -f nginx-configmap.yaml -n openfaas || { echo "Failed to apply nginx-configmap"; exit 1; }

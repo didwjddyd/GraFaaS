@@ -28,9 +28,25 @@ start_bpftrace() {
     LOG_NAME=$(echo "$CONTAINER_NAME" | awk -F- '{OFS="-"; NF-=2; print}')
 
     bpftrace -e "
+   kprobe:tcp_connect /pid==$TARGET_PID/ { 
+   	printf(\"Connect\n\");
+   }
+   tracepoint:sock:inet_sock_set_state /pid==$TARGET_PID/ {
+    // 상태 전환이 발생한 소켓 주소
+    printf(\"PID: %d, Comm: %s\n\", pid, comm);
+    printf(\"Socket addr: %llu\n\", args->skaddr);
+    printf(\"Old state: %d, New state: %d\n\", args->oldstate, args->newstate);
+    printf(\"Family: %d\n\", args->family);
+    printf(\"Source port: %d, Destination port: %d\n\", args->sport, args->dport);
+    printf(\"Timestamp: %d\n\", nsecs / 1000000);
+} 
+
+    // 시스템 호출 추적
     tracepoint:syscalls:sys_enter_* /pid == $TARGET_PID/ {
         printf(\"Syscall: %s, PID: %d\\n\", probe, pid);
     }
+
+    // 네트워크 패킷 수신 추적
     tracepoint:net:netif_receive_skb /pid == $TARGET_PID/ {
         printf(\"Network packet received, PID: %d\\n\", pid);
     }
@@ -38,7 +54,6 @@ start_bpftrace() {
     BPTRACE_PID=$!
     echo "Started bpftrace for $CONTAINER_NAME with PID: $BPTRACE_PID at PID: $TARGET_PID"
 }
-
 # DebugFS 마운트
 mount_debugfs
 
