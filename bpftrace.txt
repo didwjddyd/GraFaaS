@@ -1,0 +1,273 @@
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+PID: 3647, Comm: fwatchdog
+Socket addr: 18446462602421952576
+Old state: 2, New state: 1
+Family: 2
+Source port: 56358, Destination port: 3000
+Timestamp: 1241010
+Network packet received, PID: 3647
+PID: 3647, Comm: fwatchdog
+Socket addr: 18446462602429073792
+Old state: 10, New state: 3
+Family: 10
+Source port: 3000, Destination port: 0
+Timestamp: 1241010
+PID: 3647, Comm: fwatchdog
+Socket addr: 18446462602429073792
+Old state: 3, New state: 1
+Family: 10
+Source port: 3000, Destination port: 56358
+Timestamp: 1241010
+Syscall: tracepoint:syscalls:sys_enter_epoll_ctl, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_getsockopt, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_getpeername, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_getsockname, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_setsockopt, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_nanosleep, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_setsockopt, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_setsockopt, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_setsockopt, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_nanosleep, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_nanosleep, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_accept4, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_ctl, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_getsockname, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_setsockopt, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_setsockopt, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_setsockopt, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_setsockopt, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_accept4, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_ctl, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_getsockname, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_setsockopt, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_setsockopt, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_setsockopt, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_setsockopt, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_accept4, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_nanosleep, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_newfstatat, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_ctl, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_close, PID: 3647
+PID: 3647, Comm: fwatchdog
+Socket addr: 18446462602241896960
+Old state: 1, New state: 4
+Family: 10
+Source port: 8080, Destination port: 63702
+Timestamp: 1241020
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+PID: 3647, Comm: fwatchdog
+Socket addr: 18446462602015498304
+Old state: 1, New state: 8
+Family: 2
+Source port: 63702, Destination port: 8080
+Timestamp: 1241020
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_sched_yield, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_newfstatat, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_ctl, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_close, PID: 3647
+PID: 3647, Comm: fwatchdog
+Socket addr: 18446462602187204736
+Old state: 1, New state: 4
+Family: 10
+Source port: 8080, Destination port: 63716
+Timestamp: 1241020
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+PID: 3647, Comm: fwatchdog
+Socket addr: 18446462602431184192
+Old state: 1, New state: 8
+Family: 2
+Source port: 63716, Destination port: 8080
+Timestamp: 1241020
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_nanosleep, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_nanosleep, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_nanosleep, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_nanosleep, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_write, PID: 3647
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_read, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_ctl, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_close, PID: 3647
+PID: 3647, Comm: fwatchdog
+Socket addr: 18446462602375255424
+Old state: 8, New state: 9
+Family: 10
+Syscall: tracepoint:syscalls:sys_enter_nanosleep, PID: 3647
+Source port: 8080, Destination port: 55338
+Timestamp: 1241157
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+PID: 3647, Comm: fwatchdog
+Socket addr: 18446462602371349824
+Old state: 4, New state: 5
+Family: 2
+Source port: 55338, Destination port: 8080
+Timestamp: 1241158
+Syscall: tracepoint:syscalls:sys_enter_nanosleep, PID: 3647
+PID: 3647, Comm: fwatchdog
+Socket addr: 18446462602371349824
+Old state: 5, New state: 7
+Family: 2
+Source port: 55338, Destination port: 8080
+Timestamp: 1241158
+Network packet received, PID: 3647
+Network packet received, PID: 3647
+PID: 3647, Comm: fwatchdog
+Socket addr: 18446462602375255424
+Old state: 9, New state: 7
+Family: 10
+Source port: 8080, Destination port: 55338
+Timestamp: 1241158
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_nanosleep, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_nanosleep, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_pwait, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_epoll_ctl, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_close, PID: 3647
+PID: 3647, Comm: fwatchdog
+Socket addr: 18446462602421952576
+Old state: 1, New state: 4
+Family: 2
+Source port: 56358, Destination port: 3000
+Timestamp: 1241538
+Network packet received, PID: 3647
+PID: 3647, Comm: fwatchdog
+Socket addr: 18446462602429073792
+Old state: 1, New state: 8
+Family: 10
+Source port: 3000, Destination port: 56358
+Timestamp: 1241538
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647
+Syscall: tracepoint:syscalls:sys_enter_futex, PID: 3647

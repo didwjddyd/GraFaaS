@@ -1,0 +1,4 @@
+Netid   State    Recv-Q    Send-Q       Local Address:Port       Peer Address:Port   Process                                
+tcp     LISTEN   0         511                      *:3000                  *:*       users:(("node",pid=3673,fd=22))       
+tcp     LISTEN   0         4096                     *:8081                  *:*       users:(("fwatchdog",pid=3647,fd=5))   
+tcp     LISTEN   0         4096                     *:8080                  *:*       users:(("fwatchdog",pid=3647,fd=13))
