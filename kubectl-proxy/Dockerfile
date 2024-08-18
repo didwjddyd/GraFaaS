@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y \
     bpfcc-tools \
     bpftrace \
     linux-headers-generic \
+    iproute2 \
+    strace \
     && apt-get clean
 
 RUN pip3 install scapy \
