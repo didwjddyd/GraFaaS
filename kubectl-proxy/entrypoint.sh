@@ -27,7 +27,7 @@ start_strace() {
     # 컨테이너 이름에서 마지막 두 단어를 제거
     LOG_NAME=$(echo "$CONTAINER_NAME" | awk -F- '{OFS="-"; NF-=2; print}')
 
-    strace -p $TARGET_PID -o /tmp/${LOG_NAME}_syscalls.log &
+    strace -tt -p $TARGET_PID -o /tmp/${LOG_NAME}_syscalls.log &
     STRACE_PID=$!
     echo "Started strace for $CONTAINER_NAME with PID: $STRACE_PID at PID: $TARGET_PID"
 }
@@ -52,7 +52,7 @@ while true; do
     fi
 
     while IFS=, read -r container_id container_name pid; do
-        STRACE_PID=$(pgrep -f "strace -p $pid")
+        STRACE_PID=$(pgrep -f "strace -tt -p $pid")
         if [ -z "$STRACE_PID" ]; then
             echo "strace for $container_name has exited. Restarting..."
             start_strace $pid $container_name
