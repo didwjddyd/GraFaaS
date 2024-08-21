@@ -1,0 +1,1242 @@
+08:01:03.623558 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:03.623933 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, -1, NULL, 0) = 1
+08:01:04.962644 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:04.962748 accept4(5, {sa_family=AF_INET6, sin6_port=htons(62240), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:01:04.962926 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801505, u64=9223294224907108385}}) = 0
+08:01:04.962986 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:04.963097 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:04.963168 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:04.963229 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:04.963282 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:04.963433 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:04.963580 accept4(5, {sa_family=AF_INET6, sin6_port=htons(62242), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:01:04.963657 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283935, u64=9223294224809590815}}) = 0
+08:01:04.963711 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:04.963766 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:04.963827 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:04.963888 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:04.963940 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:04.963993 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:01:04.964597 read(14, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:04.965008 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:04.965176 write(14, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:04.965335 epoll_ctl(6, EPOLL_CTL_DEL, 14, 0xffff90276d70) = 0
+08:01:04.965401 close(14)               = 0
+08:01:04.965510 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:06.962271 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172283936, u64=9223294224809590816}}, {events=EPOLLOUT, data={u32=4269801506, u64=9223294224907108386}}], 128, 0, NULL, 0) = 2
+08:01:06.962400 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:06.962585 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:06.962808 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:06.962890 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:06.962996 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:06.963095 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:01:06.963170 close(11)               = 0
+08:01:06.963259 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:08.965264 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:08.965460 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:08.965651 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:08.965737 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:01:08.965813 close(11)               = 0
+08:01:08.965919 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:10.962232 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:10.962380 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:12.964025 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172283939, u64=9223294224809590819}}, {events=EPOLLOUT, data={u32=4269801509, u64=9223294224907108389}}], 128, 0, NULL, 0) = 2
+08:01:12.964136 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:12.964244 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:12.964302 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:12.964351 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:12.964422 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:12.964596 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:12.964678 read(11, "", 1)         = 0
+08:01:12.964726 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:01:12.964777 close(11)               = 0
+08:01:12.964837 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:12.964871 epoll_pwait(6, [{events=EPOLLIN, data={u32=13727480, u64=13727480}}], 128, -1, NULL, 0) = 1
+08:01:12.965529 read(7, "\0", 16)       = 1
+08:01:12.965587 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:12.965621 epoll_pwait(6, [{events=EPOLLIN, data={u32=13727480, u64=13727480}}], 128, -1, NULL, 0) = 1
+08:01:12.965680 read(7, "\0", 16)       = 1
+08:01:12.965717 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:12.965755 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, 25999, NULL, 0) = 1
+08:01:14.964354 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:14.964432 accept4(5, {sa_family=AF_INET6, sin6_port=htons(56130), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:01:14.964671 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283940, u64=9223294224809590820}}) = 0
+08:01:14.964728 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:14.964820 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:14.964868 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:14.964921 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:14.964961 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:14.965080 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:14.965146 accept4(5, {sa_family=AF_INET6, sin6_port=htons(56128), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:01:14.965227 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801510, u64=9223294224907108390}}) = 0
+08:01:14.965295 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:14.965360 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:14.965419 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:14.965555 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:14.965619 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:14.965695 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:01:14.965814 read(14, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:14.965974 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:14.966074 write(14, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:14.966249 epoll_ctl(6, EPOLL_CTL_DEL, 14, 0xffff90276d70) = 0
+08:01:14.966310 close(14)               = 0
+08:01:14.966433 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:16.964804 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:18.967100 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801512, u64=9223294224907108392}}, {events=EPOLLIN|EPOLLOUT, data={u32=4172283942, u64=9223294224809590822}}], 128, 0, NULL, 0) = 2
+08:01:18.967233 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:18.967351 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:18.967491 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:18.967650 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:18.967752 read(11, "", 1)         = 0
+08:01:18.967835 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:01:18.967906 close(11)               = 0
+08:01:18.967987 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:20.966867 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:20.967007 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:22.964864 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801514, u64=9223294224907108394}}, {events=EPOLLOUT, data={u32=4172283944, u64=9223294224809590824}}], 128, 0, NULL, 0) = 2
+08:01:22.965096 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:22.965375 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:22.965605 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:22.965785 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:22.966001 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:22.966246 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:01:22.966410 close(11)               = 0
+08:01:22.966647 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:24.967222 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:24.967897 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:26.965605 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:26.965850 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, 29999, NULL, 0) = 1
+08:01:28.965007 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:28.965572 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:28.965980 accept4(5, {sa_family=AF_INET6, sin6_port=htons(59814), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:01:28.966498 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283947, u64=9223294224809590827}}) = 0
+08:01:28.966834 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:28.967090 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:28.967319 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:28.967551 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:28.967781 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:28.968011 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:28.968208 accept4(5, {sa_family=AF_INET6, sin6_port=htons(59816), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:01:28.968439 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801517, u64=9223294224907108397}}) = 0
+08:01:28.968670 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:28.968953 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:28.969507 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:28.969758 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:28.970004 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:28.970421 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:28.970643 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:01:28.971029 read(14, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:28.971440 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:28.971714 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:28.971969 write(14, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:28.972353 epoll_ctl(6, EPOLL_CTL_DEL, 14, 0xffff90276d70) = 0
+08:01:28.972570 close(14)               = 0
+08:01:28.972825 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:30.965312 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801518, u64=9223294224907108398}}, {events=EPOLLOUT, data={u32=4172283948, u64=9223294224809590828}}], 128, 0, NULL, 0) = 2
+08:01:30.965573 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:30.965781 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:30.965962 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:30.966102 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:30.966328 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:30.966499 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:30.966632 read(11, "", 1)         = 0
+08:01:30.966774 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:01:30.966887 close(11)               = 0
+08:01:30.967040 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:30.967173 epoll_pwait(6, [{events=EPOLLIN, data={u32=13727480, u64=13727480}}], 128, -1, NULL, 0) = 1
+08:01:30.967377 read(7, "\0", 16)       = 1
+08:01:30.967519 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:30.967618 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, -1, NULL, 0) = 1
+08:01:32.964920 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:32.965090 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:32.965235 accept4(5, {sa_family=AF_INET6, sin6_port=htons(59852), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:01:32.965408 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801519, u64=9223294224907108399}}) = 0
+08:01:32.965517 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:32.965642 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:32.965745 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:32.965838 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:32.966126 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:32.966376 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:32.966559 accept4(5, {sa_family=AF_INET6, sin6_port=htons(59850), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:01:32.966748 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283949, u64=9223294224809590829}}) = 0
+08:01:32.966910 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:32.967078 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:32.967264 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:32.967412 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:32.967570 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:32.967783 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:01:32.968040 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+08:01:32.968229 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:32.968419 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:32.968585 epoll_ctl(6, EPOLL_CTL_DEL, 14, 0xffff90276d70) = 0
+08:01:32.968737 close(14)               = 0
+08:01:32.968934 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:34.965506 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:34.965745 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:36.965842 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172283951, u64=9223294224809590831}}, {events=EPOLLOUT, data={u32=4269801521, u64=9223294224907108401}}], 128, 0, NULL, 0) = 2
+08:01:36.966021 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:36.966204 write(8, "\0", 1)       = 1
+08:01:36.966371 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:36.966565 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:36.966710 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:36.966878 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:36.967092 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:01:36.967268 close(11)               = 0
+08:01:36.967454 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:38.966373 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172283952, u64=9223294224809590832}}, {events=EPOLLOUT, data={u32=4269801522, u64=9223294224907108402}}], 128, 0, NULL, 0) = 2
+08:01:38.966952 epoll_pwait(6, [{events=EPOLLIN, data={u32=13727480, u64=13727480}}], 128, -1, NULL, 0) = 1
+08:01:38.967409 read(7, "\0", 16)       = 1
+08:01:38.967822 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:38.968135 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, -1, NULL, 0) = 1
+08:01:40.966399 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:40.966863 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:40.967205 accept4(5, {sa_family=AF_INET6, sin6_port=htons(62704), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:01:40.967682 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283953, u64=9223294224809590833}}) = 0
+08:01:40.967975 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:40.968184 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:40.968364 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:40.968553 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:40.968728 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:40.968949 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:40.969167 accept4(5, {sa_family=AF_INET6, sin6_port=htons(62706), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:01:40.969414 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801523, u64=9223294224907108403}}) = 0
+08:01:40.969593 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:40.969791 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:40.969983 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:40.970152 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:40.970324 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:40.970528 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:40.970737 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:01:40.971029 read(14, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:40.971354 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:40.971563 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:40.971790 write(14, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:40.972045 epoll_ctl(6, EPOLL_CTL_DEL, 14, 0xffff90276d70) = 0
+08:01:40.972253 close(14)               = 0
+08:01:40.972501 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:42.962676 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801524, u64=9223294224907108404}}, {events=EPOLLOUT, data={u32=4172283954, u64=9223294224809590834}}], 128, 0, NULL, 0) = 2
+08:01:42.962970 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:42.963202 write(8, "\0", 1)       = 1
+08:01:42.963379 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:42.963591 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:42.963760 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:42.963949 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:42.964177 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:01:42.964349 close(11)               = 0
+08:01:42.964544 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:44.963084 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801525, u64=9223294224907108405}}, {events=EPOLLOUT, data={u32=4172283955, u64=9223294224809590835}}], 128, 0, NULL, 0) = 2
+08:01:44.963686 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:44.963995 write(8, "\0", 1)       = 1
+08:01:44.964245 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:44.964644 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:44.964874 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:44.965156 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:44.965447 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:44.965625 read(11, "", 1)         = 0
+08:01:44.965832 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:01:44.966014 close(11)               = 0
+08:01:44.966291 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:44.966483 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:46.962418 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801526, u64=9223294224907108406}}, {events=EPOLLOUT, data={u32=4172283956, u64=9223294224809590836}}], 128, 0, NULL, 0) = 2
+08:01:46.962602 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, 29999, NULL, 0) = 1
+08:01:48.966064 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:48.966586 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:48.966849 accept4(5, {sa_family=AF_INET6, sin6_port=htons(57198), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:01:48.967280 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801527, u64=9223294224907108407}}) = 0
+08:01:48.967615 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:48.967907 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:48.968173 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:48.968504 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:48.968745 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:48.969024 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:48.969350 accept4(5, {sa_family=AF_INET6, sin6_port=htons(57200), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:01:48.969646 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283957, u64=9223294224809590837}}) = 0
+08:01:48.969868 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:48.970083 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:48.970312 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:48.970649 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:48.970943 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:48.971544 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:48.971783 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:01:48.972131 read(14, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:48.972459 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:48.972720 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:48.973041 write(14, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:48.973404 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:48.973634 read(14, "", 1)         = 0
+08:01:48.973883 epoll_ctl(6, EPOLL_CTL_DEL, 14, 0xffff90276d70) = 0
+08:01:48.974086 close(14)               = 0
+08:01:48.974456 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:50.963262 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172283958, u64=9223294224809590838}}, {events=EPOLLOUT, data={u32=4269801528, u64=9223294224907108408}}], 128, 0, NULL, 0) = 2
+08:01:50.963867 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:50.964400 write(8, "\0", 1)       = 1
+08:01:50.964817 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:50.965339 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:50.965566 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:50.965834 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:50.966197 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:01:50.966404 close(11)               = 0
+08:01:50.966654 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:52.966902 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172283959, u64=9223294224809590839}}, {events=EPOLLOUT, data={u32=4269801529, u64=9223294224907108409}}], 128, 0, NULL, 0) = 2
+08:01:52.967235 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:52.967460 write(8, "\0", 1)       = 1
+08:01:52.967629 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:01:52.967825 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:52.967976 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:01:52.968181 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:01:52.968420 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:52.968575 read(11, "", 1)         = 0
+08:01:52.968719 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:01:52.968883 close(11)               = 0
+08:01:52.969079 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:52.969224 epoll_pwait(6, [{events=EPOLLIN, data={u32=13727480, u64=13727480}}], 128, -1, NULL, 0) = 1
+08:01:52.969430 read(7, "\0", 16)       = 1
+08:01:52.969548 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:52.969656 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, -1, NULL, 0) = 1
+08:01:54.962168 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:54.962430 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:54.962626 accept4(5, {sa_family=AF_INET6, sin6_port=htons(57224), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:01:54.962902 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283960, u64=9223294224809590840}}) = 0
+08:01:54.963085 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:54.963339 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:54.963543 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:54.963714 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:54.963864 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:54.964046 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:54.964223 accept4(5, {sa_family=AF_INET6, sin6_port=htons(57226), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:01:54.964421 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801530, u64=9223294224907108410}}) = 0
+08:01:54.964607 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:54.964772 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:54.964901 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:54.965024 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:54.965170 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:54.965314 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:01:54.965509 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:54.965683 nanosleep({tv_sec=0, tv_nsec=3000}, NULL) = 0
+08:01:54.966235 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:01:56.963856 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:01:56.963965 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, 29999, NULL, 0) = 1
+08:01:58.965946 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:58.966240 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:58.966554 accept4(5, {sa_family=AF_INET6, sin6_port=htons(55922), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:01:58.966998 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801532, u64=9223294224907108412}}) = 0
+08:01:58.967394 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:58.967772 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:58.968103 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:58.968482 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:58.968713 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:58.968968 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:58.969176 accept4(5, {sa_family=AF_INET6, sin6_port=htons(55938), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:01:58.969447 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283962, u64=9223294224809590842}}) = 0
+08:01:58.969685 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:01:58.969956 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:01:58.970220 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:01:58.970486 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:01:58.970715 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:01:58.970960 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:01:58.971184 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:01:58.971489 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+08:01:58.971727 nanosleep({tv_sec=0, tv_nsec=3000}, NULL) = 0
+08:01:58.972492 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:00.966054 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172283963, u64=9223294224809590843}}, {events=EPOLLOUT, data={u32=4269801533, u64=9223294224907108413}}], 128, 0, NULL, 0) = 2
+08:02:00.966642 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:00.966910 write(8, "\0", 1)       = 1
+08:02:00.967142 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:02:00.967420 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:00.967654 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:02:00.967934 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:02:00.968301 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:02:00.968532 close(11)               = 0
+08:02:00.968847 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:02.963185 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172283964, u64=9223294224809590844}}, {events=EPOLLOUT, data={u32=4269801534, u64=9223294224907108414}}], 128, 0, NULL, 0) = 2
+08:02:02.963545 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:02.963799 write(8, "\0", 1)       = 1
+08:02:02.964051 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:02:02.964338 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:02.964588 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:02:02.964876 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:02:02.965227 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:02:02.965478 close(11)               = 0
+08:02:02.965748 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:04.966520 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172283965, u64=9223294224809590845}}, {events=EPOLLOUT, data={u32=4269801535, u64=9223294224907108415}}], 128, 0, NULL, 0) = 2
+08:02:04.966889 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:04.967415 write(8, "\0", 1)       = 1
+08:02:04.967688 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:02:04.968011 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:04.968239 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:02:04.968530 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:02:04.968805 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:04.969041 read(11, "", 1)         = 0
+08:02:04.969283 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:02:04.969483 close(11)               = 0
+08:02:04.969724 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:06.962951 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172283966, u64=9223294224809590846}}, {events=EPOLLOUT, data={u32=4269801536, u64=9223294224907108416}}], 128, 0, NULL, 0) = 2
+08:02:06.963104 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:06.963243 write(8, "\0", 1)       = 1
+08:02:06.963376 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:02:06.963549 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:06.963659 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:02:06.963796 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:02:06.963945 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:02:06.964046 close(11)               = 0
+08:02:06.964177 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:08.965419 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:08.965694 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, 29999, NULL, 0) = 1
+08:02:10.966096 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:10.966605 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:10.966981 accept4(5, {sa_family=AF_INET6, sin6_port=htons(65460), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:02:10.967420 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283968, u64=9223294224809590848}}) = 0
+08:02:10.967621 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:10.967831 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:10.968012 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:10.968211 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:10.968390 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:10.968631 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:10.968830 accept4(5, {sa_family=AF_INET6, sin6_port=htons(65472), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:02:10.969035 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801538, u64=9223294224907108418}}) = 0
+08:02:10.969218 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:10.969450 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:10.969659 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:10.969860 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:10.970094 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:10.970346 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:10.970538 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:10.970821 read(14, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:02:10.971124 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:02:10.971411 write(14, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:02:10.971707 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:10.971903 read(14, "", 1)         = 0
+08:02:10.972123 epoll_ctl(6, EPOLL_CTL_DEL, 14, 0xffff90276d70) = 0
+08:02:10.972311 close(14)               = 0
+08:02:10.972594 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:12.963603 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801539, u64=9223294224907108419}}, {events=EPOLLOUT, data={u32=4172283969, u64=9223294224809590849}}], 128, 0, NULL, 0) = 2
+08:02:12.963824 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, 29999, NULL, 0) = 1
+08:02:14.964360 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:14.964581 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:14.964728 accept4(5, {sa_family=AF_INET6, sin6_port=htons(65498), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:02:14.964945 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801540, u64=9223294224907108420}}) = 0
+08:02:14.965074 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:14.965358 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:14.965541 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:14.965690 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:14.965835 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:14.966027 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:14.966199 accept4(5, {sa_family=AF_INET6, sin6_port=htons(65500), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:02:14.966399 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283970, u64=9223294224809590850}}) = 0
+08:02:14.966615 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:14.966853 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:14.967098 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:14.967301 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:14.967464 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:14.967620 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:14.967770 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:14.967998 read(14, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:02:14.968324 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:02:14.968605 write(14, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:02:14.968863 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:14.969136 read(14, "", 1)         = 0
+08:02:14.969349 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:14.969525 epoll_ctl(6, EPOLL_CTL_DEL, 14, 0xffff90276d70) = 0
+08:02:14.969666 close(14)               = 0
+08:02:14.969876 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:16.966882 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:16.967226 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, 29999, NULL, 0) = 1
+08:02:17.788098 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:17.788169 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:17.788339 accept4(5, {sa_family=AF_INET6, sin6_port=htons(55348), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.241", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:02:17.788440 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283972, u64=9223294224809590852}}) = 0
+08:02:17.788507 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:17.788597 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:17.788673 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:17.788746 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:17.788824 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:17.788913 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:17.788990 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:17.789111 read(11, "POST / HTTP/1.1\r\nHost: 10.1.1.6:"..., 4096) = 469
+08:02:17.789561 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff90153000
+08:02:17.789997 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:17.790424 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:17.790591 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff90152000
+08:02:17.791560 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff90151000
+08:02:17.792279 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff90150000
+08:02:17.792645 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff9014f000
+08:02:17.793138 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff9014e000
+08:02:17.793278 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:17.793422 mmap(NULL, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff9012e000
+08:02:17.793953 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff9012d000
+08:02:17.794645 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff9012c000
+08:02:17.795029 socket(AF_INET, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, IPPROTO_IP) = 14
+08:02:17.795477 connect(14, {sa_family=AF_INET, sin_port=htons(3000), sin_addr=inet_addr("127.0.0.1")}, 16) = -1 EINPROGRESS (Operation now in progress)
+08:02:17.795679 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801542, u64=9223294224907108422}}) = 0
+08:02:17.795795 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:17.795953 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff9012b000
+08:02:17.796082 getsockopt(14, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
+08:02:17.796304 getpeername(14, {sa_family=AF_INET, sin_port=htons(3000), sin_addr=inet_addr("127.0.0.1")}, [112 => 16]) = 0
+08:02:17.796510 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:17.796745 getsockname(14, {sa_family=AF_INET, sin_port=htons(52992), sin_addr=inet_addr("127.0.0.1")}, [112 => 16]) = 0
+08:02:17.796867 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:17.796949 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:17.797035 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [10], 4) = 0
+08:02:17.797119 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [10], 4) = 0
+08:02:17.797318 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:17.797488 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff9012a000
+08:02:17.798019 read(14, 0xc000252000, 4096) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:17.798290 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff90129000
+08:02:17.798917 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff90128000
+08:02:17.799251 write(14, "POST / HTTP/1.1\r\nHost: 10.1.1.6:"..., 404) = 404
+08:02:17.799596 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff90127000
+08:02:17.799981 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:17.800119 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff90126000
+08:02:17.800191 write(14, "36\r\n{\"user\":\"testuser\",\"creditCa"..., 60) = 60
+08:02:17.800387 write(14, "0\r\n\r\n", 5) = 5
+08:02:17.800492 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:17.800619 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:17.924796 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:17.925195 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:17.925299 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT|EPOLLRDHUP, data={u32=4172283972, u64=9223294224809590852}}], 128, 499, NULL, 0) = 1
+08:02:18.046827 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:18.046906 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:18.046968 read(11, "", 4096)      = 0
+08:02:18.047068 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:02:18.047137 close(11)               = 0
+08:02:18.047241 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:18.047309 epoll_pwait(6, [], 128, 377, NULL, 0) = 0
+08:02:18.425441 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:18.425822 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:18.426531 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:18.426733 epoll_ctl(6, EPOLL_CTL_DEL, 14, 0xffff90276d70) = 0
+08:02:18.426899 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:18.427054 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:18.427213 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=1, si_uid=100} ---
+08:02:18.427325 mmap(NULL, 4576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff9011b000
+08:02:18.427498 rt_sigprocmask(SIG_SETMASK, ~[TRAP SEGV], NULL, 8) = 0
+08:02:18.427681 munmap(0xffff9011b000, 4576) = 0
+08:02:18.427862 rt_sigreturn({mask=[]}) = 1
+08:02:18.428033 close(14)               = 0
+08:02:18.428279 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:18.428523 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xffff9011c000
+08:02:18.429114 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:18.962648 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:18.962945 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, 29999, NULL, 0) = 1
+08:02:20.964413 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:20.964687 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:20.964880 accept4(5, {sa_family=AF_INET6, sin6_port=htons(65422), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:02:20.965127 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283974, u64=9223294224809590854}}) = 0
+08:02:20.965338 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:20.965546 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:20.965714 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:20.965873 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:20.966031 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:20.966254 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:20.966446 accept4(5, {sa_family=AF_INET6, sin6_port=htons(65424), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:02:20.966622 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801544, u64=9223294224907108424}}) = 0
+08:02:20.966782 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:20.966948 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:20.967102 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:20.967276 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:20.967492 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:20.967686 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:20.967877 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:20.968164 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:22.963419 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:26.961841 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:28.964028 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:30.966608 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:32.962977 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:32.963379 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:34.964579 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801551, u64=9223294224907108431}}, {events=EPOLLOUT, data={u32=4172283981, u64=9223294224809590861}}], 128, 0, NULL, 0) = 2
+08:02:34.965061 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:34.965481 write(8, "\0", 1)       = 1
+08:02:34.965719 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:02:34.965979 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:34.966195 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:02:34.966494 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:02:34.966776 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:02:34.966963 close(11)               = 0
+08:02:34.967167 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:36.963988 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:38.964752 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:38.965234 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:40.964695 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801554, u64=9223294224907108434}}, {events=EPOLLOUT, data={u32=4172283984, u64=9223294224809590864}}], 128, 0, NULL, 0) = 2
+08:02:40.965220 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:40.965537 write(8, "\0", 1)       = 1
+08:02:40.965797 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:02:40.966189 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:40.966432 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:02:40.966721 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:02:40.967050 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:02:40.967297 close(11)               = 0
+08:02:40.967576 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:42.963562 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801555, u64=9223294224907108435}}, {events=EPOLLOUT, data={u32=4172283985, u64=9223294224809590865}}], 128, 0, NULL, 0) = 2
+08:02:42.963913 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:42.964260 write(8, "\0", 1)       = 1
+08:02:42.964506 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:02:42.964765 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:42.964969 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:02:42.965235 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:02:42.965492 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:42.965687 read(11, "", 1)         = 0
+08:02:42.965894 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:02:42.966080 close(11)               = 0
+08:02:42.966367 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:44.963834 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801556, u64=9223294224907108436}}, {events=EPOLLOUT, data={u32=4172283986, u64=9223294224809590866}}], 128, 0, NULL, 0) = 2
+08:02:44.964415 epoll_pwait(6, [{events=EPOLLIN, data={u32=13727480, u64=13727480}}], 128, -1, NULL, 0) = 1
+08:02:44.964685 read(7, "\0", 16)       = 1
+08:02:44.964919 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:44.965109 epoll_pwait(6, [{events=EPOLLIN, data={u32=13727480, u64=13727480}}], 128, -1, NULL, 0) = 1
+08:02:44.965496 read(7, "\0", 16)       = 1
+08:02:44.965681 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:44.965858 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, -1, NULL, 0) = 1
+08:02:46.961673 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:46.961871 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:46.962028 accept4(5, {sa_family=AF_INET6, sin6_port=htons(63948), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:02:46.962263 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801557, u64=9223294224907108437}}) = 0
+08:02:46.962446 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:46.962633 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:46.962788 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:46.962939 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:46.963085 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:46.963257 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:46.963411 accept4(5, {sa_family=AF_INET6, sin6_port=htons(63964), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:02:46.963569 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283987, u64=9223294224809590867}}) = 0
+08:02:46.963717 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:46.963853 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:46.963978 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:46.964108 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:46.964239 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:46.964378 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:46.964558 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:46.964698 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:46.964880 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:02:46.965031 close(11)               = 0
+08:02:46.965242 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:46.965367 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:48.961662 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801558, u64=9223294224907108438}}, {events=EPOLLOUT, data={u32=4172283988, u64=9223294224809590868}}], 128, 0, NULL, 0) = 2
+08:02:48.961871 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, 28002, NULL, 0) = 1
+08:02:50.965086 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:50.965400 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:50.965609 accept4(5, {sa_family=AF_INET6, sin6_port=htons(55892), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:02:50.965829 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801559, u64=9223294224907108439}}) = 0
+08:02:50.965997 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:50.966226 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:50.966392 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:50.966563 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:50.966709 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:50.966889 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:50.967063 accept4(5, {sa_family=AF_INET6, sin6_port=htons(55890), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:02:50.967255 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283989, u64=9223294224809590869}}) = 0
+08:02:50.967423 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:50.967609 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:50.967759 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:50.967908 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:50.968054 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:50.968301 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:50.968490 read(14, "", 1)         = 0
+08:02:50.968713 epoll_ctl(6, EPOLL_CTL_DEL, 14, 0xffff90276d70) = 0
+08:02:50.968855 close(14)               = 0
+08:02:50.969123 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:52.961183 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:52.961382 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:52.961549 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:52.961695 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:02:52.961812 close(11)               = 0
+08:02:52.961972 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:52.962080 epoll_pwait(6, [{events=EPOLLIN, data={u32=13727480, u64=13727480}}], 128, -1, NULL, 0) = 1
+08:02:52.962345 read(7, "\0", 16)       = 1
+08:02:52.962473 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:52.962580 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, 29998, NULL, 0) = 1
+08:02:54.964396 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:54.964600 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:54.964755 accept4(5, {sa_family=AF_INET6, sin6_port=htons(55916), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:02:54.964959 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172283991, u64=9223294224809590871}}) = 0
+08:02:54.965121 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:54.965362 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:54.965555 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:54.965736 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:54.965887 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:54.966072 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:54.966239 accept4(5, {sa_family=AF_INET6, sin6_port=htons(55914), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:02:54.966416 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801561, u64=9223294224907108441}}) = 0
+08:02:54.966566 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:54.966723 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:54.966869 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:54.967015 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:54.967188 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:54.967364 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:54.967603 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:54.967800 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:56.965290 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:58.890540 epoll_pwait(6, [{events=EPOLLOUT, data={u32=4172283993, u64=9223294224809590873}}], 128, 0, NULL, 0) = 1
+08:02:58.890688 epoll_pwait(6, [{events=EPOLLOUT, data={u32=4269801563, u64=9223294224907108443}}], 128, 29999, NULL, 0) = 1
+08:02:58.890972 getsockopt(14, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
+08:02:58.891085 getpeername(14, {sa_family=AF_INET, sin_port=htons(3000), sin_addr=inet_addr("127.0.0.1")}, [112 => 16]) = 0
+08:02:58.891193 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:58.891308 getsockname(14, {sa_family=AF_INET, sin_port=htons(44392), sin_addr=inet_addr("127.0.0.1")}, [112 => 16]) = 0
+08:02:58.891424 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:58.891555 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:58.891673 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [10], 4) = 0
+08:02:58.891776 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [10], 4) = 0
+08:02:58.891954 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:58.892102 read(14, 0xc000338000, 4096) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:58.892267 write(14, "POST / HTTP/1.1\r\nHost: 10.1.1.6:"..., 404) = 404
+08:02:58.892434 write(14, "36\r\n{\"user\":\"testuser\",\"creditCa"..., 60) = 60
+08:02:58.892548 write(14, "0\r\n\r\n", 5) = 5
+08:02:58.892675 read(11, 0xc00025cd61, 1) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:58.892912 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:58.904407 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:02:58.904526 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, 499, NULL, 0) = 1
+08:02:58.961182 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:58.961260 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:58.961304 accept4(5, {sa_family=AF_INET6, sin6_port=htons(59938), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 15
+08:02:58.961376 epoll_ctl(6, EPOLL_CTL_ADD, 15, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4156030977, u64=9223294224793337857}}) = 0
+08:02:58.961418 getsockname(15, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:58.961463 setsockopt(15, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:58.961501 setsockopt(15, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:58.961536 setsockopt(15, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:58.961570 setsockopt(15, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:58.961617 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:02:58.961665 accept4(5, {sa_family=AF_INET6, sin6_port=htons(59936), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 16
+08:02:58.961726 epoll_ctl(6, EPOLL_CTL_ADD, 16, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4139778049, u64=9223294224777084929}}) = 0
+08:02:58.961782 getsockname(16, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:02:58.961839 setsockopt(16, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:02:58.961900 setsockopt(16, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:02:58.961971 setsockopt(16, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:02:58.962021 setsockopt(16, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:02:58.962062 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:02:58.962123 read(16, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:02:58.962191 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:02:58.962245 write(16, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:02:58.962328 epoll_ctl(6, EPOLL_CTL_DEL, 16, 0xffff90276d70) = 0
+08:02:58.962394 close(16)               = 0
+08:02:58.962479 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:02:59.406641 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:00.962154 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801564, u64=9223294224907108444}}, {events=EPOLLOUT, data={u32=4172283994, u64=9223294224809590874}}], 128, 0, NULL, 0) = 2
+08:03:00.962453 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:00.962701 write(8, "\0", 1)       = 1
+08:03:00.962946 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:03:00.963238 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:00.963401 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:03:00.963606 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:03:00.964176 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:03:00.964343 close(11)               = 0
+08:03:00.964609 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:02.961782 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801565, u64=9223294224907108445}}, {events=EPOLLOUT, data={u32=4172283995, u64=9223294224809590875}}], 128, 0, NULL, 0) = 2
+08:03:02.962125 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:02.962435 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:03:02.962730 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:02.962994 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:03:02.963298 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:03:02.963637 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:03:02.963886 close(11)               = 0
+08:03:02.964171 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:04.965542 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801566, u64=9223294224907108446}}, {events=EPOLLOUT, data={u32=4172283996, u64=9223294224809590876}}], 128, 0, NULL, 0) = 2
+08:03:04.965824 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:04.966059 write(8, "\0", 1)       = 1
+08:03:04.966275 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:03:04.966523 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:04.966670 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:03:04.966889 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:03:04.967086 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:04.967264 read(11, "", 1)         = 0
+08:03:04.967476 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:03:04.967690 close(11)               = 0
+08:03:04.968045 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:06.963110 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801567, u64=9223294224907108447}}, {events=EPOLLOUT, data={u32=4172283997, u64=9223294224809590877}}], 128, 0, NULL, 0) = 2
+08:03:06.963411 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:06.963665 write(8, "\0", 1)       = 1
+08:03:06.963862 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:03:06.964134 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:06.964318 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:03:06.964540 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:03:06.964794 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:03:06.964954 close(11)               = 0
+08:03:06.965199 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:08.963876 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801568, u64=9223294224907108448}}, {events=EPOLLOUT, data={u32=4172283998, u64=9223294224809590878}}], 128, 0, NULL, 0) = 2
+08:03:08.964023 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:08.964151 write(8, "\0", 1)       = 1
+08:03:08.964269 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:03:08.964417 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:08.964538 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:03:08.964682 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:03:08.964835 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:03:08.964986 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:10.964945 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801569, u64=9223294224907108449}}, {events=EPOLLOUT, data={u32=4172283999, u64=9223294224809590879}}], 128, 0, NULL, 0) = 2
+08:03:10.965340 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:10.965724 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:03:10.966022 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:10.966225 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:03:10.966473 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:03:10.966815 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:03:10.967020 close(11)               = 0
+08:03:10.967293 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:12.964565 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801570, u64=9223294224907108450}}, {events=EPOLLOUT, data={u32=4172284000, u64=9223294224809590880}}], 128, 0, NULL, 0) = 2
+08:03:12.964844 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:12.965081 write(8, "\0", 1)       = 1
+08:03:12.965291 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:03:12.965513 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:12.965691 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:03:12.965951 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:03:12.966205 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:12.966373 read(11, "", 1)         = 0
+08:03:12.966580 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:03:12.966752 close(11)               = 0
+08:03:12.967004 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:14.962779 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801571, u64=9223294224907108451}}, {events=EPOLLOUT, data={u32=4172284001, u64=9223294224809590881}}], 128, 0, NULL, 0) = 2
+08:03:14.963273 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:14.963692 write(8, "\0", 1)       = 1
+08:03:14.964088 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:03:14.964385 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:14.964585 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:03:14.964854 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:03:14.965086 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:14.965265 read(11, "", 1)         = 0
+08:03:14.965450 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:03:14.965618 close(11)               = 0
+08:03:14.965888 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:16.965901 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801572, u64=9223294224907108452}}, {events=EPOLLOUT, data={u32=4172284002, u64=9223294224809590882}}], 128, 0, NULL, 0) = 2
+08:03:16.966248 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:16.966562 write(8, "\0", 1)       = 1
+08:03:16.966811 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:03:16.967171 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:16.967378 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:03:16.967633 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:03:16.967980 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:18.962066 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:20.964041 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:22.962669 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:24.963504 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:26.962057 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:28.965176 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:30.963162 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:32.966615 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:34.964890 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:36.965661 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:03:36.966015 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:38.962938 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801583, u64=9223294224907108463}}, {events=EPOLLOUT, data={u32=4172284013, u64=9223294224809590893}}], 128, 0, NULL, 0) = 2
+08:03:38.963501 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:38.963968 write(8, "\0", 1)       = 1
+08:03:38.964213 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:03:38.964524 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:38.964795 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:03:38.965126 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:03:38.965422 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:38.965627 read(11, "", 1)         = 0
+08:03:38.965863 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:38.966076 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:03:38.966282 close(11)               = 0
+08:03:38.966551 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:40.967228 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:41.403449 epoll_pwait(6, [{events=EPOLLOUT, data={u32=4269801585, u64=9223294224907108465}}], 128, 0, NULL, 0) = 1
+08:03:41.403723 epoll_pwait(6, [{events=EPOLLOUT, data={u32=4172284015, u64=9223294224809590895}}], 128, 29563, NULL, 0) = 1
+08:03:41.404427 getsockopt(14, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
+08:03:41.404706 getpeername(14, {sa_family=AF_INET, sin_port=htons(3000), sin_addr=inet_addr("127.0.0.1")}, [112 => 16]) = 0
+08:03:41.404961 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:41.405184 getsockname(14, {sa_family=AF_INET, sin_port=htons(56936), sin_addr=inet_addr("127.0.0.1")}, [112 => 16]) = 0
+08:03:41.405366 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:03:41.405541 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:03:41.405715 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [10], 4) = 0
+08:03:41.405888 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [10], 4) = 0
+08:03:41.406088 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:41.406328 read(14, 0xc000268000, 4096) = -1 EAGAIN (Resource temporarily unavailable)
+08:03:41.406597 write(14, "POST / HTTP/1.1\r\nHost: 10.1.1.6:"..., 404) = 404
+08:03:41.407026 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:41.407296 write(14, "36\r\n{\"user\":\"testuser\",\"creditCa"..., 60) = 60
+08:03:41.407506 write(14, "0\r\n\r\n", 5) = 5
+08:03:41.407735 read(11, 0xc000335e11, 1) = -1 EAGAIN (Resource temporarily unavailable)
+08:03:41.407968 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:41.410008 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:03:41.410203 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:41.911576 write(8, "\0", 1)       = 1
+08:03:41.911923 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:42.965188 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172284016, u64=9223294224809590896}}, {events=EPOLLOUT, data={u32=4269801586, u64=9223294224907108466}}], 128, 0, NULL, 0) = 2
+08:03:42.965547 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:42.965907 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:03:42.966196 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:42.966401 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:03:42.966759 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:03:42.967126 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:42.967389 read(11, "", 1)         = 0
+08:03:42.967658 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:03:42.967899 close(11)               = 0
+08:03:42.968146 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:44.965941 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172284017, u64=9223294224809590897}}, {events=EPOLLOUT, data={u32=4269801587, u64=9223294224907108467}}], 128, 0, NULL, 0) = 2
+08:03:44.966431 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:44.966882 write(8, "\0", 1)       = 1
+08:03:44.967110 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:03:44.967358 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:44.967565 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:03:44.967850 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:03:44.968110 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:44.968327 read(11, "", 1)         = 0
+08:03:44.968542 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:03:44.968769 close(11)               = 0
+08:03:44.969023 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:46.962987 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172284018, u64=9223294224809590898}}, {events=EPOLLOUT, data={u32=4269801588, u64=9223294224907108468}}], 128, 0, NULL, 0) = 2
+08:03:46.963333 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:46.963598 write(8, "\0", 1)       = 1
+08:03:46.963877 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:03:46.964136 futex(0xc000058948, FUTEX_WAKE_PRIVATE, 1) = 1
+08:03:46.964336 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:03:46.964584 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:03:46.964870 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:48.963412 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:50.962597 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:03:56.966354 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:00.965960 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:02.963871 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:04.963576 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:06.963627 nanosleep({tv_sec=0, tv_nsec=3000}, NULL) = 0
+08:04:06.964758 write(8, "\0", 1)       = 1
+08:04:06.964955 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:06.965444 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:08.963590 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:04:08.964038 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, 29999, NULL, 0) = 1
+08:04:10.961303 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:10.961590 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:10.961786 accept4(5, {sa_family=AF_INET6, sin6_port=htons(60380), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:04:10.962007 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801600, u64=9223294224907108480}}) = 0
+08:04:10.962169 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:04:10.962343 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:04:10.962500 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:04:10.962652 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:04:10.962806 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:04:10.962975 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:10.963128 accept4(5, {sa_family=AF_INET6, sin6_port=htons(60382), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:04:10.963293 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172284030, u64=9223294224809590910}}) = 0
+08:04:10.963445 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:04:10.963630 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:04:10.963782 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:04:10.963962 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:04:10.964142 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:04:10.964309 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:10.964469 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:04:10.964676 read(14, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:10.964855 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:10.965029 write(14, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:10.965267 epoll_ctl(6, EPOLL_CTL_DEL, 14, 0xffff90276d70) = 0
+08:04:10.965427 close(14)               = 0
+08:04:10.965647 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:12.155435 epoll_pwait(6, [{events=EPOLLOUT, data={u32=4172284031, u64=9223294224809590911}}], 128, 0, NULL, 0) = 1
+08:04:12.155762 epoll_pwait(6, [{events=EPOLLOUT, data={u32=4269801601, u64=9223294224907108481}}], 128, 29998, NULL, 0) = 1
+08:04:12.156061 getsockopt(14, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
+08:04:12.156301 getpeername(14, {sa_family=AF_INET, sin_port=htons(3000), sin_addr=inet_addr("127.0.0.1")}, [112 => 16]) = 0
+08:04:12.156560 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:12.156761 getsockname(14, {sa_family=AF_INET, sin_port=htons(42460), sin_addr=inet_addr("127.0.0.1")}, [112 => 16]) = 0
+08:04:12.156946 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:04:12.157109 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:04:12.157266 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [10], 4) = 0
+08:04:12.157446 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [10], 4) = 0
+08:04:12.157674 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:12.157889 read(14, 0xc000404000, 4096) = -1 EAGAIN (Resource temporarily unavailable)
+08:04:12.158129 write(14, "POST / HTTP/1.1\r\nHost: 10.1.1.6:"..., 404) = 404
+08:04:12.158376 write(14, "36\r\n{\"user\":\"testuser\",\"creditCa"..., 60) = 60
+08:04:12.158653 write(14, "0\r\n\r\n", 5) = 5
+08:04:12.158913 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:12.159091 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:12.160711 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+08:04:12.160899 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:12.661725 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:04:12.662241 write(8, "\0", 1)       = 1
+08:04:12.662775 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:12.965015 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801602, u64=9223294224907108482}}, {events=EPOLLOUT, data={u32=4172284032, u64=9223294224809590912}}], 128, 0, NULL, 0) = 2
+08:04:12.965579 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:12.965968 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:12.966787 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:12.967021 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:12.967357 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:12.968877 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:12.969490 close(11)               = 0
+08:04:12.970226 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:14.964323 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801603, u64=9223294224907108483}}, {events=EPOLLOUT, data={u32=4172284033, u64=9223294224809590913}}], 128, 0, NULL, 0) = 2
+08:04:14.964854 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:14.965149 write(8, "\0", 1)       = 1
+08:04:14.965378 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:14.965678 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:14.965896 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:14.966158 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:14.966495 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:14.966749 close(11)               = 0
+08:04:14.967031 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:16.963845 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801604, u64=9223294224907108484}}, {events=EPOLLOUT, data={u32=4172284034, u64=9223294224809590914}}], 128, 0, NULL, 0) = 2
+08:04:16.964192 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:16.964534 write(8, "\0", 1)       = 1
+08:04:16.964800 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:16.965109 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:16.965323 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:16.965592 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:16.965862 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:16.966066 read(11, "", 1)         = 0
+08:04:16.966273 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:16.966479 close(11)               = 0
+08:04:16.966757 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:18.963748 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801605, u64=9223294224907108485}}, {events=EPOLLOUT, data={u32=4172284035, u64=9223294224809590915}}], 128, 0, NULL, 0) = 2
+08:04:18.964333 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:18.964619 write(8, "\0", 1)       = 1
+08:04:18.964835 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:18.965077 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:18.965280 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:18.965525 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:18.965793 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:18.965983 read(11, "", 1)         = 0
+08:04:18.966188 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:18.966369 close(11)               = 0
+08:04:18.966683 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:20.962200 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801606, u64=9223294224907108486}}, {events=EPOLLOUT, data={u32=4172284036, u64=9223294224809590916}}], 128, 0, NULL, 0) = 2
+08:04:20.962426 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:20.962711 write(8, "\0", 1)       = 1
+08:04:20.962889 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:20.963100 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:20.963264 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:20.963481 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:20.963819 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:20.964022 read(11, "", 1)         = 0
+08:04:20.964236 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:20.964393 close(11)               = 0
+08:04:20.964620 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:22.963149 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801607, u64=9223294224907108487}}, {events=EPOLLOUT, data={u32=4172284037, u64=9223294224809590917}}], 128, 0, NULL, 0) = 2
+08:04:22.963531 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:22.963871 write(8, "\0", 1)       = 1
+08:04:22.964110 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:22.964449 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:22.964727 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:22.965015 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:22.965360 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:22.965563 close(11)               = 0
+08:04:22.965875 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:24.963019 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801608, u64=9223294224907108488}}, {events=EPOLLOUT, data={u32=4172284038, u64=9223294224809590918}}], 128, 0, NULL, 0) = 2
+08:04:24.963226 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:24.963425 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:24.963634 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:24.963974 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:24.964269 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:24.964488 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:24.964613 close(11)               = 0
+08:04:24.964810 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:26.963426 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801609, u64=9223294224907108489}}, {events=EPOLLOUT, data={u32=4172284039, u64=9223294224809590919}}], 128, 0, NULL, 0) = 2
+08:04:26.963763 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:26.964110 write(8, "\0", 1)       = 1
+08:04:26.964388 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:26.964722 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:26.964965 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:26.965248 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:26.965554 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:26.965786 close(11)               = 0
+08:04:26.966088 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:27.249504 epoll_pwait(6, [{events=EPOLLOUT, data={u32=4269801610, u64=9223294224907108490}}], 128, 0, NULL, 0) = 1
+08:04:27.249669 epoll_pwait(6, [{events=EPOLLOUT, data={u32=4172284040, u64=9223294224809590920}}], 128, 29999, NULL, 0) = 1
+08:04:27.250107 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:27.250322 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:27.250460 getsockopt(14, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
+08:04:27.250590 getpeername(14, {sa_family=AF_INET, sin_port=htons(3000), sin_addr=inet_addr("127.0.0.1")}, [112 => 16]) = 0
+08:04:27.250714 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:27.250839 getsockname(14, {sa_family=AF_INET, sin_port=htons(59508), sin_addr=inet_addr("127.0.0.1")}, [112 => 16]) = 0
+08:04:27.250994 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:04:27.251126 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:04:27.251239 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [10], 4) = 0
+08:04:27.251354 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [10], 4) = 0
+08:04:27.251488 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:27.251657 read(14, 0xc000410000, 4096) = -1 EAGAIN (Resource temporarily unavailable)
+08:04:27.251823 write(14, "POST / HTTP/1.1\r\nHost: 10.1.1.6:"..., 404) = 404
+08:04:27.252085 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:27.252310 write(14, "36\r\n{\"user\":\"testuser\",\"creditCa"..., 60) = 60
+08:04:27.252460 write(14, "0\r\n\r\n", 5) = 5
+08:04:27.252591 read(11, 0xc0002bd061, 1) = -1 EAGAIN (Resource temporarily unavailable)
+08:04:27.252707 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:27.253699 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+08:04:27.253841 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:27.755970 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:04:27.756285 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:28.964848 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172284041, u64=9223294224809590921}}, {events=EPOLLOUT, data={u32=4269801611, u64=9223294224907108491}}], 128, 0, NULL, 0) = 2
+08:04:28.965143 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:28.965380 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:28.965590 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:28.965766 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:28.966024 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:28.966262 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:28.966425 read(11, "", 1)         = 0
+08:04:28.966594 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:28.966765 close(11)               = 0
+08:04:28.967025 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:04:28.967190 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:29.678482 epoll_pwait(6, [{events=EPOLLOUT, data={u32=4172284042, u64=9223294224809590922}}], 128, 0, NULL, 0) = 1
+08:04:29.678616 epoll_pwait(6, [{events=EPOLLOUT, data={u32=4269801612, u64=9223294224907108492}}], 128, 29999, NULL, 0) = 1
+08:04:29.679185 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:29.679464 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:29.679572 getsockopt(14, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
+08:04:29.679684 getpeername(14, {sa_family=AF_INET, sin_port=htons(3000), sin_addr=inet_addr("127.0.0.1")}, [112 => 16]) = 0
+08:04:29.679793 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:29.679935 getsockname(14, {sa_family=AF_INET, sin_port=htons(43942), sin_addr=inet_addr("127.0.0.1")}, [112 => 16]) = 0
+08:04:29.680061 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:04:29.680171 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:04:29.680288 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [10], 4) = 0
+08:04:29.680387 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [10], 4) = 0
+08:04:29.680569 read(14, 0xc000368000, 4096) = -1 EAGAIN (Resource temporarily unavailable)
+08:04:29.680745 write(14, "POST / HTTP/1.1\r\nHost: 10.1.1.6:"..., 404) = 404
+08:04:29.681098 write(14, "36\r\n{\"user\":\"testuser\",\"creditCa"..., 60) = 60
+08:04:29.681436 write(14, "0\r\n\r\n", 5) = 5
+08:04:29.681569 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:29.681701 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:29.683848 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+08:04:29.684065 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:30.187496 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:04:30.187778 write(8, "\0", 1)       = 1
+08:04:30.188009 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:30.963542 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801613, u64=9223294224907108493}}, {events=EPOLLOUT, data={u32=4172284043, u64=9223294224809590923}}], 128, 0, NULL, 0) = 2
+08:04:30.964161 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:30.964452 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:30.964756 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:30.965004 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:30.965284 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:30.965596 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:30.965812 close(11)               = 0
+08:04:30.966090 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:32.962239 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:04:32.962530 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:34.964139 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172284045, u64=9223294224809590925}}, {events=EPOLLOUT, data={u32=4269801615, u64=9223294224907108495}}], 128, 0, NULL, 0) = 2
+08:04:34.964360 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:34.964546 write(8, "\0", 1)       = 1
+08:04:34.964701 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:34.964983 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:34.965152 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:34.965359 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:34.965873 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:34.966221 close(11)               = 0
+08:04:34.966593 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:36.963486 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172284046, u64=9223294224809590926}}, {events=EPOLLOUT, data={u32=4269801616, u64=9223294224907108496}}], 128, 0, NULL, 0) = 2
+08:04:36.963737 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:36.964027 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:36.964273 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:36.964428 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:36.964622 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:36.964841 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:36.965025 close(11)               = 0
+08:04:36.965199 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:38.965889 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172284047, u64=9223294224809590927}}, {events=EPOLLOUT, data={u32=4269801617, u64=9223294224907108497}}], 128, 0, NULL, 0) = 2
+08:04:38.966141 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:38.966366 write(8, "\0", 1)       = 1
+08:04:38.966529 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:38.966714 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:38.966874 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:38.967086 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:38.967296 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:38.967489 read(11, "", 1)         = 0
+08:04:38.967662 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:38.967815 close(11)               = 0
+08:04:38.968049 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:40.963819 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:04:40.964304 sched_yield()           = 0
+08:04:40.964518 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 0
+08:04:40.964717 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:42.966475 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801619, u64=9223294224907108499}}, {events=EPOLLOUT, data={u32=4172284049, u64=9223294224809590929}}], 128, 0, NULL, 0) = 2
+08:04:42.966884 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:42.967204 write(8, "\0", 1)       = 1
+08:04:42.967431 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:42.967749 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:42.968011 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:42.968325 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:42.968638 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:42.968885 close(11)               = 0
+08:04:42.969200 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:44.963676 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801620, u64=9223294224907108500}}, {events=EPOLLOUT, data={u32=4172284050, u64=9223294224809590930}}], 128, 0, NULL, 0) = 2
+08:04:44.964304 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:44.964788 write(8, "\0", 1)       = 1
+08:04:44.965291 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:44.965774 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:44.966069 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:44.966367 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:44.966679 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:44.966888 close(11)               = 0
+08:04:44.967154 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:46.961889 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801621, u64=9223294224907108501}}, {events=EPOLLOUT, data={u32=4172284051, u64=9223294224809590931}}], 128, 0, NULL, 0) = 2
+08:04:46.962264 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:46.962545 write(8, "\0", 1)       = 1
+08:04:46.962773 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:46.963040 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:46.963247 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:46.963499 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:46.963779 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:04:46.964012 close(11)               = 0
+08:04:46.964274 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:48.964038 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801622, u64=9223294224907108502}}, {events=EPOLLOUT, data={u32=4172284052, u64=9223294224809590932}}], 128, 0, NULL, 0) = 2
+08:04:48.964409 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:48.964734 write(8, "\0", 1)       = 1
+08:04:48.964993 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:04:48.965276 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:04:48.965504 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:04:48.965775 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:04:48.966123 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:54.962886 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:56.962827 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:04:58.961893 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:05:00.965068 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172284058, u64=9223294224809590938}}, {events=EPOLLOUT, data={u32=4269801628, u64=9223294224907108508}}], 128, 0, NULL, 0) = 2
+08:05:00.965559 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:00.966083 write(8, "\0", 1)       = 1
+08:05:00.966535 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:05:00.967033 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:00.967266 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:05:00.967564 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:05:00.967856 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:00.968063 read(11, "", 1)         = 0
+08:05:00.968270 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:05:00.968554 close(11)               = 0
+08:05:00.968842 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:05:02.961844 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172284059, u64=9223294224809590939}}, {events=EPOLLOUT, data={u32=4269801629, u64=9223294224907108509}}], 128, 0, NULL, 0) = 2
+08:05:02.962273 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:02.962653 write(8, "\0", 1)       = 1
+08:05:02.962973 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:05:02.963284 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:02.963513 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:05:02.963774 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:05:02.964059 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:05:02.964235 close(11)               = 0
+08:05:02.964472 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:05:04.962564 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:05:04.962684 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:04.962859 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:05:04.962941 close(11)               = 0
+08:05:04.963040 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:05:04.963099 epoll_pwait(6, [{events=EPOLLIN, data={u32=13727480, u64=13727480}}], 128, -1, NULL, 0) = 1
+08:05:04.963466 read(7, "\0", 16)       = 1
+08:05:04.963527 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:05:04.963589 epoll_pwait(6, [{events=EPOLLIN, data={u32=4188536836, u64=9223294224825843716}}], 128, 29999, NULL, 0) = 1
+08:05:06.962191 futex(0xce93e0, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:06.962289 futex(0xce92f8, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:06.962414 accept4(5, {sa_family=AF_INET6, sin6_port=htons(55076), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 11
+08:05:06.962591 epoll_ctl(6, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4172284061, u64=9223294224809590941}}) = 0
+08:05:06.962721 getsockname(11, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:05:06.962931 setsockopt(11, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:05:06.963085 setsockopt(11, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:05:06.963255 setsockopt(11, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:05:06.963373 setsockopt(11, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:05:06.963526 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:06.963613 accept4(5, {sa_family=AF_INET6, sin6_port=htons(55074), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 14
+08:05:06.963742 epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, data={u32=4269801631, u64=9223294224907108511}}) = 0
+08:05:06.963827 getsockname(14, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:10.1.1.6", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+08:05:06.963912 setsockopt(14, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+08:05:06.963945 setsockopt(14, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+08:05:06.964033 setsockopt(14, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+08:05:06.964136 setsockopt(14, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+08:05:06.964249 futex(0xc000100148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:06.964503 accept4(5, 0xc00021ab30, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+08:05:06.964736 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:05:08.961702 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:05:08.961799 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:05:10.963536 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4172284063, u64=9223294224809590943}}, {events=EPOLLOUT, data={u32=4269801633, u64=9223294224907108513}}], 128, 0, NULL, 0) = 2
+08:05:10.963687 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:10.963779 read(11, "GET /_/health HTTP/1.1\r\nHost: 10"..., 4096) = 108
+08:05:10.963881 futex(0xc000101148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:10.963962 newfstatat(AT_FDCWD, "/tmp/.lock", {st_mode=S_IFREG|0640, st_size=0, ...}, 0) = 0
+08:05:10.964072 write(11, "HTTP/1.1 200 OK\r\nDate: Sun, 18 A"..., 137) = 137
+08:05:10.964181 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:05:10.964263 close(11)               = 0
+08:05:10.964383 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:05:12.963949 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:05:12.964049 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:05:14.964308 epoll_pwait(6, [{events=EPOLLIN|EPOLLOUT, data={u32=4269801635, u64=9223294224907108515}}, {events=EPOLLOUT, data={u32=4172284065, u64=9223294224809590945}}], 128, 0, NULL, 0) = 2
+08:05:14.964484 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:14.964597 futex(0xc000280148, FUTEX_WAKE_PRIVATE, 1) = 1
+08:05:14.964689 epoll_ctl(6, EPOLL_CTL_DEL, 11, 0xffff90276d70) = 0
+08:05:14.964780 close(11)               = 0
+08:05:14.964884 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL) = 0
+08:05:16.964688 epoll_pwait(6, [], 128, 0, NULL, 0) = 0
+08:05:16.965032 futex(0xce9028, FUTEX_WAIT_PRIVATE, 0, NULL
