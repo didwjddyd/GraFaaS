@@ -7,25 +7,20 @@ def parse_log_file(log_filename):
     log_data = []
     current_block = {}
     in_block = False
-    
+    network_syscall = (
+        "socket", "connect",
+        "accept4", "getsockname",
+        "getpeername", "setsockopt",
+        "getsockopt","epoll_pwait",
+        "epoll_ctl" 
+    )
+
     # Open and read the log file
     with open(log_filename, 'r') as file:
         for line in file:
             line = line.strip()
-            if line.startswith("Timestamp:"):
-                # If there's an active block, add it to the log_data
-                if in_block and current_block:
-                    log_data.append(current_block)
-                # Start a new block
-                current_block = {'timestamp': line.split(": ")[1], 'syscalls': [], 'source_port': None, 'destination_port': None}
-                in_block = True
-            elif line.startswith("Source port:"):
-                current_block['source_port'] = line.split(": ")[1]
-            elif line.startswith("Destination port:"):
-                current_block['destination_port'] = line.split(": ")[1]
-            elif line.startswith("Syscall:"):
-                syscall = line.split(": ")[-1].split(',')[-1].strip()
-                current_block['syscalls'].append(syscall)
+            if line.split(' ')[1].startswith(network_syscall):
+                log_data.append(" ".join(line.split(' ')[1:]))
     
     # Add the last block if present
     if in_block and current_block:
@@ -48,16 +43,31 @@ def create_graph_from_log(log_data):
     return G
 
 def plot_graph(G):
-    pos = nx.spring_layout(G)
+    pos = nx.spring_layout(G, k=3)  # k 값을 설정하여 노드 간의 간격을 조정
     labels = nx.get_edge_attributes(G, 'label')
-    nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=2000, font_size=10, font_weight='bold')
+
+    # 그래프 그리기
+    fig, ax = plt.subplots(figsize=(14, 10))
+
+    nx.draw(G, pos, with_labels=True, ax=ax, node_size=800, node_color="skyblue", font_size=9, font_color="black", font_weight="bold", edge_color="gray", linewidths=1, arrows=True)
+    
+    # 축 범위를 설정하여 그래프를 축소
+    # ax.set_xlim(-1.25, 1.25)
+    # ax.set_ylim(-1.25, 1.25)
+    
     nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
     plt.title('Syscall Network Graph')
-    plt.show()
+    # plt.show()
+    plt.savefig("bpftrace_graph.png")
 
 # Main execution
-log_filename = "bpftrace.txt"
-log_data = parse_log_file(log_filename)
+log_filename = [
+    "product-purchase_syscalls.log",
+    "product-purchase-get-price_syscalls.log",
+    "product-purchase-authorize-cc_syscalls.log",
+    "product-purchase-publish_syscalls.log"
+]
+log_data = parse_log_file('log/' + log_filename[0])
 for i in log_data:
     print(i)
 # G = create_graph_from_log(log_data)
