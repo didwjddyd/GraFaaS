@@ -22,3 +22,9 @@ go.work
 
 # pychache
 __pycache__
+
+#replit
+.replit
+poetry.lock
+pyproject.toml
+replit.nix
