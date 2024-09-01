@@ -1,74 +1,124 @@
 # chatgpt initial code
+from logging import exception
 import networkx as nx
 import matplotlib.pyplot as plt
 
+
 def parse_log_file(log_filename):
     # Initialize variables
-    log_data = []
+    log_data = {}
     current_block = {}
     in_block = False
-    network_syscall = (
-        "socket", "connect",
-        "accept4", "getsockname",
-        "getpeername", "setsockopt",
-        "getsockopt","epoll_pwait",
-        "epoll_ctl" 
-    )
+    all_network_syscall = ("socket", "connect", "accept4", "getsockname",
+                           "getpeername", "setsockopt", "getsockopt",
+                           "epoll_pwait", "epoll_ctl")
+
+    network_syscall = ("accept4", "getsockname", "getpeername")
 
     # Open and read the log file
     with open(log_filename, 'r') as file:
         for line in file:
             line = line.strip()
-            if line.split(' ')[1].startswith(network_syscall):
-                log_data.append(" ".join(line.split(' ')[1:]))
-    
-    # Add the last block if present
-    if in_block and current_block:
-        log_data.append(current_block)
-    
+            if line.split(' ')[1].startswith("accept4"):
+                syscall_line = " ".join(line.split(' ')[1:])
+                syscall_split = syscall_line.split(', ')
+                is_not_eagain = 'EAGAIN' not in syscall_split[3]
+                
+                if is_not_eagain:
+                    try:
+                        socket_desc = syscall_split[0].split('(')[-1]
+                        port_num = ''.join(syscall_split[2].split('(')[-1][:-1])
+                        ip_addr = syscall_split[5].split('ffff')[-1][1:-1]
+                        return_desc = syscall_split[-1].split(' = ')[-1]
+                        print(f"accept4    : {socket_desc}, {ip_addr}:{port_num} = {return_desc}")
+                    except Exception as e:
+                        print(log_filename , syscall_line)
+                        print(e)
+                    finally:
+                        if return_desc in log_data:
+                            log_data[return_desc].append(('accept4', f'{ip_addr}:{port_num}'))
+                        else:
+                            log_data[return_desc] = [(('accept4', f'{ip_addr}:{port_num}'))]
+            elif line.split(' ')[1].startswith("getsockname"):
+                syscall_line = " ".join(line.split(' ')[1:])
+                syscall_split = syscall_line.split(', ')
+                is_inet6 = 'AF_INET6' in syscall_split[1]
+
+                if is_inet6:
+                    try:
+                        socket_desc = syscall_split[0].split('(')[-1]
+                        port_num = ''.join(syscall_split[2].split('(')[-1][:-1])
+                        ip_addr = syscall_split[5].split('ffff')[-1][1:-1]
+                        print(f"getsockname: {socket_desc}, {ip_addr}:{port_num}")
+                    except Exception as e:
+                        print(log_filename , syscall_line)
+                        print(e)
+                    finally:
+                        if socket_desc in log_data:
+                            log_data[socket_desc].append(('getsockname', f'{ip_addr}:{port_num}'))
+                        else:
+                           log_data[socket_desc] = [(('getsockname', f'{ip_addr}:{port_num}'))]
+                else:
+                    try:
+                        socket_desc = syscall_split[0].split('(')[-1]
+                        port_num = ''.join(syscall_split[2].split('(')[-1][:-1])
+                        ip_addr = syscall_split[3].split('(')[-1][1:-3]
+                        print(f"getsockname: {socket_desc}, {ip_addr}:{port_num}")
+                    except Exception as e:
+                        print(log_filename , syscall_line)
+                        print(e)
+                    finally:
+                        if socket_desc in log_data:
+                            log_data[socket_desc].append(('getsockname', f'{ip_addr}:{port_num}'))
+                        else:
+                            log_data[socket_desc] = [(('getsockname', f'{ip_addr}:{port_num}'))]
+            elif line.split(' ')[1].startswith("getpeername"):
+                syscall_line = " ".join(line.split(' ')[1:])
+                syscall_split = syscall_line.split(', ')
+                is_inet6 = 'AF_INET6' in syscall_split[1]
+
+                if is_inet6:
+                    try:
+                        socket_desc = syscall_split[0].split('(')[-1]
+                        port_num = ''.join(syscall_split[2].split('(')[-1][:-1])
+                        ip_addr = syscall_split[5].split('ffff')[-1][1:-1]
+                        print(f"getpeername: {socket_desc}, {ip_addr}:{port_num}")
+                    except Exception as e:
+                        print(log_filename , syscall_line)
+                        print(e)
+                    finally:
+                        if socket_desc in log_data:
+                            log_data[socket_desc].append(('getpeername', f'{ip_addr}:{port_num}'))
+                        else:
+                           log_data[socket_desc] = [(('getpeername', f'{ip_addr}:{port_num}'))]
+                else:
+                    try:
+                        socket_desc = syscall_split[0].split('(')[-1]
+                        port_num = ''.join(syscall_split[2].split('(')[-1][:-1])
+                        ip_addr = syscall_split[3].split('(')[-1][1:-3]
+                        print(f"getpeername: {socket_desc}, {ip_addr}:{port_num}")
+                    except Exception as e:
+                        print(log_filename , syscall_line)
+                        print(e)
+                    finally:
+                        if socket_desc in log_data:
+                            log_data[socket_desc].append(('getpeername', f'{ip_addr}:{port_num}'))
+                        else:
+                           log_data[socket_desc] = [(('getpeername', f'{ip_addr}:{port_num}'))]
+
     return log_data
-
-def create_graph_from_log(log_data):
-    G = nx.DiGraph()
-
-    for block in log_data:
-        source_port = block['source_port']
-        destination_port = block['destination_port']
-        syscalls = block['syscalls']
-
-        if source_port and destination_port:
-            for syscall in syscalls:
-                G.add_edge(source_port, destination_port, label=syscall)
-
-    return G
-
-def plot_graph(G):
-    pos = nx.spring_layout(G, k=3)  # k 값을 설정하여 노드 간의 간격을 조정
-    labels = nx.get_edge_attributes(G, 'label')
-
-    # 그래프 그리기
-    fig, ax = plt.subplots(figsize=(14, 10))
-
-    nx.draw(G, pos, with_labels=True, ax=ax, node_size=800, node_color="skyblue", font_size=9, font_color="black", font_weight="bold", edge_color="gray", linewidths=1, arrows=True)
-    
-    # 축 범위를 설정하여 그래프를 축소
-    # ax.set_xlim(-1.25, 1.25)
-    # ax.set_ylim(-1.25, 1.25)
-    
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
-    plt.title('Syscall Network Graph')
-    # plt.show()
-    plt.savefig("bpftrace_graph.png")
 
 # Main execution
 log_filename = [
-    "product-purchase_syscalls.log",
-    "product-purchase-get-price_syscalls.log",
+    "product-purchase_syscalls.log", "product-purchase-get-price_syscalls.log",
     "product-purchase-authorize-cc_syscalls.log",
     "product-purchase-publish_syscalls.log"
 ]
+
 log_data = parse_log_file('log/' + log_filename[0])
-for i in log_data:
-    print(i)
-# G = create_graph_from_log(log_data)
-# plot_graph(G)
+print(log_data)
+# for file_name in log_filename:
+#     print(file_name)
+#     parse_log_file('log/' + file_name)
+#     print()
+create_syscall_graph(log_data, log_filename[0])
