@@ -25,6 +25,8 @@ spec:
       - name: tcpdump
         image: jjhwan7099/tcpdump_grafaas:latest
         securityContext:
+          capabilities:
+            add: ["SYS_PTRACE","SYS_PTRACE"]
           privileged: true
         volumeMounts:
         - name: data-volume

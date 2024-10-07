@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     iproute2 \
     strace \
     tcpdump \
+    procps \
     && apt-get clean
 
 # Python 라이브러리 설치
