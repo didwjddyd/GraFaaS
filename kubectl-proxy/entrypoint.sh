@@ -27,7 +27,7 @@ start_strace() {
     # 컨테이너 이름에서 마지막 두 단어를 제거
     LOG_NAME=$(echo "$CONTAINER_NAME" | awk -F- '{OFS="-"; NF-=2; print}')
 
-    strace -ttt -q -o /tmp/${LOG_NAME}_syscalls.log -e trace=execve,fork,clone,open,socket,bind,listen,accept4,connect,sendto,recvfrom,chmod,chown,access,unlink,unlinkat -ff -p $TARGET_PID &
+    strace -ttt -q -o /tmp/${CONTAINER_NAME}/${LOG_NAME}_syscalls.log -e trace=execve,fork,clone,open,socket,bind,listen,accept4,connect,sendto,recvfrom,chmod,chown,access,unlink,unlinkat -ff -p $TARGET_PID &
     STRACE_PID=$!
     echo "Started strace for $CONTAINER_NAME with PID: $STRACE_PID at PID: $TARGET_PID"
 }
