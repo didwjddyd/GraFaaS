@@ -29,7 +29,6 @@ RUN pip3 install --break-system-packages scapy \
 # 스크립트 및 파일 복사
 COPY create_graph.py /tmp/create_graph.py
 COPY entrypoint.sh /tmp/entrypoint.sh
-COPY container_info.txt /tmp/container_info.txt
 
 # 실행 권한 부여
 RUN chmod +x /tmp/create_graph.py 

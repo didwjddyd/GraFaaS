@@ -27,7 +27,7 @@ start_strace() {
     # 컨테이너 이름에서 마지막 두 단어를 제거
     LOG_NAME=$(echo "$CONTAINER_NAME" | awk -F- '{OFS="-"; NF-=2; print}')
 
-    strace -tt -q -f -e trace=execve,fork,clone,open,socket,bind,listen,accept4,connect,sendto,recvfrom,chmod,access,unlink,unlinkat,read,write -p $TARGET_PID -o /tmp/${LOG_NAME}_syscalls.log &
+    strace -ttt -q -o /tmp/${LOG_NAME}_syscalls.log -e trace=execve,fork,clone,open,socket,bind,listen,accept4,connect,sendto,recvfrom,chmod,chown,access,unlink,unlinkat -ff -p $TARGET_PID &
     STRACE_PID=$!
     echo "Started strace for $CONTAINER_NAME with PID: $STRACE_PID at PID: $TARGET_PID"
 }
@@ -38,12 +38,6 @@ mount_debugfs
 # TCPDump 시작
 start_tcpdump
 
-# 컨테이너 정보 파일 읽기
-while IFS=, read -r container_id container_name pid; do
-    # 각 PID에 대해 strace 시작
-    start_strace $pid $container_name
-done < /tmp/container_info.txt
-
 # 무한 루프를 돌며 프로세스 상태를 감시
 while true; do
     if ! kill -0 $TCPDUMP_PID 2>/dev/null; then
@@ -51,13 +45,35 @@ while true; do
         start_tcpdump
     fi
 
-    while IFS=, read -r container_id container_name pid; do
-        STRACE_PID=$(pgrep -f "strace -tt -p $pid")
-        if [ -z "$STRACE_PID" ]; then
-            echo "strace for $container_name has exited. Restarting..."
-            start_strace $pid $container_name
+    # index.js 프로세스의 PID 목록 추출
+    pids=$(ps aux | grep index.js | grep -v grep | awk '{print $2}')
+
+    # PID가 없으면 종료
+    if [ -z "$pids" ]; then
+        echo "index.js 프로세스를 찾을 수 없습니다."
+        exit 1
+    fi
+
+    for pid in $pids; do
+        # HOSTNAME 환경 변수 추출
+        func_name=$(cat /proc/$pid/environ | tr '\0' '\n' | grep '^HOSTNAME=' | cut -d '=' -f 2)
+
+        # func_name이 없으면 무시하고 다음 PID로 이동
+        if [ -z "$func_name" ]; then
+            echo "PID $pid에서 HOSTNAME을 찾을 수 없습니다."
+            continue
         fi
-    done < /tmp/container_info.txt
+
+        # strace PID 확인
+        STRACE_PID=$(pgrep -f "strace -ttt -p $pid")
+        if [ -z "$STRACE_PID" ]; then
+            echo "strace for $func_name has exited. Restarting..."
+            # /tmp/<func_name> 디렉토리 생성
+            mkdir -p /tmp/"$func_name"
+            # strace 실행
+            start_strace $pid "$func_name"
+        fi
+    done
 
     sleep 10
 done
