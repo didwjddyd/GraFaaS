@@ -32,19 +32,8 @@ start_strace() {
     echo "Started strace for $CONTAINER_NAME with PID: $STRACE_PID at PID: $TARGET_PID"
 }
 
-# DebugFS 마운트
-mount_debugfs
-
-# TCPDump 시작
-start_tcpdump
-
-# 무한 루프를 돌며 프로세스 상태를 감시
-while true; do
-    if ! kill -0 $TCPDUMP_PID 2>/dev/null; then
-        echo "tcpdump process has exited. Restarting..."
-        start_tcpdump
-    fi
-
+# 프로세스 상태를 감시하는 함수
+monitor_processes() {
     # index.js 프로세스의 PID 목록 추출
     pids=$(ps aux | grep index.js | grep -v grep | awk '{print $2}')
 
@@ -68,12 +57,29 @@ while true; do
         STRACE_PID=$(pgrep -f "strace -ttt -p $pid")
         if [ -z "$STRACE_PID" ]; then
             echo "strace for $func_name has exited. Restarting..."
-            # /tmp/<func_name> 디렉토리 생성
+            # /tmp/<func_name> 디렉토리 생성, 이미 존재하는 경우는 무시
             mkdir -p /tmp/"$func_name"
             # strace 실행
             start_strace $pid "$func_name"
         fi
     done
+}
+
+# DebugFS 마운트
+mount_debugfs
+
+# TCPDump 시작
+start_tcpdump
+
+# 무한 루프를 돌며 프로세스 상태를 감시
+while true; do
+    if ! kill -0 $TCPDUMP_PID 2>/dev/null; then
+        echo "tcpdump process has exited. Restarting..."
+        start_tcpdump
+    fi
+
+    # 프로세스 감시 함수 호출
+    monitor_processes
 
     sleep 10
 done
