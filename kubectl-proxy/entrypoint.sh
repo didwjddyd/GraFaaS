@@ -71,16 +71,15 @@ mount_debugfs
 # TCPDump 시작
 start_tcpdump
 
+#프로세스 감시 함수 호출
+monitor_processes
+
 # 무한 루프를 돌며 프로세스 상태를 감시
 while true; do
     if ! kill -0 $TCPDUMP_PID 2>/dev/null; then
         echo "tcpdump process has exited. Restarting..."
         start_tcpdump
     fi
-
-    # 프로세스 감시 함수 호출
-    monitor_processes
-
     sleep 10
 done
 
