@@ -34,36 +34,56 @@ start_strace() {
 
 # 프로세스 상태를 감시하는 함수
 monitor_processes() {
-    # index.js 프로세스의 PID 목록 추출
-    pids=$(ps aux | grep index.js | grep -v grep | awk '{print $2}')
+    # 이미 strace를 시작한 PID를 저장할 배열
+    declare -a traced_pids
 
-    # PID가 없으면 종료
-    if [ -z "$pids" ]; then
-        echo "index.js 프로세스를 찾을 수 없습니다."
-        exit 1
-    fi
+    # 무한 루프를 돌며 프로세스를 감시
+    while true; do
+        # index.js 프로세스의 PID 목록 추출
+        pids=$(pgrep -f "node index.js")
 
-    for pid in $pids; do
-        # HOSTNAME 환경 변수 추출
-        func_name=$(cat /proc/$pid/environ | tr '\0' '\n' | grep '^HOSTNAME=' | cut -d '=' -f 2)
-
-        # func_name이 없으면 무시하고 다음 PID로 이동
-        if [ -z "$func_name" ]; then
-            echo "PID $pid에서 HOSTNAME을 찾을 수 없습니다."
+        # PID가 없으면 계속 진행
+        if [ -z "$pids" ]; then
+            sleep 0.1
             continue
         fi
 
-        # strace PID 확인
-        STRACE_PID=$(pgrep -f "strace -ttt -p $pid")
-        if [ -z "$STRACE_PID" ]; then
-            echo "strace for $func_name has exited. Restarting..."
-            # /tmp/<func_name> 디렉토리 생성, 이미 존재하는 경우는 무시
-            mkdir -p /tmp/"$func_name"
-            # strace 실행
-            start_strace $pid "$func_name"
-        fi
+        for pid in $pids; do
+            # HOSTNAME 환경 변수 추출
+            func_name=$(cat /proc/$pid/environ | tr '\0' '\n' | grep '^HOSTNAME=' | cut -d '=' -f 2)
+
+            # func_name이 없으면 무시하고 다음 PID로 이동
+            if [ -z "$func_name" ]; then
+                echo "PID $pid에서 HOSTNAME을 찾을 수 없습니다."
+                continue
+            fi
+
+            # strace PID 확인
+            STRACE_PID=$(pgrep -f "strace -ttt -p $pid")
+            if [ -z "$STRACE_PID" ]; then
+                # strace가 실행 중이지 않은 경우
+                if [[ ! " ${traced_pids[@]} " =~ " $pid " ]]; then
+                    echo "Detected new process with PID $pid for '$func_name'. Starting strace..."
+                    # /tmp/<func_name> 디렉토리 생성, 이미 존재하는 경우는 무시
+                    mkdir -p /tmp/"$func_name"
+                    # strace 실행
+                    start_strace $pid "$func_name"
+                    # traced_pids 배열에 추가
+                    traced_pids+=("$pid")
+                else
+                    echo "strace has already been started for PID $pid"
+                fi
+            else
+                echo "strace is already running for PID $pid"
+            fi
+        done
+
+        # 0.1초마다 반복
+        sleep 0.1
     done
 }
+
+
 
 # DebugFS 마운트
 mount_debugfs
