@@ -19,6 +19,9 @@ sleep 1
 ./delete_func.sh
 sleep 1
 
+# 점 순환을 위한 dots 변수 초기화
+dots=1
+
 # openfaas-fn 네임스페이스의 Pod 상태 확인
 while true; do
     # Pod 목록 가져오기
@@ -26,11 +29,20 @@ while true; do
 
     # Pod가 존재하는지 확인
     if [ -z "$pods" ]; then
-        echo "openfaas-fn 네임스페이스에 Pod가 없습니다. 다음 명령어로 넘어갑니다."
+	printf "\n"
+        printf "openfaas-fn 네임스페이스에 Pod가 없습니다. 다음 명령어로 넘어갑니다.\n"
         break
     else
-        echo "openfaas-fn 네임스페이스에 Pod가 존재합니다. 대기 중..."
-        sleep 5  # 5초 대기 후 다시 확인
+        # Pod가 존재하는 동안 대기 중 메시지 출력
+        case $dots in
+            1) printf "\ropenfaas-fn 네임스페이스에 Pod가 존재합니다. 대기 중.  " ;;
+            2) printf "\ropenfaas-fn 네임스페이스에 Pod가 존재합니다. 대기 중.. " ;;
+            3) printf "\ropenfaas-fn 네임스페이스에 Pod가 존재합니다. 대기 중... " ;;
+        esac
+
+        # dots 값 순환
+        dots=$(( (dots % 3) + 1 ))
+        sleep 0.5  # 5초 대기 후 다시 확인
     fi
 done
 
@@ -47,24 +59,24 @@ while true; do
     CONTAINER_STATUS=$(docker ps -f "name=$CONTAINER_NAME" --format "{{.Status}}")
 
     if [[ "$CONTAINER_STATUS" == *"Up"* ]]; then
-        echo "$CONTAINER_NAME 컨테이너가 정상적으로 실행되고 있습니다."
+	printf "\n"
+        printf "$CONTAINER_NAME 컨테이너가 정상적으로 실행되었습니다.\n"
         break
     else
         # 대기 중 메시지 출력
-        printf "$CONTAINER_NAME 컨테이너가 아직 실행되지 않았습니다. 대기 중"
+        case $dots in
+            1) printf "\r$CONTAINER_NAME 컨테이너가 아직 실행되지 않았습니다. 대기 중.  " ;;
+            2) printf "\r$CONTAINER_NAME 컨테이너가 아직 실행되지 않았습니다. 대기 중.. " ;;
+            3) printf "\r$CONTAINER_NAME 컨테이너가 아직 실행되지 않았습니다. 대기 중... " ;;
+        esac
 
-        # 점 개수에 따라 출력
-        for ((i = 0; i < dots; i++)); do
-            printf "."
-        done
-        printf "\r"  
-	dots=$(( (dots % 3) + 1 ))  # 1부터 3까지 반복
-        sleep 0.5  # 1초 대기 후 다시 확인
+        # dots 값 순환
+        dots=$(( (dots % 3) + 1 ))
+        sleep 0.5  # 0.5초 대기 후 다시 확인
     fi
 done
 
 faas-cli up -f hello-retail.yaml
 
 echo "All steps completed successfully."
-
 

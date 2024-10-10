@@ -29,8 +29,7 @@ start_strace() {
 
     strace -ttt -q -o /tmp/${CONTAINER_NAME}/${LOG_NAME}_syscalls.log -e trace=execve,fork,clone,open,socket,bind,listen,accept4,connect,sendto,recvfrom,chmod,chown,access,unlink,unlinkat -ff -p $TARGET_PID &
     STRACE_PID=$!
-    echo "Started strace for *$CONTAINER_NAME* with PID: $STRACE_PID at PID: $TARGET_PID"
-    echo "//////////"
+    echo -e "Started strace for *$CONTAINER_NAME* with PID: $STRACE_PID at PID: $TARGET_PID \n"
 }
 
 # 프로세스 상태를 감시하는 함수
@@ -45,7 +44,7 @@ monitor_processes() {
         pids=$(pgrep -f "index")
 
 	if [ -z "$fwatchdog_pids" ]; then
-	    sleep 0.01
+	    sleep 0.05
 	    continue
 	fi
 	
@@ -59,13 +58,12 @@ monitor_processes() {
 		mkdir -p /tmp/$func_name
 		echo "$fwatchdog_pid" > /tmp/$func_name/fwatchdog_pid
 	        dir_names+=("$func_name")
-		echo "//////////"
-		echo "Detected fwatchdog process with PID $fwatchdog_pid for *$func_name*. Make dir complete."
+		echo -e "\nDetected fwatchdog process with PID $fwatchdog_pid for *$func_name*. Make dir complete."
 	    fi
 	done
         # PID가 없으면 계속 진행
         if [ -z "$pids" ]; then
-            sleep 0.01
+            sleep 0.05
             continue
         fi
         for pid in $pids; do
@@ -83,7 +81,7 @@ monitor_processes() {
             STRACE_PID=$(pgrep -f "strace -ttt -p $pid")
             if [ -z "$STRACE_PID" ]; then
                 # strace가 실행 중이지 않은 경우
-                if [[ ! " ${traced_pids[@]} " =~ " $pid " ]]; then
+                if [[ ! " ${traced_pids[@]} " =~ " $pid " && -d "/tmp/$func_name" ]]; then
                     echo "Detected new process with PID $pid for *$func_name*. Starting strace..."
                     # strace 실행
                     start_strace $pid "$func_name"
@@ -93,8 +91,8 @@ monitor_processes() {
             fi
         done
 
-        # 0.01초마다 반복
-        sleep 0.01
+        # 0.05초마다 반복
+        sleep 0.05
     done
 }
 
