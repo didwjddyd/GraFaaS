@@ -36,20 +36,36 @@ start_strace() {
 monitor_processes() {
     # 이미 strace를 시작한 PID를 저장할 배열
     declare -a traced_pids
-
+    declare -a dir_names
     # 무한 루프를 돌며 프로세스를 감시
     while true; do
         # index.js 프로세스의 PID 목록 추출
+	fwatchdog_pids=$(pgrep -f "fwatchdog")
         pids=$(pgrep -f "node index.js")
 
+	if [ -z "$fwatchdog_pids"]; then
+	    sleep 0.1
+	    continue
+	fi
+	
+	for fwatchdog_pid in $fwatchdog_pids; do
+	    func_name = $(cat /proc/$fwatchdog_pid/environ | tr '\0' '\n' | grep '^HOSTNAME=' | cut -d '=' -f 2)
+	    if [ -z "$func_name" ]; then
+		echo "Can't find function name to mkdir in PID $fwatchdog_pid."
+	        continue;
+	    fi
+	    if [[ !"${dir_names[@]}"=~"$fwatchdog_pid"]]; then
+		mkdir -p /tmp/"'$func_name'_'$fwatchdog_pid'"
+	        dir_names+=("$func_name")
+	    fi
         # PID가 없으면 계속 진행
         if [ -z "$pids" ]; then
             sleep 0.1
             continue
         fi
-
         for pid in $pids; do
             # HOSTNAME 환경 변수 추출
+	    #function_name=$(cat /proc/$fwatchdog_pid/environ | tr '\0' '\n' | grep '^HOSTNAME=' | cut -d '=' -f 2)
             func_name=$(cat /proc/$pid/environ | tr '\0' '\n' | grep '^HOSTNAME=' | cut -d '=' -f 2)
 
             # func_name이 없으면 무시하고 다음 PID로 이동
@@ -64,14 +80,10 @@ monitor_processes() {
                 # strace가 실행 중이지 않은 경우
                 if [[ ! " ${traced_pids[@]} " =~ " $pid " ]]; then
                     echo "Detected new process with PID $pid for '$func_name'. Starting strace..."
-                    # /tmp/<func_name> 디렉토리 생성, 이미 존재하는 경우는 무시
-                    mkdir -p /tmp/"$func_name"
                     # strace 실행
                     start_strace $pid "$func_name"
-                    # traced_pids 배열에 추가
+                    # traced_pids add
                     traced_pids+=("$pid")
-                else
-                    echo "strace has already been started for PID $pid"
                 fi
             else
                 echo "strace is already running for PID $pid"
