@@ -51,11 +51,12 @@ monitor_processes() {
 	for fwatchdog_pid in $fwatchdog_pids; do
 	    func_name = $(cat /proc/$fwatchdog_pid/environ | tr '\0' '\n' | grep '^HOSTNAME=' | cut -d '=' -f 2)
 	    if [ -z "$func_name" ]; then
-		echo "Can't find function name to mkdir in PID $fwatchdog_pid."
-	        continue;
+		echo "Can not find function name to mkdir in PID $fwatchdog_pid."
+	        continue
 	    fi
 	    if [[ !"${dir_names[@]}"=~"$fwatchdog_pid"]]; then
-		mkdir -p /tmp/"'$func_name'_'$fwatchdog_pid'"
+		mkdir -p /tmp/"'$func_name'"
+		echo "$fwatchdog_pid" > /tmp/"'$func_name'"/fwatchdog_pid
 	        dir_names+=("$func_name")
 	    fi
         # PID가 없으면 계속 진행
@@ -85,8 +86,6 @@ monitor_processes() {
                     # traced_pids add
                     traced_pids+=("$pid")
                 fi
-            else
-                echo "strace is already running for PID $pid"
             fi
         done
 
