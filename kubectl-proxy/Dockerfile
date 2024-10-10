@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     strace \
     tcpdump \
     procps \
+    nginx \
     && apt-get clean
 
 # Python 라이브러리 설치
@@ -33,6 +34,8 @@ COPY entrypoint.sh /tmp/entrypoint.sh
 # 실행 권한 부여
 RUN chmod +x /tmp/create_graph.py 
 RUN chmod +x /tmp/entrypoint.sh
+RUN useradd -r nginx
+
 
 # 시작 스크립트 설정
 ENTRYPOINT ["/tmp/entrypoint.sh"]

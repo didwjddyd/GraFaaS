@@ -1,40 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-proxy
+  name: grafaas-proxy
   namespace: openfaas
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx-proxy
+      app: grafaas-proxy
   template:
     metadata:
       labels:
-        app: nginx-proxy
+        app: grafaas-proxy
     spec:
       hostPID: true
       containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: config-volume
-          mountPath: /etc/nginx
-      - name: tcpdump
-        image: jjhwan7099/tcpdump_grafaas:latest
+      - name: grafaas
+        image: jjhwan7099/grafaas:latest
         securityContext:
           capabilities:
-            add: ["SYS_PTRACE","SYS_PTRACE"]
+            add: ["SYS_PTRACE"]
           privileged: true
+        ports:
+        - containerPort: 80  # nginx가 사용하던 포트를 tcpdump 컨테이너에서 사용
         volumeMounts:
+        - name: config-volume
+          mountPath: /etc/nginx  # nginx 설정 파일을 tcpdump 컨테이너에 마운트
         - name: data-volume
           mountPath: /data
       volumes:
       - name: config-volume
         configMap:
-          name: nginx-configmap
+          name: nginx-configmap  # nginx 설정 파일을 tcpdump 컨테이너로 마운트
       - name: data-volume
         emptyDir: {}
+
 

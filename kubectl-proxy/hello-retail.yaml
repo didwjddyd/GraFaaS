@@ -31,9 +31,9 @@ functions:
       com.openfaas.scale.max: 5
       com.openfaas.scale.factor: 10
     environment:
-      URL_GETPRICE: 'http://nginx-proxy-service.openfaas.svc.cluster.local/function/product-purchase-get-price'
-      URL_AUTHORIZECC: 'http://nginx-proxy-service.openfaas.svc.cluster.local/function/product-purchase-authorize-cc'
-      URL_PUBLISH: 'http://nginx-proxy-service.openfaas.svc.cluster.local/function/product-purchase-publish'
+      URL_GETPRICE: 'http://grafaas-proxy-service.openfaas.svc.cluster.local/function/product-purchase-get-price'
+      URL_AUTHORIZECC: 'http://grafaas-proxy-service.openfaas.svc.cluster.local/function/product-purchase-authorize-cc'
+      URL_PUBLISH: 'http://grafaas-proxy-service.openfaas.svc.cluster.local/function/product-purchase-publish'
 
   product-purchase-get-price:
     lang: dockerfile

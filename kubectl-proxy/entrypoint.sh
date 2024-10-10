@@ -41,7 +41,7 @@ monitor_processes() {
     while true; do
         # index.js 프로세스의 PID 목록 추출
 	fwatchdog_pids=$(pgrep -f "fwatchdog")
-        pids=$(pgrep -f "node index.js")
+        pids=$(pgrep -f "index")
 
 	if [ -z "$fwatchdog_pids" ]; then
 	    sleep 0.1
@@ -96,7 +96,7 @@ monitor_processes() {
     done
 }
 
-
+nginx -g 'daemon off;' &
 
 # DebugFS 마운트
 mount_debugfs
