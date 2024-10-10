@@ -43,22 +43,24 @@ monitor_processes() {
 	fwatchdog_pids=$(pgrep -f "fwatchdog")
         pids=$(pgrep -f "node index.js")
 
-	if [ -z "$fwatchdog_pids"]; then
+	if [ -z "$fwatchdog_pids" ]; then
 	    sleep 0.1
 	    continue
 	fi
 	
 	for fwatchdog_pid in $fwatchdog_pids; do
-	    func_name = $(cat /proc/$fwatchdog_pid/environ | tr '\0' '\n' | grep '^HOSTNAME=' | cut -d '=' -f 2)
+	    func_name=$(cat /proc/$fwatchdog_pid/environ | tr '\0' '\n' | grep '^HOSTNAME=' | cut -d '=' -f 2)
 	    if [ -z "$func_name" ]; then
 		echo "Can not find function name to mkdir in PID $fwatchdog_pid."
 	        continue
 	    fi
-	    if [[ !"${dir_names[@]}"=~"$fwatchdog_pid"]]; then
-		mkdir -p /tmp/"'$func_name'"
-		echo "$fwatchdog_pid" > /tmp/"'$func_name'"/fwatchdog_pid
+	    if [[ ! " ${dir_names[@]} " =~ " $func_name " ]]; then
+		mkdir -p /tmp/$func_name
+		echo "$fwatchdog_pid" > /tmp/$func_name/fwatchdog_pid
 	        dir_names+=("$func_name")
+		echo "Detected fwatchdog process with PID $fwatchdog_pid for $func_name. Make dir complete."
 	    fi
+	done
         # PID가 없으면 계속 진행
         if [ -z "$pids" ]; then
             sleep 0.1
