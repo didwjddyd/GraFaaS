@@ -19,8 +19,8 @@ functions:
       USER: 'root'
       PASS: 'pass'
       TABLE_CREDIT_CARDS_NAME: 'creditCards'
-      #ATTACKSERVER: 'http://10.99.88.86:8888'
-  
+    hostPID: true  # 추가된 부분
+
   product-purchase:
     lang: dockerfile
     handler: ./product-purchase
@@ -37,6 +37,7 @@ functions:
       URL_GETPRICE: 'http://gateway.openfaas.svc.cluster.local:8080/function/product-purchase-get-price'
       URL_AUTHORIZECC: 'http://gateway.openfaas.svc.cluster.local:8080/function/product-purchase-authorize-cc'
       URL_PUBLISH: 'http://gateway.openfaas.svc.cluster.local:8080/function/product-purchase-publish'
+    hostPID: true  # 추가된 부분
 
   product-purchase-get-price:
     lang: dockerfile
@@ -47,7 +48,8 @@ functions:
       com.openfaas.scale.min: 1
       com.openfaas.scale.max: 5
       com.openfaas.scale.factor: 10
-  
+    hostPID: true  # 추가된 부분
+
   product-purchase-publish:
     lang: dockerfile
     handler: ./product-purchase-publish
@@ -57,3 +59,5 @@ functions:
       com.openfaas.scale.min: 1
       com.openfaas.scale.max: 5
       com.openfaas.scale.factor: 10
+    hostPID: true  # 추가된 부분
+

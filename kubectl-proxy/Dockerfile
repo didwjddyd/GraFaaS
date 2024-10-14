@@ -31,9 +31,11 @@ RUN pip3 install --break-system-packages scapy \
 COPY create_graph.py /tmp/create_graph.py
 COPY entrypoint.sh /tmp/entrypoint.sh
 COPY k8s_services_info /tmp/k8s_services_info
+COPY Catch_clone.awk /tmp/Catch_clone.awk
 # 실행 권한 부여
 RUN chmod +x /tmp/create_graph.py 
 RUN chmod +x /tmp/entrypoint.sh
+RUN chmod +x /tmp/Catch_clone.awk
 RUN useradd -r nginx
 
 
