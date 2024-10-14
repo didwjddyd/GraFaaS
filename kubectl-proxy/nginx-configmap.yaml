@@ -12,6 +12,10 @@ data:
     }
 
     http {
+        log_format custom '$remote_addr - $host [$time_local] "$request" '
+                          '$status $body_bytes_sent "$http_referer" "$http_user_agent" '
+                          '$http_x_forwarded_for $http_x_real_ip $http_x_forwarded_proto';
+        access_log /var/log/nginx/access.log custom;
         sendfile on;
 
         upstream openfaas {

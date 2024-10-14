@@ -4,11 +4,16 @@
 NAMESPACE="openfaas-fn"
 IMAGE_NAME="jjhwan7099/grafaas:latest"
 
+echo "NAME: CLUSTER-IP: PORT/PROTOCOL" > k8s_services_info
+kubectl get svc --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}: {.spec.clusterIP}: {range .spec.ports[*]}{.port}/{.protocol} {" "}{end}{"\n"}{end}' >> k8s_services_info
+
 # Build the Docker image
 docker build --network=host -t  $IMAGE_NAME . || { echo "Docker build failed"; exit 1; }
 
 # Push the Docker image
 docker push $IMAGE_NAME || { echo "Docker push failed"; exit 1; }
+
+rm k8s_services_info
 
 kubectl delete -f nginx-configmap.yaml -n openfaas
 kubectl delete -f nginx-deployment.yaml -n openfaas
