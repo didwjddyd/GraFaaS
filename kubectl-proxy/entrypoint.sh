@@ -2,50 +2,125 @@
 
 # DebugFS 마운트
 mount_debugfs() {
-    # /sys/kernel/debug 디렉토리가 존재하지 않는 경우
     if [ ! -d "/sys/kernel/debug" ]; then
         mkdir -p /sys/kernel/debug
     fi
-    
-    # DebugFS 마운트
     mount -t debugfs none /sys/kernel/debug
 }
 
 # TCPDump를 백그라운드에서 실행하는 함수
 start_tcpdump() {
-    # 포트 80의 패킷을 캡처합니다.
     tcpdump -i eth0 'tcp port 80' -w /tmp/tcpdump.pcap &
     TCPDUMP_PID=$!
     echo "Started tcpdump with PID: $TCPDUMP_PID"
 }
 
-# strace를 백그라운드에서 실행하는 함수
+# `clone()` 호출을 처리하는 함수
+process_clone_calls() {
+    local logfile=$1
+    local log_dir=$2
+    echo "Monitoring clone() calls in $logfile"
+
+    # 로그 파일을 모니터링
+    tail -F "$logfile" | while read -r line; do
+        if [[ "$line" == *"clone("* ]]; then
+            # `clone()`의 반환값 추출
+            retval=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
+            echo "$retval"
+            
+            # `clone_pid` 파일에 추가
+            echo "$retval" >> "$log_dir/clone_pid"
+        fi
+    done 
+}
+
+map_pid_clone() {
+
+    for log_dir in /tmp/*/; do
+        if [[ -f "$log_dir/clone_pid" ]]; then
+            echo "Processing clone_pids for $log_dir"
+            local clone_pids=$(cat "$log_dir/clone_pid")
+            local log_file_numbers=()
+
+            # log_file_numbers를 최근 생성 순서대로 정렬
+            log_file_numbers=($(ls -lt --time=birth "$log_dir"/*.log.* 2>/dev/null | awk '{print $9}' | sed 's/.*\.log\.//'))
+
+            # log_file_numbers 개수 계산
+            local log_count=${#log_file_numbers[@]}
+            local clone_pids_count=$(wc -l < "$log_dir/clone_pid")
+            # clone_pids는 원래 순서대로 처리
+            local index=0
+            for retval in $clone_pids; do
+                # log_file_numbers를 역순으로 접근
+                reverse_index=$(($clone_pids_count-$index-1))
+                echo "index: $index, $clone_pids_count : $reverse_index = ${log_file_numbers[reverse_index]}"
+                if [[ -n "${log_file_numbers[reverse_index]}" ]]; then
+                    log_file_number="${log_file_numbers[reverse_index]}"
+                    echo "$retval/$log_file_number" >> "$log_dir/tid_info.txt"
+                    ((index++))
+                else
+                    break
+                fi
+            done
+        fi
+        > "$log_dir/clone_pid"
+    done
+
+}
+
+monitor_nginx_requests() {
+    local log_file="/var/log/nginx/access.log"
+    local last_checked_line=0
+
+    echo "Monitoring Nginx requests in $log_file..."
+
+    while true; do
+        if [[ -f "$log_file" ]]; then
+            total_lines=$(wc -l < "$log_file")
+
+            if (( total_lines > last_checked_line )); then
+                new_requests=$(tail -n +$((last_checked_line + 1)) "$log_file")
+                
+                while read -r line; do
+                    status_code=$(echo "$line" | awk '{print $9}')
+
+                    if [[ "$status_code" -ge 200 && "$status_code" -lt 300 ]]; then
+                        echo "detect $status_code"
+                        test_dir=/tmp/product-purchase-86cd6d9484-gdnc9
+                        echo "Current clone_pids for $test_dir:"
+                        cat "$test_dir/clone_pid"
+                        map_pid_clone &
+                    fi
+                done <<< "$new_requests"
+
+                last_checked_line=$total_lines
+            fi
+        fi
+        sleep 1
+    done
+}
+
 start_strace() {
     TARGET_PID=$1
     CONTAINER_NAME=$2
 
-    # 컨테이너 이름에서 마지막 두 단어를 제거
     LOG_NAME=$(echo "$CONTAINER_NAME" | awk -F- '{OFS="-"; NF-=2; print}')
     
     strace -ttt -q -o /tmp/${CONTAINER_NAME}/${LOG_NAME}_syscalls.log -e trace=execve,fork,clone,open,socket,bind,listen,accept4,connect,sendto,recvfrom,chmod,chown,access,unlink,unlinkat -ff -p $TARGET_PID &
     STRACE_PID=$!
+    echo "node index.js/$TARGET_PID" >> /tmp/${CONTAINER_NAME}/tid_info.txt
     echo -e "Started strace for *$CONTAINER_NAME* with PID: $STRACE_PID at PID: $TARGET_PID \n"
 }
 
-# 프로세스 상태를 감시하는 함수
 monitor_processes() {
-    # 이미 strace를 시작한 PID를 저장할 배열
     declare -a traced_pids
     declare -a dir_names
-    touch /tmp/test.txt
-    # 무한 루프를 돌며 프로세스를 감시
+
     while true; do
-        # fwatchdog와 index.js 프로세스의 PID 목록 추출
         fwatchdog_pids=$(pgrep -f "fwatchdog")
         pids=$(pgrep -f "index")
 
         if [ -z "$fwatchdog_pids" ]; then
-            sleep 0.05
             continue
         fi
         
@@ -58,22 +133,21 @@ monitor_processes() {
             
             if [[ ! " ${dir_names[@]} " =~ " $func_name " ]]; then
                 LOG_DIR="/tmp/${func_name}"
-                OUTPUT_FILE="/tmp/test.txt"
                 mkdir -p "$LOG_DIR"
                 
-                LOG_NAME=$(echo "$func_name" | awk -F- '{OFS="-"; NF-=2; print}')
-                
                 {
-                    # inotifywait로 새로운 로그 파일 생성 감지
-                    inotifywait -m -e create "$LOG_DIR" --format '%f' |
-                    while read NEW_LOG_FILE; do
-                        echo "New log file detected: $LOG_DIR/$NEW_LOG_FILE"
-                        if [[ $NEW_LOG_FILE == ${LOG_NAME}_syscalls.log.* ]]; then
-                            # tail -f로 새로운 로그 파일을 모니터링합니다.
-                            {
-                                tail -f "$LOG_DIR/$NEW_LOG_FILE" | awk -v log_dir="$LOG_DIR" -v output_file="/tmp/test.txt" -f /tmp/Catch_clone.awk
-                            } &
+                    for logfile in $LOG_DIR/*.log*; do
+                        if [ -f "$logfile" ]; then
+                            process_clone_calls "$logfile" "$LOG_DIR" &
+                        fi
+                    done
+                }&
 
+                {
+                    inotifywait -m -e create --format '%w%f' "$LOG_DIR" | while read newfile; do
+                        if [[ "$newfile" == *.log* ]]; then
+                            echo "New log file detected: $newfile"
+                            process_clone_calls "$newfile" "$LOG_DIR" &
                         fi
                     done
                 } &
@@ -83,52 +157,40 @@ monitor_processes() {
                 echo -e "\nDetected fwatchdog process with PID $fwatchdog_pid for *$func_name*. Make dir complete."
             fi
         done
-        
-        # PID가 없으면 계속 진행
+
         if [ -z "$pids" ]; then
-            sleep 0.05
             continue
         fi
         
         for pid in $pids; do
             func_name=$(cat /proc/$pid/environ | tr '\0' '\n' | grep '^HOSTNAME=' | cut -d '=' -f 2)
 
-            # func_name이 없으면 무시하고 다음 PID로 이동
             if [ -z "$func_name" ]; then
                 echo "PID $pid에서 HOSTNAME을 찾을 수 없습니다."
                 continue
             fi
 
-            # strace PID 확인
             STRACE_PID=$(pgrep -f "strace -ttt -p $pid")
             if [ -z "$STRACE_PID" ]; then
-                # strace가 실행 중이지 않은 경우
                 if [[ ! " ${traced_pids[@]} " =~ " $pid " && -d "$LOG_DIR" ]]; then
                     echo "Detected new process with PID $pid for *$func_name*. Starting strace..."
-                    # strace 실행
                     start_strace $pid "$func_name"
                     traced_pids+=("$pid")
                 fi
             fi
         done
 
-        # 0.05초마다 반복
-        sleep 0.05
+        sleep 0.01
     done
 }
 
 nginx -g 'daemon off;' &
 
-# DebugFS 마운트
 mount_debugfs
-
-# TCPDump 시작
 start_tcpdump
-
-# 프로세스 감시 함수 호출
+monitor_nginx_requests &
 monitor_processes &
 
-# 무한 루프를 돌며 프로세스 상태를 감시
 while true; do
     if ! kill -0 $TCPDUMP_PID 2>/dev/null; then
         echo "tcpdump process has exited. Restarting..."
