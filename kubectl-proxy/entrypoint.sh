@@ -180,7 +180,7 @@ monitor_processes() {
             fi
         done
 
-        sleep 0.01
+        sleep 0.05
     done
 }
 
