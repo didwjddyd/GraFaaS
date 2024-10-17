@@ -1,0 +1,14 @@
+1729142319.965761 accept4(18, NULL, NULL, SOCK_CLOEXEC|SOCK_NONBLOCK) = 19
+1729142320.021835 accept4(18, NULL, NULL, SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+1729142320.116984 open("/home/app/node_modules/iconv-lite/encodings/package.json", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+1729142320.118679 open("/home/app/node_modules/iconv-lite/encodings/index.js", O_RDONLY|O_CLOEXEC) = 20
+1729142320.123384 open("/home/app/node_modules/iconv-lite/encodings/internal.js", O_RDONLY|O_CLOEXEC) = 20
+1729142320.133152 open("/home/app/node_modules/iconv-lite/encodings/utf16.js", O_RDONLY|O_CLOEXEC) = 20
+1729142320.138691 open("/home/app/node_modules/iconv-lite/encodings/utf7.js", O_RDONLY|O_CLOEXEC) = 20
+1729142320.147656 open("/home/app/node_modules/iconv-lite/encodings/sbcs-codec.js", O_RDONLY|O_CLOEXEC) = 20
+1729142320.152974 open("/home/app/node_modules/iconv-lite/encodings/sbcs-data.js", O_RDONLY|O_CLOEXEC) = 20
+1729142320.158531 open("/home/app/node_modules/iconv-lite/encodings/sbcs-data-generated.js", O_RDONLY|O_CLOEXEC) = 20
+1729142320.165000 open("/home/app/node_modules/iconv-lite/encodings/dbcs-codec.js", O_RDONLY|O_CLOEXEC) = 20
+1729142320.171268 open("/home/app/node_modules/iconv-lite/encodings/dbcs-data.js", O_RDONLY|O_CLOEXEC) = 20
+1729142320.340462 open("/etc/localtime", O_RDONLY|O_NONBLOCK|O_CLOEXEC) = 20
+1729142320.341495 open("/usr/share/zoneinfo/", O_RDONLY|O_CLOEXEC|O_DIRECTORY) = -1 ENOENT (No such file or directory)

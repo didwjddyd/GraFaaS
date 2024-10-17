@@ -15,50 +15,119 @@ start_tcpdump() {
     echo "Started tcpdump with PID: $TCPDUMP_PID"
 }
 
+detect_accept4_socket_info() {
+    log_file=$1
+    function_name=$2
+    pid=$3
+    tail -F "$logfile" | while read -r line; do
+        if [[ "$line" == *"accept4"* ]]; then
+            # 반환된 파일 디스크립터 추출
+            FD=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
+
+            echo "Detected accept4 syscall with FD: $FD"
+
+            # 파일 디스크립터의 실제 파일 확인
+            SOCKET_LINK=$(readlink /proc/$PID/fd/$FD)
+            if [[ $SOCKET_LINK =~ socket:\[(.*)\] ]]; then
+                INODE=${BASH_REMATCH[1]}
+                echo "Inode: $INODE"
+
+                # /proc/net/tcp에서 해당 inode에 대한 정보 검색
+                SOCKET_INFO=$(grep -w $INODE /proc/net/tcp)
+                if [ ! -z "$SOCKET_INFO" ]; then
+                    # 네트워크 연결 정보 파싱 (ex. Remote IP와 포트)
+                    REMOTE_IP_HEX=$(echo $SOCKET_INFO | awk '{print $3}' | cut -d':' -f1)
+                    REMOTE_PORT_HEX=$(echo $SOCKET_INFO | awk '{print $3}' | cut -d':' -f2)
+
+                    # IP 주소 및 포트를 사람이 읽을 수 있는 형식으로 변환
+                    REMOTE_IP=$(printf "%d.%d.%d.%d\n" $(echo $REMOTE_IP_HEX | sed 's/../0x& /g'))
+                    REMOTE_PORT=$(printf "%d\n" 0x$REMOTE_PORT_HEX)
+
+                    echo "Remote IP: $REMOTE_IP"
+                    echo "Remote Port: $REMOTE_PORT"
+                else
+                    echo "No information found in /proc/net/tcp for inode: $INODE"
+                fi
+            else
+                echo "No socket information found for FD: $FD"
+            fi
+        fi
+    done 
+}
+
 monitor_accept4_socket_info() {
     pid=$1
     echo "$pid *******"
-    # /proc/<pid>/fd 디렉토리를 감시
-    inotifywait -m -e create --format '%f' "/proc/$pid/fd" | while read fd; do
-        echo "FD created: $fd"  # 로그 추가
-        sleep 0.01  # 약간의 지연 추가
+    {
+        declare -A seen_fds
 
-        # 해당 fd가 소켓인지 확인
-        link_target=$(readlink "/proc/$pid/fd/$fd")
+        while true; do
+            current_fds=($(ls -l /proc/$pid/fd | awk '{print $9}'))
 
-        echo "$fd detected, link target: $link_target"  # 추가 로그
-        # 소켓인지 확인 (socket:로 시작하는지)
-        if [[ "$link_target" == socket:* ]]; then
-            echo "Socket detected: $link_target"  # 로그 추가
-            # 소켓 inode 추출
-            inode=$(echo "$link_target" | grep -oP '(?<=socket:\[)\d+(?=\])')
-
-            # /proc/net/tcp 파일에서 inode와 일치하는 소켓 정보 찾기
-            if [[ -n "$inode" ]]; then
-                socket_info=$(grep -w "$inode" /proc/net/tcp)
-
-                if [[ -n "$socket_info" ]]; then
-                    # 소켓 정보 파싱
-                    local_ip_port=$(echo "$socket_info" | awk '{print $2}')
-                    remote_ip_port=$(echo "$socket_info" | awk '{print $3}')
-
-                    # IP와 포트를 사람이 읽을 수 있는 형식으로 변환
-                    local_ip=$(echo "$local_ip_port" | cut -d':' -f1 | sed 's/../&:/g;s/:$//' | xxd -r -p | hexdump -e '4/1 "%d."')
-                    local_ip=${local_ip%?}
-                    local_port=$(printf "%d" 0x$(echo "$local_ip_port" | cut -d':' -f2))
-
-                    remote_ip=$(echo "$remote_ip_port" | cut -d':' -f1 | sed 's/../&:/g;s/:$//' | xxd -r -p | hexdump -e '4/1 "%d."')
-                    remote_ip=${remote_ip%?}
-                    remote_port=$(printf "%d" 0x$(echo "$remote_ip_port" | cut -d':' -f2))
-
-                    # 소켓의 원격 IP와 포트 출력
-                    echo "FD: $fd, Remote IP: $remote_ip, Remote Port: $remote_port"
-                else
-                    echo "No matching socket info found for inode: $inode"
+            for fd in "${current_fds[@]}"; do
+                # fd가 존재하지 않으면 continue
+                if [ -z "$fd" ]; then
+                    continue
                 fi
-            fi
-        fi
-    done
+                
+                if [[ -z "${seen_fds[$fd]}" ]]; then
+                    echo "FD created: $fd"
+
+                    # 해당 fd가 소켓인지 확인
+                    link_target=$(readlink "/proc/$pid/fd/$fd")
+
+                    echo "pid: $pid ,,, $fd detected, link target: $link_target"
+                    if [[ "$link_target" == socket:* ]]; then
+                        echo "Socket detected: $link_target Pid: $pid"
+
+                        # 소켓 inode 추출
+                        inode=$(echo "$link_target" | grep -oP '(?<=socket:\[)\d+(?=\])')
+
+                        # /proc/net/tcp 파일에서 inode와 일치하는 소켓 정보 찾기
+                        if [[ -n "$inode" ]]; then
+                            socket_info=$(grep -w "$inode" /proc/$pid/net/tcp6 /proc/$pid/net/tcp)  # 여기서 경로를 /proc/net/tcp로 유지
+
+                            if [[ -n "$socket_info" ]]; then
+                                # 소켓 정보 파싱
+                                
+
+                                # # IPv6를 IPv4로 변환하는 부분은 local_ip_port=$(echo "$socket_info" | awk '{print $2}')
+                                remote_ip_port=$(echo "$socket_info" | awk '{print $3}')
+
+                                # IP와 포트를 사람이 읽을 수 있는 형식으로 변환
+                                local_ip=$(echo "$local_ip_port" | cut -d':' -f1 | sed 's/../&:/g;s/:$//' | xxd -r -p | od -An -tx1 | tr -d ' \n' | sed 's/\(..\)/\1:/g;s/:$//')
+                                local_port=$(printf "%d" 0x$(echo "$local_ip_port" | cut -d':' -f2))
+
+                                remote_ip=$(echo "$remote_ip_port" | cut -d':' -f1 | sed 's/../&:/g;s/:$//' | xxd -r -p | od -An -tx1 | tr -d ' \n' | sed 's/\(..\)/\1:/g;s/:$//')
+                                remote_port=$(printf "%d" 0x$(echo "$remote_ip_port" | cut -d':' -f2))그대로 유지
+                                if [[ "$remote_ip" == "::ffff:"* ]]; then
+                                    remote_ip="${remote_ip#::ffff:}"  # Remove ::ffff: prefix
+                                    remote_ip=$(echo "$remote_ip" | sed 's/:/./g')
+                                fi
+
+                                # 소켓의 원격 IP와 포트 출력
+                                echo "$(date '+%Y-%m-%d %H:%M:%S') FD: $fd, Remote IP: $remote_ip, Remote Port: $remote_port"
+                            else
+                                echo "$(date '+%Y-%m-%d %H:%M:%S') No matching socket info found for inode: $inode"
+                            fi
+                        fi
+                    fi
+
+                    # FD를 seen_fds 배열에 추가
+                    seen_fds[$fd]=1
+                fi
+            done
+
+            # 삭제된 FD 확인
+            for fd in "${!seen_fds[@]}"; do
+                if [[ ! " ${current_fds[*]} " =~ " $fd " ]]; then
+                    echo "FD removed: $fd"
+                    unset seen_fds[$fd]
+                fi
+            done
+            sleep 0.01
+        done
+    } &
 }
 
 
@@ -69,8 +138,9 @@ process_clone_calls() {
     echo "Monitoring clone() calls in $logfile"
 
     # 로그 파일을 모니터링
+    {
     tail -F "$logfile" | while read -r line; do
-        if [[ "$line" == *"clone("* ]]; then
+            if [[ "$line" == *"clone("* ]]; then
             # `clone()`의 반환값 추출
             retval=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
             echo "$retval"
@@ -78,43 +148,97 @@ process_clone_calls() {
             # `clone_pid` 파일에 추가
             echo "$retval" >> "$log_dir/clone_pid"
         fi
-        # if [[ "$line" == *"accept4"* ]]; then
-        #     # 반환된 파일 디스크립터 추출
-        #     FD=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
+    done
+    }&
+    {
+    tail -F "$logfile" | while read -r line; do
+        if [[ "$line" == *"accept4"* ]]; then
+            # 반환된 파일 디스크립터 추출
+            FD=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
+            echo "Detected accept4 syscall with FD: $FD"
 
-        #     echo "Detected accept4 syscall with FD: $FD"
+            #PID 추출
+            pid=$(basename "$logfile" | sed 's/[^0-9]*//g')
 
-        #     # 파일 디스크립터의 실제 파일 확인
-        #     SOCKET_LINK=$(readlink /proc/$PID/fd/$FD)
-        #     if [[ $SOCKET_LINK =~ socket:\[(.*)\] ]]; then
-        #         INODE=${BASH_REMATCH[1]}
-        #         echo "Inode: $INODE"
+            # 파일 디스크립터의 실제 파일 확인
+            SOCKET_LINK=$(readlink /proc/$pid/fd/$FD)
+            if [[ $SOCKET_LINK =~ socket:\[(.*)\] ]]; then
+                INODE=${BASH_REMATCH[1]}
+                echo "Inode: $INODE"
 
-        #         # /proc/net/tcp에서 해당 inode에 대한 정보 검색
-        #         SOCKET_INFO=$(grep -w $INODE /proc/net/tcp)
-        #         if [ ! -z "$SOCKET_INFO" ]; then
-        #             # 네트워크 연결 정보 파싱 (ex. Remote IP와 포트)
-        #             REMOTE_IP_HEX=$(echo $SOCKET_INFO | awk '{print $3}' | cut -d':' -f1)
-        #             REMOTE_PORT_HEX=$(echo $SOCKET_INFO | awk '{print $3}' | cut -d':' -f2)
+                SOCKET_INFO=$(grep -w "$INODE" /proc/"$pid"/net/tcp6 /proc/"$pid"/net/tcp)
+                echo "$SOCKET_INFO"
 
-        #             # IP 주소 및 포트를 사람이 읽을 수 있는 형식으로 변환
-        #             REMOTE_IP=$(printf "%d.%d.%d.%d\n" $(echo $REMOTE_IP_HEX | sed 's/../0x& /g'))
-        #             REMOTE_PORT=$(printf "%d\n" 0x$REMOTE_PORT_HEX)
+                if [ ! -z "$SOCKET_INFO" ]; then
+                    # IP:PORT 쌍 추출
+                    pairs=$(echo "$SOCKET_INFO" | grep -oE '([0-9a-fA-F:]+):([0-9A-Fa-f]+)')
 
-        #             echo "Remote IP: $REMOTE_IP"
-        #             echo "Remote Port: $REMOTE_PORT"
-        #         else
-        #             echo "No information found in /proc/net/tcp for inode: $INODE"
-        #         fi
-        #     else
-        #         echo "No socket information found for FD: $FD"
-        #     fi
-        # fi
+                    # 결과를 저장할 변수 초기화
+                    LOCAL_IP_PORT=""
+                    REMOTE_IP_PORT=""
+
+                    # 인덱스 초기화
+                    index=0
+
+                    # IP:PORT 쌍을 반복하며 변환 (앞의 2개만 사용)
+                    for pair in $pairs; do
+                        if [ $index -ge 2 ]; then
+                            break
+                        fi
+
+                        # IP와 포트 분리
+                        IFS=':' read -r ip port <<< "$pair"
+
+                        # IPv6에서 IPv4로 변환
+                        if [[ "$ip" == *"FFFF"* ]]; then
+                            # FFFF 기준으로 분리
+                            ip=$(echo "$ip" | sed 's/^.*FFFF//')  # FFFF 이후의 부분만 남기기
+                        fi
+
+                        # IP 변환
+                        i4=$(echo "$ip" | cut -c 5-6)   # 01
+                        i3=$(echo "$ip" | cut -c 7-8)   # 00
+                        i2=$(echo "$ip" | cut -c 9-10)   # 00
+                        i1=$(echo "$ip" | cut -c 11-12)   # 7F
+
+                        # 10진수로 변환
+                        ip_dec="$((16#$i1)).$((16#$i2)).$((16#$i3)).$((16#$i4))"  # 1.0.0.127
+
+                        # 포트 변환 (16진수를 10진수로)
+                        port_dec=$((16#$port))  # 16진수를 10진수로 변환
+                        if [ $? -ne 0 ]; then
+                            echo "Error converting port: $port"
+                            continue
+                        fi
+
+                        # 결과를 변수에 저장
+                        if [ $index -eq 0 ]; then
+                            LOCAL_IP_PORT="$ip_dec:$port_dec"
+                        else
+                            REMOTE_IP_PORT="$ip_dec:$port_dec"
+                        fi
+
+                        # 인덱스 증가
+                        index=$((index + 1))
+                    done
+
+                    # 결과 출력
+                    echo "LOCAL_IP_PORT: $LOCAL_IP_PORT"
+                    echo "REMOTE_IP_PORT: $REMOTE_IP_PORT"
+
+                else
+                    echo "No information found in /proc/net/tcp for inode: $INODE"
+                fi
+
+            else
+                echo "No socket information found for FD: $FD"
+            fi
+        fi
     done 
+    }&
 }
 
 map_pid_clone() {
-
     for log_dir in /tmp/*/; do
         if [[ -f "$log_dir/clone_pid" ]]; then
             echo "Processing clone_pids for $log_dir"
@@ -182,7 +306,7 @@ start_strace() {
 
     LOG_NAME=$(echo "$CONTAINER_NAME" | awk -F- '{OFS="-"; NF-=2; print}')
     
-    strace -ttt -q -o /tmp/${CONTAINER_NAME}/${LOG_NAME}_syscalls.log -e trace=execve,fork,clone,open,socket,bind,listen,accept4,connect,sendto,recvfrom,chmod,chown,access,unlink,unlinkat -ff -p $TARGET_PID &
+    strace -ttt -q -o /tmp/${CONTAINER_NAME}/${LOG_NAME}_syscalls.log -s 1024 -e trace=execve,fork,clone,open,socket,bind,listen,accept4,connect,sendto,recvfrom,chmod,chown,access,unlink,unlinkat -ff -p $TARGET_PID &
     STRACE_PID=$!
     echo "node index.js/$TARGET_PID" >> /tmp/${CONTAINER_NAME}/tid_info.txt
     echo -e "Started strace for *$CONTAINER_NAME* with PID: $STRACE_PID at PID: $TARGET_PID \n"
@@ -251,7 +375,7 @@ monitor_processes() {
                 if [[ ! " ${traced_pids[@]} " =~ " $pid " && -d "$LOG_DIR" ]]; then
                     echo "Detected new process with PID $pid for *$func_name*. Starting strace..."
                     start_strace $pid "$func_name"
-                    monitor_accept4_socket_info $pid &
+                    # monitor_accept4_socket_info $pid &
                     traced_pids+=("$pid")
                 fi
             fi
