@@ -136,6 +136,7 @@ process_clone_calls() {
     local logfile=$1
     local log_dir=$2
     echo "Monitoring clone() calls in $logfile"
+    pid=$(basename "$logfile" | sed 's/[^0-9]*//g')
     INODE=""
     # 로그 파일을 모니터링
     tail -F "$logfile" | while read -r line; do
@@ -147,9 +148,9 @@ process_clone_calls() {
             # `clone_pid` 파일에 추가
             echo "$retval" >> "$log_dir/clone_pid"
         elif [[ "$line" == *"bind"* ]]; then
-            pid=$(basename "$logfile" | sed 's/[^0-9]*//g')
             BIND_FD=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
             ((BIND_FD++))
+            echo "$BIND_FD will be capture"
             while true; do
                 sleep 0.05
                 if [[ -e /proc/$pid/fd/$BIND_FD ]]; then
