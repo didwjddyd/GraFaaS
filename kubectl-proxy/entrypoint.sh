@@ -138,21 +138,16 @@ process_clone_calls() {
     echo "Monitoring clone() calls in $logfile"
 
     # 로그 파일을 모니터링
-    {
     tail -F "$logfile" | while read -r line; do
-            if [[ "$line" == *"clone("* ]]; then
+        echo "$line"
+        if [[ "$line" == *"clone("* ]]; then
             # `clone()`의 반환값 추출
             retval=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
             echo "$retval"
             
             # `clone_pid` 파일에 추가
             echo "$retval" >> "$log_dir/clone_pid"
-        fi
-    done
-    }&
-    {
-    tail -F "$logfile" | while read -r line; do
-        if [[ "$line" == *"accept4"* ]]; then
+        else if [[ "$line" == *"accept4"* ]]; then
             # 반환된 파일 디스크립터 추출
             FD=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
             echo "Detected accept4 syscall with FD: $FD"
@@ -235,7 +230,6 @@ process_clone_calls() {
             fi
         fi
     done 
-    }&
 }
 
 map_pid_clone() {
