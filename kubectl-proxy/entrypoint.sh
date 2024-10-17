@@ -147,7 +147,7 @@ process_clone_calls() {
             
             # `clone_pid` 파일에 추가
             echo "$retval" >> "$log_dir/clone_pid"
-        else if [[ "$line" == *"accept4"* ]]; then
+        elif [[ "$line" == *"accept4"* ]]; then
             # 반환된 파일 디스크립터 추출
             FD=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
             echo "Detected accept4 syscall with FD: $FD"
