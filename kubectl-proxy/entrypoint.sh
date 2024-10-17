@@ -21,7 +21,7 @@ monitor_accept4_socket_info() {
     # /proc/<pid>/fd 디렉토리를 감시
     inotifywait -m -e create --format '%f' "/proc/$pid/fd" | while read fd; do
         echo "FD created: $fd"  # 로그 추가
-        sleep 0.1  # 약간의 지연 추가
+        sleep 0.01  # 약간의 지연 추가
 
         # 해당 fd가 소켓인지 확인
         link_target=$(readlink "/proc/$pid/fd/$fd")
