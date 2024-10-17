@@ -17,7 +17,7 @@ start_tcpdump() {
 
 monitor_accept4_socket_info() {
     pid=$1
-
+    echo "$pid *******"
     # /proc/<pid>/fd 디렉토리를 감시
     inotifywait -m -e create --format '%f' "/proc/$pid/fd" | while read fd; do
         echo "FD created: $fd"  # 로그 추가
