@@ -1,0 +1,13 @@
+NAME: CLUSTER-IP: PORT/PROTOCOL
+kubernetes: 10.96.0.1: 443/TCP  
+kube-dns: 10.96.0.10: 53/UDP  53/TCP  9153/TCP  
+product-purchase: 10.108.38.37: 8080/TCP  
+product-purchase-authorize-cc: 10.109.182.216: 8080/TCP  
+product-purchase-get-price: 10.98.31.186: 8080/TCP  
+product-purchase-publish: 10.106.147.125: 8080/TCP  
+alertmanager: 10.111.89.125: 9093/TCP  
+gateway: 10.111.72.12: 8080/TCP  
+gateway-external: 10.102.214.51: 8080/TCP  
+grafaas-proxy-service: 10.101.113.199: 80/TCP  
+nats: 10.105.216.33: 4222/TCP  
+prometheus: 10.104.5.180: 9090/TCP  
