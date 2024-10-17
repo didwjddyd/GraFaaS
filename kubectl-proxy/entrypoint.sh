@@ -136,7 +136,7 @@ process_clone_calls() {
     local logfile=$1
     local log_dir=$2
     echo "Monitoring clone() calls in $logfile"
-
+    INODE=""
     # 로그 파일을 모니터링
     tail -F "$logfile" | while read -r line; do
         echo "$line"
@@ -144,93 +144,102 @@ process_clone_calls() {
             # `clone()`의 반환값 추출
             retval=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
             echo "$retval"
-            
             # `clone_pid` 파일에 추가
             echo "$retval" >> "$log_dir/clone_pid"
+        elif [[ "$line" == *"bind"* ]]; then
+            pid=$(basename "$logfile" | sed 's/[^0-9]*//g')
+            BIND_FD=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
+            ((BIND_FD++))
+            while true; do
+                sleep 0.05
+                if [[ -e /proc/$pid/fd/$BIND_FD ]]; then
+                    SOCKET_LINK=$(readlink /proc/$pid/fd/$BIND_FD)
+                    if [[ $SOCKET_LINK =~ socket:\[(.*)\] ]]; then
+                        INODE=${BASH_REMATCH[1]}
+                        break
+                    fi
+                fi
+            done
         elif [[ "$line" == *"accept4"* ]]; then
             # 반환된 파일 디스크립터 추출
-            FD=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
-            echo "Detected accept4 syscall with FD: $FD"
+            # FD=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
+            # echo "Detected accept4 syscall with FD: $FD"
 
-            #PID 추출
-            pid=$(basename "$logfile" | sed 's/[^0-9]*//g')
+            # PID 추출
+            # pid=$(basename "$logfile" | sed 's/[^0-9]*//g')
 
             # 파일 디스크립터의 실제 파일 확인
-            SOCKET_LINK=$(readlink /proc/$pid/fd/$FD)
-            if [[ $SOCKET_LINK =~ socket:\[(.*)\] ]]; then
-                INODE=${BASH_REMATCH[1]}
-                echo "Inode: $INODE"
+            # SOCKET_LINK=$(readlink /proc/$pid/fd/$FD)
+            # if [[ $SOCKET_LINK =~ socket:\[(.*)\] ]]; then
+                # INODE=${BASH_REMATCH[1]}
+                # echo "Inode: $INODE"
 
-                SOCKET_INFO=$(grep -w "$INODE" /proc/"$pid"/net/tcp6 /proc/"$pid"/net/tcp)
-                echo "$SOCKET_INFO"
+                # 직접 /proc/<pid>/net/tcp에 접근하여 inode 정보 찾기
+            SOCKET_INFO=$(grep -w "$INODE" /proc/"$pid"/net/tcp /proc/"$pid"/net/tcp6)
 
-                if [ ! -z "$SOCKET_INFO" ]; then
-                    # IP:PORT 쌍 추출
-                    pairs=$(echo "$SOCKET_INFO" | grep -oE '([0-9a-fA-F:]+):([0-9A-Fa-f]+)')
+            if [ ! -z "$SOCKET_INFO" ]; then
+                # IP:PORT 쌍 추출
+                pairs=$(echo "$SOCKET_INFO" | grep -oE '([0-9a-fA-F:]+):([0-9A-Fa-f]+)')
 
-                    # 결과를 저장할 변수 초기화
-                    LOCAL_IP_PORT=""
-                    REMOTE_IP_PORT=""
+                # 결과를 저장할 변수 초기화
+                LOCAL_IP_PORT=""
+                REMOTE_IP_PORT=""
 
-                    # 인덱스 초기화
-                    index=0
+                # 인덱스 초기화
+                index=0
 
-                    # IP:PORT 쌍을 반복하며 변환 (앞의 2개만 사용)
-                    for pair in $pairs; do
-                        if [ $index -ge 2 ]; then
-                            break
-                        fi
+                # IP:PORT 쌍을 반복하며 변환 (앞의 2개만 사용)
+                for pair in $pairs; do
+                    if [ $index -ge 2 ]; then
+                        break
+                    fi
+                    echo "$pair"
+                    # IP와 포트 분리
+                    IFS=':' read -r ip port <<< "$pair"
 
-                        # IP와 포트 분리
-                        IFS=':' read -r ip port <<< "$pair"
+                    # IPv6에서 IPv4로 변환
+                    if [[ "$ip" == *"FFFF"* ]]; then
+                        ip=$(echo "$ip" | sed 's/^.*FFFF://')  # FFFF 이후의 부분만 남기기
+                    fi
 
-                        # IPv6에서 IPv4로 변환
-                        if [[ "$ip" == *"FFFF"* ]]; then
-                            # FFFF 기준으로 분리
-                            ip=$(echo "$ip" | sed 's/^.*FFFF//')  # FFFF 이후의 부분만 남기기
-                        fi
+                    # IP 변환
+                    i4=$(echo "$ip" | cut -c 5-6)   # 01
+                    i3=$(echo "$ip" | cut -c 7-8)   # 00
+                    i2=$(echo "$ip" | cut -c 9-10)   # 00
+                    i1=$(echo "$ip" | cut -c 11-12)   # 7F
 
-                        # IP 변환
-                        i4=$(echo "$ip" | cut -c 5-6)   # 01
-                        i3=$(echo "$ip" | cut -c 7-8)   # 00
-                        i2=$(echo "$ip" | cut -c 9-10)   # 00
-                        i1=$(echo "$ip" | cut -c 11-12)   # 7F
+                    # 10진수로 변환
+                    ip_dec="$((16#$i1)).$((16#$i2)).$((16#$i3)).$((16#$i4))"
 
-                        # 10진수로 변환
-                        ip_dec="$((16#$i1)).$((16#$i2)).$((16#$i3)).$((16#$i4))"  # 1.0.0.127
+                    # 포트 변환 (16진수를 10진수로)
+                    port_dec=$((16#$port))
 
-                        # 포트 변환 (16진수를 10진수로)
-                        port_dec=$((16#$port))  # 16진수를 10진수로 변환
-                        if [ $? -ne 0 ]; then
-                            echo "Error converting port: $port"
-                            continue
-                        fi
+                    # 결과를 변수에 저장
+                    if [ $index -eq 0 ]; then
+                        LOCAL_IP_PORT="$ip_dec:$port_dec"
+                    else
+                        REMOTE_IP_PORT="$ip_dec:$port_dec"
+                    fi
 
-                        # 결과를 변수에 저장
-                        if [ $index -eq 0 ]; then
-                            LOCAL_IP_PORT="$ip_dec:$port_dec"
-                        else
-                            REMOTE_IP_PORT="$ip_dec:$port_dec"
-                        fi
+                    # 인덱스 증가
+                    index=$((index + 1))
+                done
 
-                        # 인덱스 증가
-                        index=$((index + 1))
-                    done
-
-                    # 결과 출력
-                    echo "LOCAL_IP_PORT: $LOCAL_IP_PORT"
-                    echo "REMOTE_IP_PORT: $REMOTE_IP_PORT"
-
-                else
-                    echo "No information found in /proc/net/tcp for inode: $INODE"
-                fi
+                # 결과 출력
+                echo "LOCAL_IP_PORT: $LOCAL_IP_PORT"
+                echo "REMOTE_IP_PORT: $REMOTE_IP_PORT"
 
             else
-                echo "No socket information found for FD: $FD"
+                echo "No information found in /proc/net/tcp for inode: $INODE"
             fi
+
+        #     else
+        #         echo "No socket information found for FD: $FD"
+        #     fi
         fi
     done 
 }
+
 
 map_pid_clone() {
     for log_dir in /tmp/*/; do
