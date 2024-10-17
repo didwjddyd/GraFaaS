@@ -137,10 +137,9 @@ process_clone_calls() {
     local log_dir=$2
     echo "Monitoring clone() calls in $logfile"
     pid=$(basename "$logfile" | sed 's/[^0-9]*//g')
-    INODE=""
+    echo "LOCAL_IP/REMOTE_IP/SOCKET_FD" > "$log_dir/accept4_info.$pid"
     # 로그 파일을 모니터링
     tail -F "$logfile" | while read -r line; do
-        echo "$line"
         if [[ "$line" == *"clone("* ]]; then
             # `clone()`의 반환값 추출
             retval=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
@@ -148,37 +147,31 @@ process_clone_calls() {
             # `clone_pid` 파일에 추가
             echo "$retval" >> "$log_dir/clone_pid"
         elif [[ "$line" == *"bind"* ]]; then
-            BIND_FD=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
+            BIND_FD=$(echo "$line" | awk -F'[(), ]+' '{for (i=1; i<=NF; i++) if ($i ~ /bind/) print $(i+1)}')
             ((BIND_FD++))
-            echo "$BIND_FD will be capture"
-            while true; do
-                sleep 0.05
-                if [[ -e /proc/$pid/fd/$BIND_FD ]]; then
-                    SOCKET_LINK=$(readlink /proc/$pid/fd/$BIND_FD)
-                    if [[ $SOCKET_LINK =~ socket:\[(.*)\] ]]; then
-                        INODE=${BASH_REMATCH[1]}
-                        break
+            {
+                while true; do
+                    sleep 0.05
+                    if [[ -e /proc/$pid/fd/$BIND_FD ]]; then
+                        SOCKET_LINK=$(readlink /proc/$pid/fd/$BIND_FD)
+                        if [[ $SOCKET_LINK =~ socket:\[(.*)\] ]]; then
+                            INODE=${BASH_REMATCH[1]}
+                            echo "$INODE/$BIND_FD" > $log_dir/inode_value.$pid  # INODE 값을 파일로 저장
+                            break
+                        fi
                     fi
-                fi
-            done
+                done
+            } &
         elif [[ "$line" == *"accept4"* ]]; then
-            # 반환된 파일 디스크립터 추출
-            # FD=$(echo "$line" | awk -F' = ' '{print $2}' | awk '{print $1}')
-            # echo "Detected accept4 syscall with FD: $FD"
-
-            # PID 추출
-            # pid=$(basename "$logfile" | sed 's/[^0-9]*//g')
-
-            # 파일 디스크립터의 실제 파일 확인
-            # SOCKET_LINK=$(readlink /proc/$pid/fd/$FD)
-            # if [[ $SOCKET_LINK =~ socket:\[(.*)\] ]]; then
-                # INODE=${BASH_REMATCH[1]}
-                # echo "Inode: $INODE"
-
-                # 직접 /proc/<pid>/net/tcp에 접근하여 inode 정보 찾기
-            SOCKET_INFO=$(grep -w "$INODE" /proc/"$pid"/net/tcp /proc/"$pid"/net/tcp6)
-
-            if [ ! -z "$SOCKET_INFO" ]; then
+            inode_value=$(cat $log_dir/inode_value.$pid | cut -d'/' -f1)
+            fd_value=$(cat $log_dir/inode_value.$pid | cut -d'/' -f2)
+            accept4_return_value=$(echo $line | cut -d'=' -f2)
+            SOCKET_INFO=$(grep -w $inode_value /proc/"$pid"/net/tcp /proc/"$pid"/net/tcp6)
+            echo $SOCKET_INFO
+            if [[ $accept4_return_value == *-1* ]]; then 
+                continue
+            elif [ ! -z "$SOCKET_INFO" ]; then
+                echo "$line"
                 # IP:PORT 쌍 추출
                 pairs=$(echo "$SOCKET_INFO" | grep -oE '([0-9a-fA-F:]+):([0-9A-Fa-f]+)')
 
@@ -194,20 +187,20 @@ process_clone_calls() {
                     if [ $index -ge 2 ]; then
                         break
                     fi
-                    echo "$pair"
                     # IP와 포트 분리
                     IFS=':' read -r ip port <<< "$pair"
 
                     # IPv6에서 IPv4로 변환
-                    if [[ "$ip" == *"FFFF"* ]]; then
-                        ip=$(echo "$ip" | sed 's/^.*FFFF://')  # FFFF 이후의 부분만 남기기
-                    fi
+                    # if [[ "$ip" == *"FFFF"* ]]; then
+                    #     ip=$(echo "$ip" | sed 's/^.*FFFF://')  # FFFF 이후의 부분만 남기기
+                    # fi
+                    ip=$(echo "$ip" | sed 's/.*\(.\{8\}\)$/\1/')
 
                     # IP 변환
-                    i4=$(echo "$ip" | cut -c 5-6)   # 01
-                    i3=$(echo "$ip" | cut -c 7-8)   # 00
-                    i2=$(echo "$ip" | cut -c 9-10)   # 00
-                    i1=$(echo "$ip" | cut -c 11-12)   # 7F
+                    i4=$(echo "$ip" | cut -c 1-2)   # 01
+                    i3=$(echo "$ip" | cut -c 3-4)   # 00
+                    i2=$(echo "$ip" | cut -c 5-6)   # 00
+                    i1=$(echo "$ip" | cut -c 7-8)   # 7F
 
                     # 10진수로 변환
                     ip_dec="$((16#$i1)).$((16#$i2)).$((16#$i3)).$((16#$i4))"
@@ -225,8 +218,9 @@ process_clone_calls() {
                     # 인덱스 증가
                     index=$((index + 1))
                 done
-
+                
                 # 결과 출력
+                echo "$LOCAL_IP_PORT/$REMOTE_IP_PORT/$fd_value">> "$log_dir/accept4_info.$pid"
                 echo "LOCAL_IP_PORT: $LOCAL_IP_PORT"
                 echo "REMOTE_IP_PORT: $REMOTE_IP_PORT"
 
@@ -245,7 +239,6 @@ process_clone_calls() {
 map_pid_clone() {
     for log_dir in /tmp/*/; do
         if [[ -f "$log_dir/clone_pid" ]]; then
-            echo "Processing clone_pids for $log_dir"
             local clone_pids=$(cat "$log_dir/clone_pid")
             local log_file_numbers=()
 
@@ -260,7 +253,6 @@ map_pid_clone() {
             for retval in $clone_pids; do
                 # log_file_numbers를 역순으로 접근
                 reverse_index=$(($clone_pids_count-$index-1))
-                echo "index: $index, $clone_pids_count : $reverse_index = ${log_file_numbers[reverse_index]}"
                 if [[ -n "${log_file_numbers[reverse_index]}" ]]; then
                     log_file_number="${log_file_numbers[reverse_index]}"
                     echo "$retval/$log_file_number" >> "$log_dir/tid_info.txt"
