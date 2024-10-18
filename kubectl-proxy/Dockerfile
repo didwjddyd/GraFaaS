@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     strace \
     tcpdump \
     procps \
+    net-tools \
     nginx \
     && apt-get clean
 
@@ -28,12 +29,12 @@ RUN pip3 install --break-system-packages scapy \
 
 
 # 스크립트 및 파일 복사
-COPY create_graph.py /tmp/create_graph.py
 COPY entrypoint.sh /tmp/entrypoint.sh
 COPY k8s_services_info /tmp/k8s_services_info
+COPY tcpdump_gateway.sh /tmp/tcpdump_gateway.sh
 # 실행 권한 부여
-RUN chmod +x /tmp/create_graph.py 
 RUN chmod +x /tmp/entrypoint.sh
+RUN chmod +x /tmp/tcpdump_gateway.sh
 RUN useradd -r nginx
 
 
