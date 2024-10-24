@@ -19,19 +19,23 @@ RUN apt-get update && apt-get install -y \
     procps \
     net-tools \
     nginx \
+    graphviz \
     && apt-get clean
 
 # Python 라이브러리 설치
 # Python 라이브러리 설치
 RUN pip3 install --break-system-packages scapy \
     networkx \
-    matplotlib
+    matplotlib \ 
+    graphviz
 
 
 # 스크립트 및 파일 복사
 COPY entrypoint.sh /tmp/entrypoint.sh
 COPY k8s_services_info /tmp/k8s_services_info
 COPY tcpdump_gateway.sh /tmp/tcpdump_gateway.sh
+COPY create_provenance_graph.py /tmp/create_provenance_graph.py
+
 # 실행 권한 부여
 RUN chmod +x /tmp/entrypoint.sh
 RUN chmod +x /tmp/tcpdump_gateway.sh

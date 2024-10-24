@@ -10,9 +10,34 @@ mount_debugfs() {
 
 # TCPDump를 백그라운드에서 실행하는 함수
 start_tcpdump() {
-    tcpdump -i eth0 'tcp port 80' -w /tmp/tcpdump.pcap &
-    TCPDUMP_PID=$!
-    echo "Started tcpdump with PID: $TCPDUMP_PID"
+    # tcpdump -i eth0 'tcp port 80' -w /tmp/tcpdump.pcap &
+    # TCPDUMP_PID=$!
+    # echo "Started tcpdump with PID: $TCPDUMP_PID"
+    # tcpdump -i eth0 -s 0 -A port 8080
+    # OpenFaaS Gateway의 PID 찾기
+    {
+        # nsenter를 통해 tcpdump 실행
+        stdbuf -oL tcpdump -i eth0 -s 0 -A port 8080 | grep --line-buffered -i 'POST' | grep --line-buffered -i 'http-alt' | while read line; do
+            echo $line
+            # 'In'으로 시작하는 로그 필터링
+            if echo "$line" | grep -qi 'In '; then
+                # 헬스 체크 요청 제외
+                if ! echo "$line" | grep -qi '/health'; then
+                    # POST 요청인지 확인
+                    if echo "$line" | grep -qi 'POST /function'; then
+                        if ! echo "$line" | grep -qi 'openfaas-fn'; then
+                            # 함수 이름 추출
+                            function_name=$(echo "$line" | grep -oP '(?<=POST /function/)[^ ]+')
+                            if [ -n "$function_name" ]; then
+                                # 함수 호출 사이클에서 가장 먼저 호출된 함수 표시
+                                echo "$function_name" > /tmp/func_call_src_info
+                            fi
+                        fi
+                    fi
+                fi
+            fi
+        done
+    } &
 }
 
 # `clone()` 호출을 처리하는 함수
@@ -161,6 +186,8 @@ monitor_nginx_requests() {
                     if [[ "$status_code" -ge 200 && "$status_code" -lt 300 ]]; then
                         echo "detect $status_code"
                         map_pid_clone &
+			sleep 1
+			python3 /tmp/create_provenance_graph.py
                     fi
                 done <<< "$new_requests"
 
@@ -205,7 +232,7 @@ monitor_processes() {
             if [[ ! " ${dir_names[@]} " =~ " $func_name " ]]; then
                 LOG_DIR="/tmp/${func_name}"
                 mkdir -p "$LOG_DIR"
-                
+                echo " $func_name " >> /tmp/function_list
                 {
                     for logfile in $LOG_DIR/*.log*; do
                         if [ -f "$logfile" ]; then
@@ -257,16 +284,15 @@ monitor_processes() {
 }
 
 nginx -g 'daemon off;' &
-/tmp/tcpdump_gateway.sh &
 mount_debugfs
-start_tcpdump
 monitor_nginx_requests &
 monitor_processes &
+start_tcpdump
 
 while true; do
-    if ! kill -0 $TCPDUMP_PID 2>/dev/null; then
-        echo "tcpdump process has exited. Restarting..."
-        start_tcpdump
-    fi
+    # if ! kill -0 $TCPDUMP_PID 2>/dev/null; then
+    #     echo "tcpdump process has exited. Restarting..."
+    #     start_tcpdump
+    # fi
     sleep 10
 done
